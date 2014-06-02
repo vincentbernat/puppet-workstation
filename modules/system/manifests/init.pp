@@ -4,6 +4,7 @@ class system {
 
   include sudo
   include network
+  include disk
 
   package { "ca-certificates": ensure => installed }
   package { "systemd-sysv": ensure => installed }
