@@ -13,4 +13,25 @@ class disk {
     match  => 'issue_discards = .',
     path   => '/etc/lvm/lvm.conf',
   }
+
+  # Enable noatime to all ext partitions
+  define fstab_add_option($entry = $title, $value) {
+    augeas { "insert noatime for ${entry}":
+      context => $entry,
+      changes => [
+                  "ins opt after opt[last()]",
+                  "set opt[last()] 'noatime'",
+                  ];
+    }
+  }
+
+  $noatime = split($::fstab_missing_noatime, ',')
+  fstab_add_option {
+    $noatime:
+      value => 'noatime';
+  }
+
+  # Enabling discard would be handy, but dunno how to detect SSD when
+  # they are baked by LVM...
+
 }
