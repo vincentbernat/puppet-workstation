@@ -8,6 +8,7 @@ class system {
 
   package { "ca-certificates": ensure => installed }
   package { "systemd-sysv": ensure => installed }
+  package { "openssh-server": ensure => installed }
 
   # Defragmentation of transparent huge page can slow down a host when
   # copying to slow devices (like USB keys)
