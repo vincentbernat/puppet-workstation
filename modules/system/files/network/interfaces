@@ -1,0 +1,7 @@
+# Managed by puppet
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Remaining interfaces are managed by network manager

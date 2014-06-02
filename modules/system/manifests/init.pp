@@ -3,8 +3,8 @@
 class system {
 
   include sudo
+  include network
 
-  package { "resolvconf": ensure => installed }
   package { "ca-certificates": ensure => installed }
   package { "systemd-sysv": ensure => installed }
 
