@@ -3,12 +3,12 @@
 cd "$(dirname "$(readlink -f "$0")")"
 [ x"${USER}" = x"root" ] || SUDO=sudo
 
-for module in apt; do
-    [ -d puppetlabs-modules/$module ] || \
+for module in puppetlabs-apt jhoblitt-udev; do
+    [ -d external-modules/${module#*-} ] || \
         puppet module \
         --confdir=$PWD \
-        --modulepath=$PWD/puppetlabs-modules \
-        install puppetlabs-$module
+        --modulepath=$PWD/external-modules \
+        install $module
 done
 
 $SUDO env \
@@ -17,6 +17,6 @@ $SUDO env \
     FACTER_home=$HOME \
   puppet apply \
     --confdir=$PWD \
-    --modulepath=$PWD/puppetlabs-modules:$PWD/modules:/usr/share/puppet/modules \
+    --modulepath=$PWD/external-modules:$PWD/modules:/usr/share/puppet/modules \
     "$@" \
     manifests/site.pp
