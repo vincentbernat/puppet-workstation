@@ -5,6 +5,7 @@ class system {
   include sudo
   include network
   include disk
+  include postfix
 
   package { "ca-certificates": ensure => installed }
   package { "systemd-sysv": ensure => installed }

@@ -1,0 +1,8 @@
+---
+:backends: yaml
+:yaml:
+  :datadir: "%{settings::confdir}/hiera"
+:hierarchy:
+  - "%{::fqdn}"
+  - "%{::fqdn}.private"
+  - common
