@@ -1,0 +1,11 @@
+# Default settings for chromium. This file is sourced by /bin/sh from
+# /usr/bin/chromium
+
+# Options to pass to chromium
+CHROMIUM_FLAGS="--password-store=detect"
+
+[ ! -d /opt/google/chrome-beta/PepperFlash ] || {
+  FLASH_VERSION="$(sed -n 's/ *"version": "\([0-9.]*\)",/\1/p' \
+	/opt/google/chrome-beta/PepperFlash/manifest.json)"
+  CHROMIUM_FLAGS="$CHROMIUM_FLAGS --ppapi-flash-path=/opt/google/chrome-beta/PepperFlash/libpepflashplayer.so --ppapi-flash-version=$FLASH_VERSION"
+}

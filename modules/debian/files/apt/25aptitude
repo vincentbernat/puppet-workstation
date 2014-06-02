@@ -1,0 +1,2 @@
+Aptitude::Always-Use-Safe-Resolver "true";
+Aptitude::ProblemResolver::StepLimit "0";

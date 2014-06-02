@@ -1,0 +1,22 @@
+#!/bin/sh
+
+cd "$(dirname "$(readlink -f "$0")")"
+[ x"${USER}" = x"root" ] || SUDO=sudo
+
+for module in apt; do
+    [ -d puppetlabs-modules/$module ] || \
+        puppet module \
+        --confdir=$PWD \
+        --modulepath=$PWD/puppetlabs-modules \
+        install puppetlabs-$module
+done
+
+$SUDO env \
+    FACTERLIB=$PWD/facts \
+    FACTER_user=$USER \
+    FACTER_home=$HOME \
+  puppet apply \
+    --confdir=$PWD \
+    --modulepath=$PWD/puppetlabs-modules:$PWD/modules:/usr/share/puppet/modules \
+    "$@" \
+    manifests/site.pp
