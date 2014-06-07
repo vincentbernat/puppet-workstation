@@ -15,4 +15,5 @@ class desktop {
   include chromium
   include spotify
   include skype
+  include davmail
 }
