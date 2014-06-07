@@ -6,7 +6,9 @@ a simpler system. The idea is to keep configuration of all my
 workstations here. In fact, the configuration is partial as I
 synchronize my homes with [Unison][].
 
-It is quite unlikely to do anything right for you.
+It is quite unlikely to do anything right for you. The goal is to make
+me spend less time to synchronize configuration of my workstations. It
+is not the state-of-the-art Puppet configuration.
 
 [Boxen]: https://boxen.github.com/
 [Unison]: http://www.cis.upenn.edu/~bcpierce/unison/
