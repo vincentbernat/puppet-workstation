@@ -6,7 +6,7 @@ cd "$(dirname "$(readlink -f "$0")")"
 if [ x"${USER}" = x"root" ]; then
     echo -n "user? "
     read USER
-    getent passwd $USER || {
+    getent passwd $USER > /dev/null || {
         echo "User $USER is unknown"
         exit 1
     }
