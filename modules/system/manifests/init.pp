@@ -22,4 +22,8 @@ class system {
   }
 
   service { "sysfsutils": }
+  service { "puppet":
+    ensure => stopped,
+    enable => false
+  }
 }
