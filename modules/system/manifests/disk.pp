@@ -24,16 +24,20 @@ class disk {
                   ];
     }
   }
+  define fstab_add_noatime() {
+    fstab_add_option { "${title}-noatime":
+      value => "noatime"
+    }
+  }
+  define fstab_add_nodiscard() {
+    fstab_add_option { "${title}-nodiscard":
+      value => "nodiscard"
+    }
+  }
 
   $noatime = split($::fstab_missing_noatime, ',')
-  fstab_add_option {"${noatime}-noatime":
-    entry => $noatime,
-    value => 'noatime'
-  }
+  fstab_add_noatime { $noatime: }
   $nodiscard = split($::fstab_missing_discard, ',')
-  fstab_add_option {"${nodiscard}-nodiscard":
-    entry => $nodiscard,
-    value => 'discard'
-  }
+  fstab_add_nodiscard { $nodiscard: }
 
 }
