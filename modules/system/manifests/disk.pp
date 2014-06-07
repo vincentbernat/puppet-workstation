@@ -26,8 +26,14 @@ class disk {
   }
 
   $noatime = split($::fstab_missing_noatime, ',')
-  fstab_add_option {$noatime: value => 'noatime' }
+  fstab_add_option {"${noatime}-noatime":
+    entry => $noatime,
+    value => 'noatime'
+  }
   $nodiscard = split($::fstab_missing_discard, ',')
-  fstab_add_option {$nodiscard: value => 'discard' }
+  fstab_add_option {"${nodiscard}-nodiscard":
+    entry => $nodiscard,
+    value => 'discard'
+  }
 
 }
