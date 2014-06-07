@@ -31,4 +31,9 @@ class postfix($relay, $cert, $key) {
     command => "/usr/sbin/postalias /etc/aliases"
   }
 
+  file { "/etc/postfix/transport":
+    source => "puppet:///modules/system/postfix/transport",
+    notify => Service["postfix"]
+  }
+
 }
