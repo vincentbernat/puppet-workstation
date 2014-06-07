@@ -7,7 +7,7 @@ class shell {
   ->
   file { "${::home}/.zshrc":
     owner => "${::user}",
-    group => "${::user}",
+    group => "${::group}",
     content => template("tools/shell/zshrc.erb")
   }
 

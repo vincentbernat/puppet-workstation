@@ -27,6 +27,7 @@ $SUDO env \
     FACTERLIB=$PWD/facts \
     FACTER_user=$USER \
     FACTER_home=$HOME \
+    FACTER_group=$(id -gn $USER) \
   puppet apply \
     --confdir=$PWD \
     --modulepath=$PWD/external-modules:$PWD/modules:/usr/share/puppet/modules \
