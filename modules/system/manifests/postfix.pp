@@ -1,4 +1,4 @@
-class postfix($relay, $cert, $key) {
+class postfix($relay = undef, $cert = undef, $key = undef) {
 
   package { postfix: ensure => installed }
 
@@ -17,14 +17,24 @@ class postfix($relay, $cert, $key) {
     require => Package["postfix"]
   }
 
-  file { "/etc/ssl/private/postfix.key":
-    mode => 0600,
-    content => "${key}",
-    notify => Service["postfix"]
+  if ($key != undef) {
+    file { "/etc/ssl/private/postfix.key":
+      mode => 0600,
+      content => "${key}",
+      notify => Service["postfix"]
+    }
   }
-  file { "/etc/ssl/postfix.pem":
-    content => "${cert}",
-    notify => Service["postfix"]
+  else {
+    warning('no key present for postfix')
+  }
+  if ($cert != undef) {
+    file { "/etc/ssl/postfix.pem":
+      content => "${cert}",
+      notify => Service["postfix"]
+    }
+  }
+  else {
+    warning('no certificate present for postfix')
   }
 
   exec { "postalias":
