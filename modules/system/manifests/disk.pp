@@ -26,11 +26,13 @@ class disk {
   }
   define fstab_add_noatime() {
     fstab_add_option { "${title}-noatime":
+      entry => $title,
       value => "noatime"
     }
   }
   define fstab_add_nodiscard() {
     fstab_add_option { "${title}-nodiscard":
+      entry => $title,
       value => "nodiscard"
     }
   }
