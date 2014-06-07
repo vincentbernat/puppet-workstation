@@ -1,7 +1,19 @@
 #!/bin/sh
 
+set -e
+
 cd "$(dirname "$(readlink -f "$0")")"
-[ x"${USER}" = x"root" ] || SUDO=sudo
+if [ x"${USER}" = x"root" ]; then
+    echo -n "user? "
+    read USER
+    getent passwd $USER || {
+        echo "User $USER is unknown"
+        exit 1
+    }
+    HOME=$(getent passwd $USER | awk -F: '{print $6}')
+else
+    SUDO=sudo
+fi
 
 for module in puppetlabs-apt jhoblitt-udev; do
     [ -d external-modules/${module#*-} ] || \
