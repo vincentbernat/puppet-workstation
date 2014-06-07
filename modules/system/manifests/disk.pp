@@ -30,16 +30,16 @@ class disk {
       value => "noatime"
     }
   }
-  define fstab_add_nodiscard() {
+  define fstab_add_discard() {
     fstab_add_option { "${title}-nodiscard":
       entry => $title,
-      value => "nodiscard"
+      value => "discard"
     }
   }
 
   $noatime = split($::fstab_missing_noatime, ',')
   fstab_add_noatime { $noatime: }
   $nodiscard = split($::fstab_missing_discard, ',')
-  fstab_add_nodiscard { $nodiscard: }
+  fstab_add_discard { $nodiscard: }
 
 }
