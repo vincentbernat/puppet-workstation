@@ -11,12 +11,14 @@ class system {
   package { "ca-certificates": ensure => installed }
   package { "systemd-sysv": ensure => installed }
   package { "openssh-server": ensure => installed }
+  package { "sysfsutils": ensure => installed }
 
   # Defragmentation of transparent huge page can slow down a host when
   # copying to slow devices (like USB keys)
   file { "/etc/sysfs.d/usb-performance.conf":
     content => "kernel/mm/transparent_hugepage/defrag = madvise",
-    notify => Service["sysfsutils"]
+    notify => Service["sysfsutils"],
+    require => Package["sysfsutils"]
   }
 
   service { "sysfsutils": }
