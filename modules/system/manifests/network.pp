@@ -12,6 +12,8 @@ class network {
   package { "network-manager-pptp-gnome": ensure => installed }
   package { "network-manager-vpnc": ensure => installed }
   package { "network-manager-vpnc-gnome": ensure => installed }
+  package { "firewall-applet": ensure => installed }
+  package { "firewalld": ensure => installed }
 
   file { "/etc/network/interfaces":
     source => "puppet:///modules/system/network/interfaces"
