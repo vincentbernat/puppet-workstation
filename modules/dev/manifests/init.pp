@@ -23,4 +23,15 @@ class dev {
   package { "python-virtualenv": ensure => installed }
   package { "python-twisted": ensure => installed }
 
+  # Maintainers don't want to ship a correct version...
+  file { "/opt/global.deb":
+    source => "puppet:///modules/dev/global_6.2.10-0_amd64.deb"
+  }
+  ->
+  package { "global":
+    provider => dpkg,
+    source => "/opt/global.deb",
+    ensure => latest
+  }
+
 }
