@@ -19,4 +19,5 @@ class awesome {
   package { "xautolock": ensure => installed }
   package { "xdg-utils": ensure => installed }
   package { "xinput": ensure => installed }
+  package { "xbacklight": ensure => installed }
 }
