@@ -1,7 +1,8 @@
 class imap {
 
   package { "isync": ensure => present }
-  package { "dovecot-imapd": ensure => present }
+  package { "dovecot-imapd": ensure => present } ->
+  package { "dovecot-lucene": ensure => present }
 
   # Will be started on demand
   service { "dovecot":
