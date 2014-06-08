@@ -29,7 +29,8 @@ class desktop {
   package { "mdbus2": ensure => installed }
   package { "mplayer": ensure => installed }
   package { "pidgin": ensure => installed } ->
-  package { "pidgin-skype": ensure => installed }
+  package { "pidgin-skype": ensure => installed } ->
+  package { "pidgin-sipe": ensure => installed }
   package { "pinentry-gtk2": ensure => installed }
   package { "thunar": ensure => installed }
   package { "unison": ensure => installed }
