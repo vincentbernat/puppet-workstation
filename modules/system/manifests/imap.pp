@@ -1,6 +1,6 @@
-class offlineimap {
+class imap {
 
-  package { "offlineimap": ensure => present }
+  package { "isync": ensure => present }
   package { "dovecot-imapd": ensure => present }
 
   # Will be started on demand
@@ -12,7 +12,7 @@ class offlineimap {
 
   # Override the default, we want something quite simple
   file { "/etc/dovecot/dovecot.conf":
-    source => "puppet:///modules/system/offlineimap/dovecot.conf"
+    source => "puppet:///modules/system/imap/dovecot.conf"
   }
 
 }

@@ -6,7 +6,7 @@ class system {
   include network
   include disk
   include postfix
-  include offlineimap
+  include imap
 
   package { "ca-certificates": ensure => installed }
   package { "systemd-sysv": ensure => installed }
