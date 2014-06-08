@@ -8,6 +8,8 @@ class awesome {
   package { "fvwm-crystal": ensure => installed }
   package { "i3lock": ensure => installed }
   package { "gconf2": ensure => installed }
+  package { "gnome-icon-theme": ensure => installed }
+  package { "gnome-icon-theme-symbolic": ensure => installed }
   package { "gnome-themes-standard": ensure => installed }
   package { "gnupg-agent": ensure => installed }
   package { "hsetroot": ensure => installed }
@@ -17,7 +19,7 @@ class awesome {
   package { "x11-xkb-utils": ensure => installed }
   package { "x11-xserver-utils": ensure => installed }
   package { "xautolock": ensure => installed }
+  package { "xbacklight": ensure => installed }
   package { "xdg-utils": ensure => installed }
   package { "xinput": ensure => installed }
-  package { "xbacklight": ensure => installed }
 }
