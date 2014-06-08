@@ -12,6 +12,7 @@ class desktop {
 
   # Some applications
   include applications
+  include emacs
   include chromium
   include spotify
   include skype
