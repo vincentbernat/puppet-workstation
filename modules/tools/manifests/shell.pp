@@ -12,6 +12,5 @@ class shell {
   }
 
   package { "python-pygments": ensure => installed }
-  package { "python-virtualenv": ensure => installed }
 
 }
