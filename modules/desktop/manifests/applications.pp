@@ -9,6 +9,7 @@ class applications {
   package { "gpicview": ensure => installed }
   package { "iceweasel": ensure => installed }
   package { "inkscape": ensure => installed }
+  package { "keepassx": ensure => installed }
   package { "mdbus2": ensure => installed }
   package { "mplayer": ensure => installed }
   package { "pidgin": ensure => installed } ->
