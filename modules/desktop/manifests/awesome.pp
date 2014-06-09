@@ -13,6 +13,7 @@ class awesome {
   package { "gnupg-agent": ensure => installed }
   package { "hsetroot": ensure => installed }
   package { "i3lock": ensure => installed }
+  package { "inputplug": ensure => installed }
   package { "numlockx": ensure => installed }
   package { "policykit-1-gnome": ensure => installed }
   package { "python-imaging": ensure => installed }
