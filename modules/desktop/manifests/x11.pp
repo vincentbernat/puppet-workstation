@@ -36,6 +36,10 @@ class x11 {
     option => "vbe:pause",
     symbols => "+vbe(pause)"
   }
+  evdev_add_option { "vbe_webcam":
+    option => "vbe:webcam",
+    symbols => "+vbe(webcam)"
+  }
 
   package { "lightdm": ensure => installed }
   ->
