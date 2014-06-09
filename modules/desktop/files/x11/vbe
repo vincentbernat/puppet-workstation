@@ -1,0 +1,6 @@
+partial
+xkb_symbols "pause" {
+    key <PAUS> {
+        symbols[Group1]= [ XF86ScreenSaver, NoSymbol ]
+    };
+};
