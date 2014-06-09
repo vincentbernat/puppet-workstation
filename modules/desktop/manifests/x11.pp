@@ -21,6 +21,10 @@ class x11 {
     require => File["/etc/X11/xorg.conf.d"],
     source => "/usr/share/X11/xkb/rules/evdev"
   }
+  file { "/usr/share/X11/xkb/rules/vbe.lst":
+    require => File["/etc/X11/xorg.conf.d"],
+    source => "/usr/share/X11/xkb/rules/evdev.lst"
+  }
 
   # That's unfortunate, but we have to modify this file to get what we want...
   define evdev_add_option($option, $symbols) {
@@ -31,14 +35,27 @@ class x11 {
       require => Package["xserver-xorg"],
       notify => File["/usr/share/X11/xkb/rules/vbe"]
     }
+    file_line { "evdev_lst_option_${option}":
+      after => "! option",
+      line => "  ${option}	Nothing to tell",
+      path => "/usr/share/X11/xkb/rules/evdev.lst",
+      require => [ Package["xserver-xorg"] ],
+      notify => File["/usr/share/X11/xkb/rules/vbe.lst"]
+    }
   }
   evdev_add_option { "vbe_pause":
     option => "vbe:pause",
     symbols => "+vbe(pause)"
   }
+  ->
   evdev_add_option { "vbe_webcam":
     option => "vbe:webcam",
     symbols => "+vbe(webcam)"
+  }
+  ->
+  evdev_add_option { "vbe":
+    option => "vbe",
+    symbols => ""
   }
 
   package { "lightdm": ensure => installed }
