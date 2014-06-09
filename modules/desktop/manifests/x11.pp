@@ -14,6 +14,10 @@ class x11 {
     require => Package["xserver-xorg"],
     source => "puppet:///modules/desktop/x11/vbe"
   }
+  file { "/usr/share/X11/xkb/rules/vbe":
+    require => Package["xserver-xorg"],
+    source => "/usr/share/X11/xkb/rules/evdev"
+  }
 
   # That's unfortunate, but we have to modify this file to get what we want...
   define evdev_add_option($option, $symbols) {
@@ -21,7 +25,8 @@ class x11 {
       after => "! option	=	symbols",
       line => "  ${option} = ${symbols}",
       path => "/usr/share/X11/xkb/rules/evdev",
-      require => Package["xserver-xorg"]
+      require => Package["xserver-xorg"],
+      notify => File["/usr/share/X11/xkb/rules/vbe"]
     }
   }
   evdev_add_option { "vbe_pause":
