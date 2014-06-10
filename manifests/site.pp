@@ -14,7 +14,7 @@ node default {
 
   # The current user is virtual to allow modifications from multiple places
   @user { "${::user}":
-    groups => [],
+    groups => [ "adm" ],
     membership => minimum
   }
 
