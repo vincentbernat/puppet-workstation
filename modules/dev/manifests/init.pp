@@ -12,6 +12,8 @@ class dev {
   package { "autoconf": ensure => installed }
   package { "automake": ensure => installed }
   package { "libtool": ensure => installed }
+  package { "gdb": ensure => installed }
+  package { "valgrind": ensure => installed }
 
   package { "ipython": ensure => installed }
   package { "ipython3": ensure => installed }
