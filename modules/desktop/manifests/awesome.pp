@@ -2,7 +2,7 @@ class awesome {
   package { "awesome": ensure => installed }
   package { "awesome-extra": ensure => installed }
 
-  package { "amixer": ensure => installed }
+  package { "alsa-utils": ensure => installed }
   package { "compton": ensure => installed }
   package { "dconf-cli": ensure => installed }
   package { "fvwm": ensure => installed }
