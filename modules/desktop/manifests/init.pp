@@ -38,4 +38,6 @@ class desktop {
   package { "vlc": ensure => installed }
   package { "wireshark": ensure => installed }
 
+  package { "gnome-keyring": ensure => absent }
+
 }
