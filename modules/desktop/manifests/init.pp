@@ -39,5 +39,6 @@ class desktop {
   package { "wireshark": ensure => installed }
 
   package { "gnome-keyring": ensure => absent }
+  package { "gvfs-daemons": ensure => absent }
 
 }
