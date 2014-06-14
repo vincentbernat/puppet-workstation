@@ -1,0 +1,7 @@
+#!/bin/sh
+# invoke shell if build fails.
+
+apt-get install -qy mg less zsh
+cd /tmp/buildd/*/debian/..
+export TERM=xterm
+/bin/zsh < /dev/tty > /dev/tty 2> /dev/tty

@@ -37,4 +37,6 @@ class dev {
     ensure => latest
   }
 
+  include cowbuilder
+
 }

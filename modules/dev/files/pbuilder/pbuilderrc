@@ -1,0 +1,13 @@
+# -*- sh -*-
+
+MIRRORSITE=http://cdn.debian.net/debian
+HOOKDIR=/etc/pbuilder/hooks
+
+if [ "x$PBCURRENTCOMMANDLINEOPERATION" = xlogin ]; then
+  export PBUILDERPID=$$
+  [ -z $SUDO_UID ] || {
+    home=$(getent passwd $SUDO_UID | awk -F: '{print $6}')
+    BINDMOUNTS="$BINDMOUNTS $home"
+    export ZDOTDIR=$home
+  }
+fi
