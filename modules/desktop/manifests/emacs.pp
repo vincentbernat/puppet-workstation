@@ -6,5 +6,6 @@ class emacs {
 
   package { "debian-el": ensure => installed, require => Package["emacs24-lucid"] }
   package { "dpkg-dev-el": ensure => installed, require => Package["emacs24-lucid"] }
+  package { "fortune-mod": ensure => installed }
 
 }
