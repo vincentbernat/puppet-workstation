@@ -1,7 +1,6 @@
 class network {
 
   # For networking, we rely on network manager.
-  package { "resolvconf": ensure => installed }
   package { "network-manager": ensure => installed }
   package { "network-manager-gnome": ensure => installed }
   package { "network-manager-openvpn": ensure => installed }
@@ -14,6 +13,27 @@ class network {
   package { "network-manager-vpnc-gnome": ensure => installed }
   package { "firewall-applet": ensure => installed }
   package { "firewalld": ensure => installed }
+
+  # Enable dnsmasq
+  package { "resolvconf": ensure => purged }
+  ->
+  package { "dnsmasq": ensure => installed }
+  ->
+  service { "dnsmasq":
+    ensure => stopped,
+    enable => false
+  }
+  file_line { "disable_dnsmasq":
+    line => "ENABLED=0",
+    match => "ENABLED=.",
+    path => "/etc/default/dnsmasq"
+  }
+  ->
+  file_line { "networkmanager_dnsmasq":
+    after => "\\[main\\]",
+    line => "dns=dnsmasq",
+    path => "/etc/NetworkManager/NetworkManager.conf"
+  }
 
   file { "/etc/network/interfaces":
     source => "puppet:///modules/system/network/interfaces"
