@@ -17,17 +17,9 @@ class network {
   # Enable dnsmasq
   package { "resolvconf": ensure => purged }
   ->
-  package { "dnsmasq": ensure => installed }
+  package { "dnsmasq-base": ensure => installed }
   ->
-  service { "dnsmasq":
-    ensure => stopped,
-    enable => false
-  }
-  file_line { "disable_dnsmasq":
-    line => "ENABLED=0",
-    match => "ENABLED=.",
-    path => "/etc/default/dnsmasq"
-  }
+  package { "dnsmasq": ensure => purged }
   ->
   file_line { "networkmanager_dnsmasq":
     after => "\\[main\\]",
