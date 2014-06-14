@@ -27,7 +27,7 @@ class desktop {
   package { "inkscape": ensure => installed }
   package { "keepassx": ensure => installed }
   package { "mdbus2": ensure => installed }
-  package { "mplayer": ensure => installed }
+  package { "mpv": ensure => installed }
   package { "pidgin": ensure => installed } ->
   package { "pidgin-skype": ensure => installed } ->
   package { "pidgin-sipe": ensure => installed }
