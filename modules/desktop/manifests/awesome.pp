@@ -27,4 +27,5 @@ class awesome {
   package { "xbacklight": ensure => installed }
   package { "xdg-utils": ensure => installed }
   package { "xinput": ensure => installed }
+  package { "xsel": ensure => installed }
 }
