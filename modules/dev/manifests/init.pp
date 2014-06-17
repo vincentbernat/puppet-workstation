@@ -3,6 +3,7 @@ class dev {
   package { "build-essential": ensure => installed }
   package { "dpkg-dev": ensure => installed }
   package { "debhelper": ensure => installed }
+  package { "git-buildpackage": ensure => installed }
 
   package { "nodejs": ensure => installed } ->
   package { "nodejs-legacy": ensure => installed }
