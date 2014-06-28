@@ -4,6 +4,9 @@ class debian {
   file { "/etc/apt/apt.conf.d/25aptitude":
     source => "puppet:///modules/debian/apt/25aptitude"
   }
+  file { "/etc/apt/apt.conf.d/02periodic":
+    source => "puppet:///modules/debian/apt/02periodic"
+  }
 
   apt::source { 'unstable':
     location          => 'http://cdn.debian.net/debian/',

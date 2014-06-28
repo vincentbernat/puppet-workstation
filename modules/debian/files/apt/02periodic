@@ -1,0 +1,3 @@
+# Autoclean
+APT::Periodic::MinAge "1";
+APT::Periodic::AutocleanInterval "1";
