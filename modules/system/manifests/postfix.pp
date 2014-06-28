@@ -1,4 +1,4 @@
-class postfix($relay = undef, $cert = undef, $key = undef) {
+class postfix($relay = undef, $cert = undef, $key = undef, $origin = undef) {
 
   package { postfix: ensure => installed }
 
@@ -35,6 +35,13 @@ class postfix($relay = undef, $cert = undef, $key = undef) {
   }
   else {
     warning('no certificate present for postfix')
+  }
+
+  if ($origin != undef) {
+    file { "/etc/mailname":
+      content => template("system/postfix/mailname.erb"),
+      notify => Service["postfix"]
+    }
   }
 
   exec { "postalias":
