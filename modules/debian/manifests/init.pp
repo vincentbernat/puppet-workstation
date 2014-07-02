@@ -9,7 +9,7 @@ class debian {
   }
 
   apt::source { 'unstable':
-    location          => 'http://cdn.debian.net/debian/',
+    location          => 'http://http.debian.net/debian/',
     release           => 'unstable',
     repos             => 'main contrib non-free',
     required_packages => 'debian-keyring debian-archive-keyring',
@@ -17,7 +17,7 @@ class debian {
   }
 
   apt::source { 'experimental':
-    location          => 'http://cdn.debian.net/debian/',
+    location          => 'http://http.debian.net/debian/',
     release           => 'experimental',
     repos             => 'main',
     include_src       => false
