@@ -7,6 +7,9 @@ class debian {
   file { "/etc/apt/apt.conf.d/02periodic":
     source => "puppet:///modules/debian/apt/02periodic"
   }
+  file { "/etc/apt/apt.conf.d/99translations":
+    source => "puppet:///modules/debian/apt/99translations"
+  }
 
   apt::source { 'unstable':
     location          => 'http://http.debian.net/debian/',
