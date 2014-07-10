@@ -16,7 +16,7 @@ class system {
   # Defragmentation of transparent huge page can slow down a host when
   # copying to slow devices (like USB keys)
   file { "/etc/sysfs.d/usb-performance.conf":
-    content => "kernel/mm/transparent_hugepage/defrag = madvise",
+    content => "kernel/mm/transparent_hugepage/defrag = madvise\n",
     notify => Service["sysfsutils"],
     require => Package["sysfsutils"]
   }
