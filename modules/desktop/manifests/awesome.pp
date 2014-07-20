@@ -21,6 +21,7 @@ class awesome {
   package { "python-imaging": ensure => installed }
   package { "python-xpyb": ensure => installed }
   package { "redshift": ensure => installed }
+  package { "udisks-glue": ensure => installed }
   package { "x11-xkb-utils": ensure => installed }
   package { "x11-xserver-utils": ensure => installed }
   package { "xautolock": ensure => installed }
