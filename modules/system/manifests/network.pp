@@ -26,6 +26,7 @@ class network {
   }
 
   file { "/etc/NetworkManager/NetworkManager.conf":
+    require => Package["network-manager"],
     source => "puppet:///modules/system/network/NetworkManager.conf"
   }
 }
