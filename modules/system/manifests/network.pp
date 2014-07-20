@@ -20,14 +20,12 @@ class network {
   package { "dnsmasq-base": ensure => installed }
   ->
   package { "dnsmasq": ensure => purged }
-  ->
-  file_line { "networkmanager_dnsmasq":
-    after => "\\[main\\]",
-    line => "dns=dnsmasq",
-    path => "/etc/NetworkManager/NetworkManager.conf"
-  }
 
   file { "/etc/network/interfaces":
     source => "puppet:///modules/system/network/interfaces"
+  }
+
+  file { "/etc/NetworkManager/NetworkManager.conf":
+    source => "puppet:///modules/system/network/NetworkManager.conf"
   }
 }
