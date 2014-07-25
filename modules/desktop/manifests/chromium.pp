@@ -17,4 +17,8 @@ class chromium {
     source => "puppet:///modules/desktop/chromium/default"
   }
 
+  file { '/usr/share/applications/emacsclient.desktop':
+    source => "puppet:///modules/desktop/chromium/emacsclient.desktop"
+  }
+
 }
