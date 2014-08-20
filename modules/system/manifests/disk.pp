@@ -12,6 +12,12 @@ class disk {
     line   => 'issue_discards = 1',
     match  => 'issue_discards = .',
     path   => '/etc/lvm/lvm.conf',
+    notify => Exec['update initramfs for lvm']
+  }
+
+  exec { 'update initramfs for lvm':
+    command => '/usr/sbin/update-initramfs -k all -u',
+    refreshonly => true
   }
 
   # Enable noatime and discard when needed
