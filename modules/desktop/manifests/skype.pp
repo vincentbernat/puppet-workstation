@@ -13,7 +13,5 @@ class skype {
     source   => "/opt/skype.deb",
     require  => Exec['retrieve_skype']
   }
-  ->
-  package { "gtk2-engines-pixbuf:i386": ensure => installed }
 
 }

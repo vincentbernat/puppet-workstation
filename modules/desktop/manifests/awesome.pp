@@ -29,4 +29,8 @@ class awesome {
   package { "xdg-utils": ensure => installed }
   package { "xinput": ensure => installed }
   package { "xsel": ensure => installed }
+
+  # For 32bits app
+  package { "gnome-themes-standard:i386": ensure => installed }
+  package { "gtk2-engines-pixbuf:i386": ensure => installed }
 }
