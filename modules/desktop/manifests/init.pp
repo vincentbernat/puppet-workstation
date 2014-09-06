@@ -36,6 +36,9 @@ class desktop {
   package { "vim-tiny": ensure => installed }
   package { "vlc": ensure => installed }
   package { "wireshark": ensure => installed }
+  package { "libreoffice": ensure => installed }
+  package { "libreoffice-gtk": ensure => installed }
+  package { "libreoffice-gtk3": ensure => installed }
 
   package { "gnome-keyring": ensure => absent }
   package { "gvfs-daemons": ensure => absent }
