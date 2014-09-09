@@ -15,7 +15,7 @@ else
     SUDO=sudo
 fi
 
-for module in puppetlabs-apt jhoblitt-udev; do
+for module in puppetlabs-apt jhoblitt-udev saz-timezone; do
     [ -d external-modules/${module#*-} ] || \
         puppet module \
         --confdir=$PWD \

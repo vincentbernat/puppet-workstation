@@ -26,4 +26,8 @@ class system {
     ensure => stopped,
     enable => false
   }
+
+  class { "timezone":
+    timezone => "Europe/Zurich"
+  }
 }
