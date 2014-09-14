@@ -24,7 +24,7 @@ class awesome {
   package { "udisks-glue": ensure => installed }
   package { "x11-xkb-utils": ensure => installed }
   package { "x11-xserver-utils": ensure => installed }
-  package { "xautolock": ensure => installed }
+  package { "xss-lock": ensure => installed }
   package { "xbacklight": ensure => installed }
   package { "xdg-utils": ensure => installed }
   package { "xinput": ensure => installed }
