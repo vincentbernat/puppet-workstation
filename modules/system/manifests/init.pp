@@ -12,6 +12,7 @@ class system {
   package { "systemd-sysv": ensure => installed }
   package { "openssh-server": ensure => installed }
   package { "sysfsutils": ensure => installed }
+  package { "at": ensure => absent }
 
   # Defragmentation of transparent huge page can slow down a host when
   # copying to slow devices (like USB keys)
