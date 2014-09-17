@@ -11,6 +11,10 @@ class fonts {
   package { "xfonts-terminus": ensure => installed }
   package { "fonts-powerline": ensure => installed }
 
+  file { "/usr/local/share/fonts/PowerlineSymbols.otf":
+    ensure => absent
+  }
+
   # fontconfig
   package { "fontconfig": ensure => installed }
   ->
