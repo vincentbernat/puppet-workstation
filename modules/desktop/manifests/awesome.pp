@@ -27,6 +27,7 @@ class awesome {
   package { "xss-lock": ensure => installed }
   package { "xbacklight": ensure => installed }
   package { "xdg-utils": ensure => installed }
+  package { "xfce4-terminal": ensure => installed }
   package { "xinput": ensure => installed }
   package { "xsel": ensure => installed }
   package { "xsettingsd": ensure => installed }
