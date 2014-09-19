@@ -1,5 +1,6 @@
 class debian {
 
+  package { 'debian-security-support': ensure => installed }
   package { "aptitude": ensure => installed } ->
   file { "/etc/apt/apt.conf.d/25aptitude":
     source => "puppet:///modules/debian/apt/25aptitude"
