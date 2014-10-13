@@ -13,8 +13,14 @@ class chromium {
   ->
   package { 'google-chrome-beta': ensure => installed }
   ->
-  file { '/etc/chromium/default':
-    source => "puppet:///modules/desktop/chromium/default"
+  file { '/etc/chromium.d/flash':
+    source => "puppet:///modules/desktop/chromium/flash",
+  }
+  file { '/etc/chromium.d/googleapikeys':
+    source => "puppet:///modules/desktop/chromium/googleapikeys"
+  }
+  file { '/etc/chromium.d':
+    ensure => directory
   }
 
 }
