@@ -1,8 +1,10 @@
-[ ! -d /opt/google/chrome-beta/PepperFlash ] || {
+for v in /opt/google/chrome*; do
+  [ -d $v ] || continue
+  [ -d $v/PepperFlash ] || continue
   FLASH_VERSION="$(sed -n 's/ *"version": "\([0-9.]*\)",/\1/p' \
-	/opt/google/chrome-beta/PepperFlash/manifest.json)"
-  CHROMIUM_FLAGS="$CHROMIUM_FLAGS --ppapi-flash-path=/opt/google/chrome-beta/PepperFlash/libpepflashplayer.so --ppapi-flash-version=$FLASH_VERSION"
-}
+	$v/PepperFlash/manifest.json)"
+  CHROMIUM_FLAGS="$CHROMIUM_FLAGS --ppapi-flash-path=$v/PepperFlash/libpepflashplayer.so --ppapi-flash-version=$FLASH_VERSION"
+done
 
 # Local Variables:
 # mode: sh
