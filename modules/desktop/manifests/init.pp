@@ -40,7 +40,9 @@ class desktop {
   package { "libreoffice-gtk": ensure => installed }
   package { "libreoffice-gtk3": ensure => installed }
 
+  # Blacklisting some annoying packages
   package { "gnome-keyring": ensure => absent }
   package { "gvfs-daemons": ensure => absent }
+  package { "gvfs-bin": ensure => absent }
 
 }
