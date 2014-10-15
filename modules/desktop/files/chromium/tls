@@ -1,0 +1,6 @@
+# Disable SSLv3
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --ssl-version-min=tls1"
+
+# Local Variables:
+# mode: sh
+# End:

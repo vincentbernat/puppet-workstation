@@ -19,6 +19,9 @@ class chromium {
   file { '/etc/chromium.d/googleapikeys':
     source => "puppet:///modules/desktop/chromium/googleapikeys"
   }
+  file { '/etc/chromium.d/tls':
+    source => "puppet:///modules/desktop/chromium/tls"
+  }
   file { '/etc/chromium.d':
     ensure => directory
   }
