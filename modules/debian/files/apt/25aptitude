@@ -1,2 +1,4 @@
 Aptitude::Always-Use-Safe-Resolver "true";
-Aptitude::ProblemResolver::StepLimit "0";
+Aptitude::ProblemResolver {
+  SolutionCost "priority, removals, canceled-actions";
+}
