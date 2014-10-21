@@ -3,8 +3,7 @@
 set -e
 
 auth="<%= @username %>:<%= @password %>"
-hostname="$1"
-shift
+hostname="<%= @hostname %>.<%= @domain %>"
 
 for target in 8.8.8.8 2001:4860:4860::8888; do
     ip=$(ip route get $target | sed -ne '/^unreachable/d' -e 's/.* src \([^ ]*\).*/\1/p')

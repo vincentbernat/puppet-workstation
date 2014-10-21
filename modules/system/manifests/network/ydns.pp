@@ -10,7 +10,7 @@ class system::network::ydns($username, $password, $domain="ydns.eu") {
   }
   ->
   cron { "ydns-updater":
-    command => "/usr/local/bin/ydns-updater ${hostname}.${domain}",
+    command => "/usr/local/bin/ydns-updater",
     minute => '*/10'
   }
 
