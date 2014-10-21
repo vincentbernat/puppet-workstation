@@ -9,9 +9,11 @@ class system::network::ddns($key, $secret, $domain, $ttl=60) {
     mode => "0700"
   }
 
+  $mstart = fqdn_rand(15)
+  $sleep = fqdn_rand(40)
   cron { "ddns-updater":
-    command => "/usr/local/bin/ddns-updater",
-    minute => '*/10',
+    command => "/sbin/sleep ${sleep} ; /usr/local/bin/ddns-updater",
+    minute => "${mstart}-59/15",
     require => File['/usr/local/bin/ddns-updater']
   }
 
