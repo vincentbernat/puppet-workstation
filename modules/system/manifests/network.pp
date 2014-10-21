@@ -29,4 +29,7 @@ class network {
     require => Package["network-manager"],
     source => "puppet:///modules/system/network/NetworkManager.conf"
   }
+
+  include system::network::ydns
+
 }

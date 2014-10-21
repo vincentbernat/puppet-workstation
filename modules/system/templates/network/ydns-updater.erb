@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+auth="<%= @username %>:<%= @password %>"
+hostname="$1"
+shift
+
+for target in 8.8.8.8 2001:4860:4860::8888; do
+    ip=$(ip route get $target | sed -ne '/^unreachable/d' -e 's/.* src \([^ ]*\).*/\1/p')
+    [ -n "$ip" ] || continue
+    curl -s "https://${auth}@ydns.eu/api/v1/update/?host=${hostname}&ip=${ip}" > /dev/null
+done

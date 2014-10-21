@@ -1,2 +1,2 @@
 external-modules
-hiera/*.private.yaml
+hiera/*private.yaml
