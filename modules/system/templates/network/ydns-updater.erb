@@ -3,8 +3,7 @@
 auth="<%= @username %>:<%= @password %>"
 hostname="<%= @hostname %>.<%= @domain %>"
 
-for target in 8.8.8.8 2001:4860:4860::8888; do
-    ip=$(ip route get $target | sed -ne '/^unreachable/d' -e 's/.* src \([^ ]*\).*/\1/p')
-    [ -n "$ip" ] || continue
-    curl -s "https://${auth}@ydns.eu/api/v1/update/?host=${hostname}&ip=${ip}" > /dev/null
-done
+target=8.8.8.8
+ip=$(ip route get $target | sed -ne '/^unreachable/d' -e 's/.* src \([^ ]*\).*/\1/p')
+[ -n "$ip" ] || return
+curl -s "https://${auth}@ydns.eu/api/v1/update/?host=${hostname}&ip=${ip}" > /dev/null
