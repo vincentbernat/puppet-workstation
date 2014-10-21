@@ -1,0 +1,104 @@
+#!/usr/bin/env python
+
+"""Update DNS record on a specified zone of route 53.
+
+The specified record is updated with the IP current IP addresses of
+this host, both IPv4 and IPv6.
+
+Here is the IAM policy that can be used:
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "route53:ChangeResourceRecordSets"
+      ],
+      "Resource": [
+        "arn:aws:route53:::hostedzone/XXXXXXXXXXX"
+      ]
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "route53:ListHostedZones"
+       ],
+       "Resource":"*"
+    }
+  ]
+}
+"""
+
+import sys
+import socket
+import logging
+from boto import route53
+
+logger = logging.getLogger("ddns-updater")
+options = {
+    "credentials": {
+        "key": "<%= @key %>",
+        "secret": "<%= @secret %>"
+    },
+    "rs": {
+        "domain": "<%= @domain %>",
+        "hostname": "<%= @hostname %>",
+        "ttl": <%= @ttl %>
+    }
+}
+
+def ipv4():
+    """Retrieve IPv4 address.
+
+    No attempt to detect NAT is made.
+    """
+    # We create an UDP socket and connect it to a public host. We
+    # query the OS to know what our address is. No packet will really
+    # be sent since we are using UDP.
+    s = socket.socket(socket.AF_INET,
+                      socket.SOCK_DGRAM)
+    try:
+        s.connect(("8.8.8.8", 9))
+    except socket.error:
+        return None
+    ip, _ = s.getsockname()
+    return ip
+
+def ipv6():
+    """Retrieve IPv6 address."""
+    # Same as for IPv4 but we don't want the dynamic temporary privacy
+    # address. Dunno how to do that, yet.
+    s = socket.socket(socket.AF_INET6,
+                      socket.SOCK_DGRAM)
+    try:
+        s.connect(("2001:4860:4860::8888", 9))
+    except socket.error:
+        return None
+    ip, _, _, _ = s.getsockname()
+    return ip
+
+try:
+    ip = {
+        "A": ipv4(),
+        "AAAA": ipv6()
+    }
+
+    conn = route53.connection.Route53Connection()
+    zone = conn.get_zone("{domain}.".format(**options['rs']))
+    name = "{hostname}.{domain}".format(**options['rs'])
+    for rr in ip:
+        record = zone.find_records(name, rr)
+        if not ip[rr]:
+            if record:
+                zone.delete_record(record)
+        else:
+            if record:
+                zone.update_record(record, ip[rr], options['rs']['ttl'])
+            else:
+                zone.add_record(rr, name, ip[rr], options['rs']['ttl'])
+except Exception as e:
+    logger.exception(e)
+
+# Since we can be called from dhclient, we cannot trigger an error
+sys.exit(0)
