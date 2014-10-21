@@ -35,11 +35,10 @@ import socket
 import logging
 from boto import route53
 
-logger = logging.getLogger("ddns-updater")
 options = {
     "credentials": {
-        "key": "<%= @key %>",
-        "secret": "<%= @secret %>"
+        "aws_access_key_id": "<%= @key %>",
+        "aws_secret_access_key": "<%= @secret %>"
     },
     "rs": {
         "domain": "<%= @domain %>",
@@ -84,7 +83,7 @@ try:
         "AAAA": ipv6()
     }
 
-    conn = route53.connection.Route53Connection()
+    conn = route53.connection.Route53Connection(**options['credentials'])
     zone = conn.get_zone("{domain}.".format(**options['rs']))
     name = "{hostname}.{domain}".format(**options['rs'])
     for rr in ip:
@@ -98,7 +97,7 @@ try:
             else:
                 zone.add_record(rr, name, ip[rr], options['rs']['ttl'])
 except Exception as e:
-    logger.exception(e)
+    logging.exception(e)
 
 # Since we can be called from dhclient, we cannot trigger an error
 sys.exit(0)
