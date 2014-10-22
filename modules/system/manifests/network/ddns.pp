@@ -18,8 +18,7 @@ class system::network::ddns($key, $secret, $domain, $ttl=60) {
   }
 
   file { '/etc/dhcp/dhclient-exit-hooks.d/ddns-updater':
-    ensure => link,
-    target => "/usr/local/bin/ddns-updater"
+    content => "/usr/local/bin/ddns-updater || true\n"
   }
 
   ensure_resource(
