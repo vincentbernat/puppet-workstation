@@ -1,51 +1,217 @@
 #!/usr/bin/env python
 
-"""Update DNS record on a specified zone of route 53.
+"""Update DNS record on a specified zone hosted on Amazon Route53.
 
-The specified record is updated with the IP current IP addresses of
-this host, both IPv4 and IPv6.
+The specified record is updated with the current IP addresses of this
+host, both IPv4 and IPv6. This script could be run through cron and/or
+as a DHCP client hook. For example, invoke it from
+``/etc/dhcp/dhclient-exit-hooks.d/ddns-updater`` with::
 
-Here is the IAM policy that can be used:
+    /usr/local/bin/ddns-updated || true
 
-{
-  "Version": "2012-10-17",
-  "Statement": [
+For IPv6, there are several modes available:
+
+ - ``off``: disable IPv6 detection
+ - ``on``: enable IPv6 detection and respect the preferences of the
+           system for the selected address.
+ - ``public``: prefer to advertise a public IPv6 address
+ - ``temporary``: prefer to advertise a temporary IPv6
+                  address (privacy extension)
+
+For IPv4, the only available values are ``on`` and ``off``. See
+RFC5014 for more explanations for IPv6. If you want to be able to
+establish long-term connections, it is better to chose ``public``
+since temporary will be invalid after an hour.
+
+Detection of IPv4/IPv6 address does not rely on any external
+service. Instead, the address that would be used to go contact a
+public host is used. This means that your IPv4 private address is
+likely to be advertised. This is considered to be a feature.
+
+Avoid using your root keys to run this script. Instead, create a new
+user with the following IAM policy::
+
     {
-      "Effect": "Allow",
-      "Action": [
-        "route53:ChangeResourceRecordSets"
-      ],
-      "Resource": [
-        "arn:aws:route53:::hostedzone/XXXXXXXXXXX"
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "route53:ChangeResourceRecordSets"
+          ],
+          "Resource": [
+            "arn:aws:route53:::hostedzone/XXXXXXXXXXX"
+          ]
+        },
+        {
+          "Effect":"Allow",
+          "Action":[
+            "route53:ListHostedZones"
+           ],
+           "Resource":"*"
+        }
       ]
-    },
-    {
-      "Effect":"Allow",
-      "Action":[
-        "route53:ListHostedZones"
-       ],
-       "Resource":"*"
     }
-  ]
-}
+
+Then, export your credentials using ``AWS_ACCESS_KEY_ID`` and
+``AWS_SECRET_ACCESS_KEY``. It is better not to use the command-line
+arguments for that.
+
+This script is also an ERB template with the following variables:
+
+ - AWS access key ID: <%= @key %> (@key)
+ - AWS secret access key: <%= @secret %> (@secret)
+ - Domain name: <%= @domain %> (@domain)
+ - Hostname: <%= @hostname %> (@hostname)
+ - TTL: <%= @ttl %> (@ttl)
+
 """
 
+
+from __future__ import print_function
+from __future__ import unicode_literals
+
+import os
 import sys
 import socket
 import logging
+import logging.handlers
+import argparse
+import platform
+import string
 from boto import route53
 
-options = {
-    "credentials": {
-        "aws_access_key_id": "<%= @key %>",
-        "aws_secret_access_key": "<%= @secret %>"
-    },
-    "rs": {
-        "domain": "<%= @domain %>",
-        "hostname": "<%= @hostname %>",
-        "ttl": <%= @ttl %>
-    }
-}
+
+# Not everything is available in Python
+if not hasattr(socket, "IPV6_ADDR_PREFERENCES"):
+    socket.IPV6_ADDR_PREFERENCES = 72
+if not hasattr(socket, "IPV6_PREFER_SRC_TMP"):
+    socket.IPV6_PREFER_SRC_TMP = 1
+if not hasattr(socket, "IPV6_PREFER_SRC_PUBLIC"):
+    socket.IPV6_PREFER_SRC_TMP = 2
+
+
+logger = logging.getLogger("ddns-updater")
+
+
+class ColorizingStreamHandler(logging.StreamHandler):
+    """Provide a nicer logging output to error output with colors."""
+    colors = 'black red green yellow blue magenta cyan white'.split(" ")
+    color_map = dict([(x, colors.index(x)) for x in colors])
+    level_map = {
+        logging.DEBUG:    (None,  'blue',   " DBG"),
+        logging.INFO:     (None,  'green',  "INFO"),
+        logging.WARNING:  (None,  'yellow', "WARN"),
+        logging.ERROR:    (None,  'red',    " ERR"),
+        logging.CRITICAL: ('red', 'white',  "CRIT")
+        }
+    csi = '\x1b['
+    reset = '\x1b[0m'
+
+    @property
+    def is_tty(self):
+        isatty = getattr(self.stream, 'isatty', None)
+        return isatty and isatty()
+
+    def format(self, record):
+        message = logging.StreamHandler.format(self, record)
+        params = []
+        levelno = record.levelno
+        if levelno not in self.level_map:
+            levelno = logging.WARNING
+        bg, fg, level = self.level_map[levelno]
+        if bg in self.color_map:
+            params.append(str(self.color_map[bg] + 40))
+        if fg in self.color_map:
+            params.append(str(self.color_map[fg] + 30))
+        params.append("1m")
+        level = "[{}]".format(level)
+        return "\n".join(["{}: {}".format(
+            self.is_tty and params and ''.join((self.csi, ';'.join(params),
+                                                level, self.reset)) or level,
+            line) for line in message.split('\n')])
+
+def erb(str):
+    """Use the provided string or `None` if it is an ERB template.
+
+    If the provided string is an ERB template, it is assumed that the
+    substitution was not done and we return `None`.
+    """
+    if str.startswith("<%="):
+        return None
+    return str
+
+
+def parse():
+    """Parse arguments."""
+    parser = argparse.ArgumentParser(
+        description=sys.modules[__name__].__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+
+    g = parser.add_mutually_exclusive_group()
+    g.add_argument("--debug", "-d", action="store_true",
+                   default=False,
+                   help="enable debugging")
+    g.add_argument("--silent", "-s", action="store_true",
+                   default=False,
+                   help="don't log to console")
+    g.add_argument("--syslog-facility", "-sF", metavar="FACILITY",
+                   nargs='?',
+                   const="daemon",
+                   default="daemon",
+                   help="log to syslog using FACILITY, default FACILITY is daemon")
+    g.add_argument("--no-syslog", action="store_true",
+                   help="disable syslog logging")
+
+    g = parser.add_argument_group("AWS credentials")
+    g.add_argument("--aws-access-key-id",
+                   help="AWS access key ID")
+    g.set_defaults(aws_access_key_id=erb("<%= @key %>"))
+    g.add_argument("--aws-secret-access-key",
+                   help="AWS secret access key")
+    g.set_defaults(aws_secret_access_key=erb("<%= @secret %>"))
+
+    g = parser.add_argument_group("Dynamic DNS")
+    g.add_argument("--domain", "-D", help="Registration domain",
+                   default=erb("<%= @domain %>") or socket.getfqdn()[len(platform.node()):])
+    g.add_argument("--hostname", "-H",
+                   default=erb("<%= @hostname %>") or platform.node(),
+                   help="Hostname to register")
+    g.add_argument("--ttl", default=erb("<%= @ttl %>") or "60",
+                   type=int,
+                   help="Record TTL")
+
+    g = parser.add_argument_group("IP configuration")
+    g.add_argument("--ipv4", choices=("on", "off"),
+                   default="on",
+                   help="IPv4 advertisement")
+    g.add_argument("--ipv6", choices=("on", "off", "public", "temporary"),
+                   default="on",
+                   help="IPv6 advertisement")
+
+    options = parser.parse_args()
+    return options
+
+
+def setup_logging(debug, silent, syslog_facility, syslog):
+    """Setup logger"""
+    logger.setLevel(debug and logging.DEBUG or logging.INFO)
+    enable_syslog = syslog and not debug
+    # To syslog
+    if enable_syslog:
+        facility = getattr(logging.handlers.SysLogHandler,
+                           "LOG_{0}".format(string.upper(syslog_facility)))
+        sh = logging.handlers.SysLogHandler(address=str("/dev/log"),
+                                            facility=facility)
+        sh.setFormatter(logging.Formatter(
+            "{0}[{1}]: %(message)s".format("ddns-updater",
+                                           os.getpid())))
+        logger.addHandler(sh)
+    # To console
+    if sys.stderr.isatty() and not silent:
+        ch = ColorizingStreamHandler()
+        logger.addHandler(ch)
+
 
 def ipv4():
     """Retrieve IPv4 address.
@@ -55,50 +221,83 @@ def ipv4():
     # We create an UDP socket and connect it to a public host. We
     # query the OS to know what our address is. No packet will really
     # be sent since we are using UDP.
+    logger.debug("Check IPv4")
     s = socket.socket(socket.AF_INET,
                       socket.SOCK_DGRAM)
     try:
         s.connect(("8.8.8.8", 9))
-    except socket.error:
+    except (socket.error, socket.gaierror) as e:
+        logger.debug("Unable to get IPv4 address: %s", e)
         return None
     ip, _ = s.getsockname()
+    logger.info("IPv4 is %s", ip)
     return ip
 
-def ipv6():
+
+def ipv6(kind):
     """Retrieve IPv6 address."""
     # Same as for IPv4 but we don't want the dynamic temporary privacy
     # address.
+    logger.debug("Check IPv6")
     s = socket.socket(socket.AF_INET6,
                       socket.SOCK_DGRAM)
-    s.setsockopt(socket.IPPROTO_IPV6, 72, 0x2) # Use public IP address
+    try:
+        if kind == "public":
+            s.setsockopt(socket.IPPROTO_IPV6, 72, 0x2)
+        elif kind == "temporary":
+            s.setsockopt(socket.IPPROTO_IPV6, 72, 0x1)
+    except socket.error as e:
+        if e.errno == errno.ENOPROTOOPT:
+            logger.info("Kernel doesn't support IPv6 address preference")
+        else:
+            logger.exception("Unable to set IPv6 address preference: %s", e)
+            return None
     try:
         s.connect(("2001:4860:4860::8888", 9))
-    except socket.error:
+    except (socket.error, socket.gaierror) as e:
+        logger.debug("Unable to get IPv6 address: %s", e)
         return None
     ip, _, _, _ = s.getsockname()
+    logger.info("IPv6 is %s", ip)
     return ip
 
-try:
-    ip = {
-        "A": ipv4(),
-        "AAAA": ipv6()
-    }
+if __name__ == "__main__":
+    options = parse()
+    setup_logging(options.debug, options.silent,
+                  options.syslog_facility, not options.no_syslog)
 
-    conn = route53.connection.Route53Connection(**options['credentials'])
-    zone = conn.get_zone("{domain}.".format(**options['rs']))
-    name = "{hostname}.{domain}".format(**options['rs'])
-    for rr in ip:
-        record = zone.find_records(name, rr)
-        if not ip[rr]:
-            if record:
-                zone.delete_record(record)
-        else:
-            if record:
-                zone.update_record(record, ip[rr], options['rs']['ttl'])
+    try:
+        ip = {}
+        ip["A"] = options.ipv4 != 'off' and ipv4() or None
+        ip["AAAA"] = options.ipv6 != 'off' and ipv6(options.ipv6) or None
+
+        logger.debug("Connect to Route53")
+        conn = route53.connection.Route53Connection(
+            aws_access_key_id = options.aws_access_key_id,
+            aws_secret_access_key = options.aws_secret_access_key)
+        logger.debug("Retrieving zone for domain {domain}".format(
+            domain=options.domain))
+        zone = conn.get_zone("{domain}.".format(domain=options.domain))
+        name = "{hostname}.{domain}".format(hostname=options.hostname,
+                                            domain=options.domain)
+        for rr in ip:
+            record = zone.find_records(name, rr)
+            if not ip[rr]:
+                if record:
+                    logger.debug(
+                        "Deleting existing {0} record (was {1})".format(
+                            rr, record.resource_records[0]))
+                    zone.delete_record(record)
+                else:
+                    logger.debug("No {0} record".format(rr))
             else:
-                zone.add_record(rr, name, ip[rr], options['rs']['ttl'])
-except Exception as e:
-    logging.exception(e)
-
-# Since we can be called from dhclient, we cannot trigger an error
-sys.exit(0)
+                if record:
+                    logger.debug(
+                        "Update existing {0} record (was {1})".format(
+                            rr, record.resource_records[0]))
+                    zone.update_record(record, ip[rr], options.ttl)
+                else:
+                    logger.debug("Add new {0} record".format(rr))
+                    zone.add_record(rr, name, ip[rr], options.ttl)
+    except Exception as e:
+        logging.exception(e)

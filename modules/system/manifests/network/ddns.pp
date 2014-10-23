@@ -12,13 +12,13 @@ class system::network::ddns($key, $secret, $domain, $ttl=60) {
   $mstart = fqdn_rand(15)
   $sleep = fqdn_rand(40)
   cron { "ddns-updater":
-    command => "/bin/sleep ${sleep} ; /usr/local/bin/ddns-updater",
+    command => "/bin/sleep ${sleep} ; /usr/local/bin/ddns-updater --ipv6=public",
     minute => "${mstart}-59/15",
     require => File['/usr/local/bin/ddns-updater']
   }
 
   file { '/etc/dhcp/dhclient-exit-hooks.d/ddns-updater':
-    content => "/usr/local/bin/ddns-updater || true\n"
+    content => "/usr/local/bin/ddns-updater --ipv6=public || true\n"
   }
 
   ensure_resource(
