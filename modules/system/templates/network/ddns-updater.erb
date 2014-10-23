@@ -67,9 +67,10 @@ def ipv4():
 def ipv6():
     """Retrieve IPv6 address."""
     # Same as for IPv4 but we don't want the dynamic temporary privacy
-    # address. Dunno how to do that, yet.
+    # address.
     s = socket.socket(socket.AF_INET6,
                       socket.SOCK_DGRAM)
+    s.setsockopt(socket.IPPROTO_IPV6, 72, 0x2) # Use public IP address
     try:
         s.connect(("2001:4860:4860::8888", 9))
     except socket.error:
