@@ -137,7 +137,7 @@ def erb(str):
     If the provided string is an ERB template, it is assumed that the
     substitution was not done and we return `None`.
     """
-    if str.startswith("<%="):
+    if str.startswith("<\x25="):
         return None
     return str
 
