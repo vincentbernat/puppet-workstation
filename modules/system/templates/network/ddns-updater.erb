@@ -88,7 +88,7 @@ if not hasattr(socket, "IPV6_ADDR_PREFERENCES"):
 if not hasattr(socket, "IPV6_PREFER_SRC_TMP"):
     socket.IPV6_PREFER_SRC_TMP = 1
 if not hasattr(socket, "IPV6_PREFER_SRC_PUBLIC"):
-    socket.IPV6_PREFER_SRC_TMP = 2
+    socket.IPV6_PREFER_SRC_PUBLIC = 2
 
 
 logger = logging.getLogger("ddns-updater")
@@ -243,9 +243,13 @@ def ipv6(kind):
                       socket.SOCK_DGRAM)
     try:
         if kind == "public":
-            s.setsockopt(socket.IPPROTO_IPV6, 72, 0x2)
+            s.setsockopt(socket.IPPROTO_IPV6,
+                         socket.IPV6_ADDR_PREFERENCES,
+                         socket.IPV6_PREFER_SRC_PUBLIC)
         elif kind == "temporary":
-            s.setsockopt(socket.IPPROTO_IPV6, 72, 0x1)
+            s.setsockopt(socket.IPPROTO_IPV6,
+                         socket.IPV6_ADDR_PREFERENCES,
+                         socket.IPV6_PREFER_SRC_TMP)
     except socket.error as e:
         if e.errno == errno.ENOPROTOOPT:
             logger.info("Kernel doesn't support IPv6 address preference")
