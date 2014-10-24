@@ -31,5 +31,5 @@ $SUDO env \
   puppet apply \
     --confdir=$PWD \
     --modulepath=$PWD/external-modules:$PWD/modules:/usr/share/puppet/modules \
-    "$@" \
+    "${@:---test}" \
     manifests/site.pp
