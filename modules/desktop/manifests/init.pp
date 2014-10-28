@@ -15,6 +15,7 @@ class desktop {
   include chromium
   include spotify
   include skype
+  include latex
 
   # various stuff
   package { "desktop-base": ensure => installed }
