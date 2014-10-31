@@ -2,6 +2,6 @@
 
 case reason in
     BOUND|RENEW|REBIND|REBOOT)
-        systemctl start ddns-updater || true
+        /usr/local/bin/ddns-updater --ipv6=public || true
         ;;
 esac
