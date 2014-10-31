@@ -18,7 +18,7 @@ class system::network::ddns($key, $secret, $domain, $ttl=60) {
   }
 
   file { '/etc/dhcp/dhclient-exit-hooks.d/ddns-updater':
-    content => "/usr/local/bin/ddns-updater --ipv6=public || true\n"
+    source => "puppet:///modules/system/network/dhcp-hook"
   }
 
   ensure_resource(

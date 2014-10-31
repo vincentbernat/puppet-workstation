@@ -1,0 +1,7 @@
+# -*- sh -*-
+
+case reason in
+    BOUND|RENEW|REBIND|REBOOT)
+        systemctl start ddns-updater || true
+        ;;
+esac
