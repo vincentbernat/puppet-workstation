@@ -7,10 +7,10 @@ class system {
   include disk
   include postfix
   include imap
+  include ssh
 
   package { "ca-certificates": ensure => installed }
   package { "systemd-sysv": ensure => installed }
-  package { "openssh-server": ensure => installed }
   package { "sysfsutils": ensure => installed }
   package { "at": ensure => absent }
 
