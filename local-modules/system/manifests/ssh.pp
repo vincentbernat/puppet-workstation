@@ -14,4 +14,13 @@ class ssh {
     require => Package["openssh-server"]
   }
 
+  Ssh_config {
+    notify => Service[ssh]
+  }
+
+  service { "ssh":
+    ensure => running,
+    require => Package["openssh-server"]
+  }
+
 }
