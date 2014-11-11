@@ -1,2 +1,8 @@
-external-modules
-hiera/*private.yaml
+# Private stuff
+/hiera/*private.yaml
+
+# Librarian
+/Puppetfile.lock
+/modules
+/.librarian
+/.tmp

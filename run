@@ -15,14 +15,7 @@ else
     SUDO=sudo
 fi
 
-for module in puppetlabs-apt jhoblitt-udev saz-timezone; do
-    [ -d external-modules/${module#*-} ] || \
-        puppet module \
-        --confdir=$PWD \
-        --modulepath=$PWD/external-modules \
-        install $module
-done
-
+librarian-puppet install
 $SUDO env \
     FACTERLIB=$PWD/facts \
     FACTER_user=$USER \
@@ -30,6 +23,6 @@ $SUDO env \
     FACTER_group=$(id -gn $USER) \
   puppet apply \
     --confdir=$PWD \
-    --modulepath=$PWD/external-modules:$PWD/modules:/usr/share/puppet/modules \
+    --modulepath=$PWD/local-modules:$PWD/modules:/usr/share/puppet/modules \
     "${@:---test}" \
     manifests/site.pp
