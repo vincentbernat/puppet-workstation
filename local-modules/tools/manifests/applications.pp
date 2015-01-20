@@ -3,6 +3,7 @@ class applications {
   package { "bmon": ensure => installed }
   package { "curl": ensure => installed }
   package { "git": ensure => installed }
+  package { "glances": ensure => installed }
   package { "gnupg": ensure => installed }
   package { "htop": ensure => installed }
   package { "httpie": ensure => installed }
