@@ -1,5 +1,6 @@
 class applications {
 
+  package { "bmon": ensure => installed }
   package { "curl": ensure => installed }
   package { "git": ensure => installed }
   package { "gnupg": ensure => installed }
