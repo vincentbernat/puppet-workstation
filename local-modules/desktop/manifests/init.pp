@@ -45,5 +45,6 @@ class desktop {
   package { "gnome-keyring": ensure => absent }
   package { "gvfs-daemons": ensure => absent }
   package { "gvfs-bin": ensure => absent }
+  package { "flashplugin-nonfree": ensure => purged }
 
 }
