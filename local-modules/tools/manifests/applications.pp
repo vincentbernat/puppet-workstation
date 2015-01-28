@@ -18,6 +18,7 @@ class applications {
   package { "mercurial": ensure => installed }
   package { "mtr-tiny": ensure => installed }
   package { "openssh-client": ensure => installed }
+  package { "oping": ensure => installed }
   package { "snmp": ensure => installed } ->
   package { "snmp-mibs-downloader": ensure => installed }
   package { "strace": ensure => installed }
