@@ -13,6 +13,7 @@ class system {
   package { "ca-certificates": ensure => installed }
   package { "systemd-sysv": ensure => installed }
   package { "sysfsutils": ensure => installed }
+  package { "tlp": ensure => installed }
   package { "at": ensure => absent }
 
   # Defragmentation of transparent huge page can slow down a host when
