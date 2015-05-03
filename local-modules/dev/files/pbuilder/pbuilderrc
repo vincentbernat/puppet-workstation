@@ -1,6 +1,6 @@
 # -*- sh -*-
 
-MIRRORSITE=http://http.debian.net/debian
+MIRRORSITE=http://httpredir.debian.org/debian
 HOOKDIR=/etc/pbuilder/hooks
 
 if [ "x$PBCURRENTCOMMANDLINEOPERATION" = xlogin ]; then
