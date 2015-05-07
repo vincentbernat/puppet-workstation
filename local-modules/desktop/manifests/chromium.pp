@@ -22,6 +22,9 @@ class chromium {
   file { '/etc/chromium.d/tls':
     source => "puppet:///modules/desktop/chromium/tls"
   }
+  file { '/etc/chromium.d/bts-783858':
+    source => "puppet:///modules/desktop/chromium/bts-783858"
+  }
   file { '/etc/chromium.d':
     ensure => directory
   }

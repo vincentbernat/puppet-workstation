@@ -1,0 +1,2 @@
+# Workaround for https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=783858
+APPNAME=chromium
