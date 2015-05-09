@@ -8,6 +8,7 @@ class system {
   include postfix
   include imap
   include ssh
+  include logging
   include plymouth
 
   package { "ca-certificates": ensure => installed }
