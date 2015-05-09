@@ -45,7 +45,8 @@ class postfix($relay = undef, $cert = undef, $key = undef, $origin = undef) {
   }
 
   exec { "postalias":
-    command => "/usr/sbin/postalias /etc/aliases"
+    command => "/usr/sbin/postalias /etc/aliases",
+    refreshonly => true
   }
 
 }
