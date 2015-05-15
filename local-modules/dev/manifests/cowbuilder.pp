@@ -26,5 +26,10 @@ class dev::cowbuilder {
     source => "puppet:///modules/dev/pbuilder/C99shell",
     mode => 0755
   }
+  ->
+  file { "/etc/pbuilder/hooks/D10mandb":
+    source => "puppet:///modules/dev/pbuilder/D10mandb",
+    mode => 0755
+  }
 
 }

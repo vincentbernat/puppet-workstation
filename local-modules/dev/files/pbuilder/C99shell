@@ -1,5 +1,5 @@
 #!/bin/sh
-# invoke shell if build fails.
+# Invoke shell if build fails.
 
 apt-get install -qy mg less zsh
 cd /tmp/buildd/*/debian/..
