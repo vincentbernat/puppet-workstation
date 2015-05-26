@@ -1,7 +1,7 @@
 # Managed by puppet
 
 [[ $USERNAME == "root" ]] || {
-   plugins=(vcs zsh-syntax-highlighting)
+   plugins=(vcs)
 <%- if @laptop -%>
    plugins=($plugins battery)
 <%- end -%>
