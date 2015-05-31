@@ -14,7 +14,7 @@ class chromium {
   package { 'google-chrome-beta': ensure => installed }
   ->
   file { '/etc/chromium.d/flash':
-    source => "puppet:///modules/desktop/chromium/flash",
+    ensure => absent
   }
   file { '/etc/chromium.d/googleapikeys':
     source => "puppet:///modules/desktop/chromium/googleapikeys"
