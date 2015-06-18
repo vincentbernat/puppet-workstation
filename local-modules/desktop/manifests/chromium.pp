@@ -25,6 +25,9 @@ class chromium {
   file { '/etc/chromium.d/bts-783858':
     source => "puppet:///modules/desktop/chromium/bts-783858"
   }
+  file { '/etc/chromium.d/scale-factor':
+    source => "puppet:///modules/desktop/chromium/scale-factor"
+  }
   file { '/etc/chromium.d':
     ensure => directory
   }
