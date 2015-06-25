@@ -4,7 +4,7 @@ class spotify {
     location    => 'http://repository.spotify.com',
     release     => 'stable',
     repos       => 'non-free',
-    key         => '94558F59',
+    key         => 'D2C19886',
     key_server  => 'subkeys.pgp.net',
     include_src => false
   }
