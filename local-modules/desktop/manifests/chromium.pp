@@ -22,11 +22,11 @@ class chromium {
   file { '/etc/chromium.d/bts-783858':
     ensure => absent
   }
+  file { '/etc/chromium.d/scale-factor':
+    ensure => absent
+  }
   file { '/etc/chromium.d/tls':
     source => "puppet:///modules/desktop/chromium/tls"
-  }
-  file { '/etc/chromium.d/scale-factor':
-    source => "puppet:///modules/desktop/chromium/scale-factor"
   }
   file { '/etc/chromium.d':
     ensure => directory
