@@ -1,0 +1,7 @@
+# Waiting for proper HiDPI support to be back...
+factor=$(echo $(xdpyinfo | sed -n 's/ *resolution: *\([0-9]*\)x.*/\1/p')/96 | bc -l)
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --force-device-scale-factor=$factor"
+
+# Local Variables:
+# mode: sh
+# End:
