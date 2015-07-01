@@ -8,7 +8,8 @@ class chromium {
     repos       => 'main',
     key         => '7FAC5991',
     key_server  => 'subkeys.pgp.net',
-    include_src => false
+    include_src => false,
+    pin         => 400
   }
   ->
   package { 'google-chrome-beta': ensure => installed }

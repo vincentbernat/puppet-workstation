@@ -6,7 +6,8 @@ class spotify {
     repos       => 'non-free',
     key         => 'D2C19886',
     key_server  => 'subkeys.pgp.net',
-    include_src => false
+    include_src => false,
+    pin         => 400
   }
   ->
   package { 'spotify-client': ensure => installed }
