@@ -24,7 +24,6 @@ class desktop {
   package { "giggle": ensure => installed }
   package { "gimp": ensure => installed }
   package { "gpicview": ensure => installed }
-  package { "iceweasel": ensure => installed }
   package { "inkscape": ensure => installed }
   package { "mdbus2": ensure => installed }
   package { "mpv": ensure => installed }
@@ -40,6 +39,12 @@ class desktop {
   package { "libreoffice": ensure => installed }
   package { "libreoffice-gtk": ensure => installed }
   package { "libreoffice-gtk3": ensure => installed }
+
+  # Iceweasel
+  package { "iceweasel":
+    ensure          => installed,
+    install_options => '-t experimental'
+  }
 
   # Blacklisting some annoying packages
   package { "gnome-keyring": ensure => absent }
