@@ -2,7 +2,7 @@ class spotify {
 
   apt::source { 'spotify':
     location    => 'http://repository.spotify.com',
-    release     => 'testing',
+    release     => 'stable',
     repos       => 'non-free',
     key         => 'D2C19886',
     key_server  => 'subkeys.pgp.net',
@@ -10,7 +10,6 @@ class spotify {
     pin         => 400
   }
   ->
-  package { 'xdotool': ensure => installed } ->
   package { 'spotify-client': ensure => installed }
 
 }
