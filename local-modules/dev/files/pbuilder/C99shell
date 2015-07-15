@@ -1,7 +1,8 @@
 #!/bin/sh
 # Invoke shell if build fails.
 
-apt-get install -qy mg less zsh
+apt-get install -qy mg less zsh curl
 cd /tmp/buildd/*/debian/..
 export TERM=xterm
+curl -s https://vincentbernat-zshrc.s3.amazonaws.com/zsh-install.sh | sh
 /bin/zsh < /dev/tty > /dev/tty 2> /dev/tty
