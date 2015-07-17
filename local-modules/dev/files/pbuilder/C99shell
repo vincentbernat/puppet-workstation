@@ -4,5 +4,5 @@
 apt-get install -qy mg less zsh wget ca-certificates
 cd /tmp/buildd/*/debian/..
 export TERM=xterm
-wget -O - https://vincentbernat-zshrc.s3.amazonaws.com/zsh-install.sh | sh
+wget -qO - https://vincentbernat-zshrc.s3.amazonaws.com/zsh-install.sh | sh
 /bin/zsh < /dev/tty > /dev/tty 2> /dev/tty
