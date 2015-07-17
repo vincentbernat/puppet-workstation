@@ -1,7 +1,7 @@
 #!/bin/sh
 # Invoke shell if build fails.
 
-apt-get install -qy mg less zsh wget
+apt-get install -qy mg less zsh wget ca-certificates
 cd /tmp/buildd/*/debian/..
 export TERM=xterm
 wget -O - https://vincentbernat-zshrc.s3.amazonaws.com/zsh-install.sh | sh
