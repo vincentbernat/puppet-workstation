@@ -3,4 +3,5 @@
 class tools {
   include shell
   include applications
+  include network
 }
