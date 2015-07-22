@@ -27,6 +27,7 @@ class applications {
   package { "tcpdump": ensure => installed }
   package { "tmux": ensure => installed }
   package { "traceroute": ensure => installed }
+  package { "tshark": ensure => installed }
   package { "wget": ensure => installed }
 
 }
