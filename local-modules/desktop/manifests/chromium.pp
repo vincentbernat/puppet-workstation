@@ -27,7 +27,7 @@ class chromium {
     source => "puppet:///modules/desktop/chromium/tls"
   }
   file { '/etc/chromium.d/scale-factor':
-    source => "puppet:///modules/desktop/chromium/scale-factor"
+    ensure => absent
   }
   file { '/etc/chromium.d':
     ensure => directory
