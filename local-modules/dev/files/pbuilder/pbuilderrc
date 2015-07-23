@@ -3,8 +3,8 @@
 MIRRORSITE=http://httpredir.debian.org/debian
 HOOKDIR=/etc/pbuilder/hooks
 
+export PBUILDERPID=$$
 if [ "x$PBCURRENTCOMMANDLINEOPERATION" = xlogin ]; then
-  export PBUILDERPID=$$
   [ -z $SUDO_UID ] || {
     home=$(getent passwd $SUDO_UID | awk -F: '{print $6}')
     BINDMOUNTS="$BINDMOUNTS $home"
