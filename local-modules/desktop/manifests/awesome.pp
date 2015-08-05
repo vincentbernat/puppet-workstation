@@ -1,5 +1,5 @@
 class awesome {
-  package { "awesome": ensure => installed }
+  package { "awesome": ensure => held }
   package { "awesome-extra": ensure => installed }
 
   package { "alsa-utils": ensure => installed }
