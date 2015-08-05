@@ -7,7 +7,6 @@ class desktop {
   # Base desktop
   include pulseaudio
   include awesome
-  include urxvt
   include fonts
 
   # Some applications
