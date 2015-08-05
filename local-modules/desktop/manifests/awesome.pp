@@ -16,6 +16,7 @@ class awesome {
   package { "i3lock": ensure => installed }
   package { "inputplug": ensure => installed }
   package { "libnotify-bin": ensure => installed }
+  package { "libvte-2.91-0": ensure => installed }
   package { "numlockx": ensure => installed }
   package { "policykit-1-gnome": ensure => installed }
   package { "python-imaging": ensure => installed }
