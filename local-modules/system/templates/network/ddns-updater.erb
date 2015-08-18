@@ -146,6 +146,7 @@ class ColorizingStreamHandler(logging.StreamHandler):
                                                 level, self.reset)) or level,
             line) for line in message.split('\n')])
 
+
 def erb(str):
     """Use the provided string or `None` if it is an ERB template.
 
@@ -174,7 +175,8 @@ def parse():
                    nargs='?',
                    const="daemon",
                    default="daemon",
-                   help="log to syslog using FACILITY, default FACILITY is daemon")
+                   help=("log to syslog using FACILITY, "
+                         "default FACILITY is daemon"))
     g.add_argument("--no-syslog", action="store_true",
                    help="disable syslog logging")
 
@@ -188,7 +190,8 @@ def parse():
 
     g = parser.add_argument_group("Dynamic DNS")
     g.add_argument("--domain", "-D", help="Registration domain",
-                   default=erb("<%= @domain %>") or socket.getfqdn()[len(platform.node()):])
+                   default=(erb("<%= @domain %>") or
+                            socket.getfqdn()[len(platform.node()):]))
     g.add_argument("--hostname", "-H",
                    default=erb("<%= @hostname %>") or platform.node(),
                    help="Hostname to register")
@@ -292,8 +295,8 @@ if __name__ == "__main__":
 
         logger.debug("Connect to Route53")
         conn = route53.connection.Route53Connection(
-            aws_access_key_id = options.aws_access_key_id,
-            aws_secret_access_key = options.aws_secret_access_key)
+            aws_access_key_id=options.aws_access_key_id,
+            aws_secret_access_key=options.aws_secret_access_key)
         logger.debug("Retrieving zone for domain {domain}".format(
             domain=options.domain))
         zone = conn.get_zone("{domain}.".format(domain=options.domain))
