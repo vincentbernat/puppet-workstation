@@ -1,0 +1,20 @@
+# Managed by puppet
+
+# Blacklist:
+## OneLink Pro Dock (otherwise, link won't come up)
+ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="ThinkPad Dock Giga", \
+                      GOTO="power_autosuspend_disable"
+## Logitech Unify receiver (otherwise, long pauses when moving the mouse)
+ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="USB Receiver", ATTR{manufacturer}=="Logitech", \
+                      GOTO="power_autosuspend_disable"
+
+# Enable autosuspend for the remaining
+ACTION=="add|change", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="auto"
+ACTION=="add|change", SUBSYSTEM=="pci", TEST=="power/control", ATTR{power/control}="auto"
+GOTO="power_autosuspend_end"
+
+# Disable blacklisted
+LABEL="power_autosuspend_disable"
+ACTION=="add|change", ATTR{power/control}="on"
+
+LABEL="power_autosuspend_end"

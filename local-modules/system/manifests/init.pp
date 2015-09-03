@@ -25,6 +25,11 @@ class system {
     require => Package["sysfsutils"]
   }
 
+  # Enable power control for most devices
+  udev::rule { "20-autosuspend.rules":
+    source => 'puppet:///modules/system/autosuspend.rules'
+  }
+
   service { "sysfsutils": }
   service { "puppet":
     ensure => stopped,

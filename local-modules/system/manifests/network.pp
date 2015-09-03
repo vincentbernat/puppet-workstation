@@ -30,11 +30,6 @@ class network {
     source => "puppet:///modules/system/network/NetworkManager.conf"
   }
 
-  # Don't autosuspend Thinkpad Dock Giga
-  udev::rule { "90-no-autosuspend-thinkpad-dock-giga.rules":
-    source => 'puppet:///modules/system/network/no-autosuspend-thinkpad-dock-giga.rules'
-  }
-
   include system::network::ddns
 
 }
