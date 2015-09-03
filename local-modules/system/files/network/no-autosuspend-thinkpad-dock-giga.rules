@@ -1,0 +1,4 @@
+# Managed by puppet
+
+# Disable autosuspend for OneLinkPro (otherwise, it won't come up)
+ACTION=="add", SUBSYSTEM=="usb", ATTR{product}=="ThinkPad Dock Giga", TEST=="power/control", ATTR{power/control}:="on"
