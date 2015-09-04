@@ -7,14 +7,22 @@ ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="ThinkPad Dock Giga", \
 ## Logitech Unify receiver (otherwise, long pauses when moving the mouse)
 ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="USB Receiver", ATTR{manufacturer}=="Logitech", \
                       GOTO="power_autosuspend_disable"
+## MST screens
+ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card0-DP-3", ATTR{status}=="connected", \
+                      GOTO="power_autosuspend_disable"
+ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card0-DP-4", ATTR{status}=="connected", \
+                      GOTO="power_autosuspend_disable"
+ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card0-DP-5", ATTR{status}=="connected", \
+                      GOTO="power_autosuspend_disable"
 
 # Enable autosuspend for the remaining
 ACTION=="add|change", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="auto"
 ACTION=="add|change", SUBSYSTEM=="pci", TEST=="power/control", ATTR{power/control}="auto"
+ACTION=="add|change", SUBSYSTEM=="drm", TEST=="power/control", ATTR{power/control}="auto"
 GOTO="power_autosuspend_end"
 
 # Disable blacklisted
 LABEL="power_autosuspend_disable"
-ACTION=="add|change", ATTR{power/control}="on"
+ACTION=="add|change", TEST=="power/control", ATTR{power/control}="on"
 
 LABEL="power_autosuspend_end"
