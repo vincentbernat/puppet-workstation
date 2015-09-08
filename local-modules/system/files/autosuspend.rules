@@ -1,11 +1,17 @@
 # Managed by puppet
 
+# To get attributes, use:
+#   udevadm info --attribute-walk --path=/sys/bus/usb/devices/usb3/...
+
 # Blacklist:
 ## OneLink Pro Dock (otherwise, link won't come up)
 ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="ThinkPad Dock Giga", \
                       GOTO="power_autosuspend_disable"
 ## Logitech Unify receiver (otherwise, long pauses when moving the mouse)
 ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="USB Receiver", ATTR{manufacturer}=="Logitech", \
+                      GOTO="power_autosuspend_disable"
+## Microsoft Mouse (same reason)
+ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="Microsoft 3-Button Mouse with IntelliEye(TM)", \
                       GOTO="power_autosuspend_disable"
 ## MST screens
 ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card0-DP-3", ATTR{status}=="connected", \
