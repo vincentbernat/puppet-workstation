@@ -27,6 +27,9 @@ class system {
 
   # Enable power control for most devices
   udev::rule { "20-autosuspend.rules":
+    ensure => absent
+  }
+  udev::rule { "90-autosuspend.rules":
     source => 'puppet:///modules/system/autosuspend.rules'
   }
 
