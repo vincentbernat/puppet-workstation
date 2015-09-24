@@ -1,7 +1,7 @@
 class disk {
 
   udev::rule { "60-schedulers.rules":
-    source => 'puppet:///modules/system/disk/schedulers.rules',
+    ensure => absent
   }
 
   # discards should be enabled when supported (on SSD)

@@ -1,7 +1,0 @@
-# Managed by puppet
-
-# set deadline scheduler for non-rotating disks
-ACTION=="add|change", SUBSYSTEM=="block", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="deadline"
-
-# set cfq scheduler for rotating disks
-ACTION=="add|change", SUBSYSTEM=="block", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="cfq"
