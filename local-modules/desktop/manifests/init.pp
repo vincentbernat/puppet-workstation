@@ -38,7 +38,6 @@ class desktop {
   package { "wireshark": ensure => installed }
   package { "libreoffice": ensure => installed }
   package { "libreoffice-gtk": ensure => installed }
-  package { "libreoffice-gtk3": ensure => installed }
 
   # Iceweasel
   package { "iceweasel":
