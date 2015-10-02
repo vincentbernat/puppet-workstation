@@ -31,7 +31,7 @@ class dev {
 
   # Maintainers don't want to ship a correct version...
   file { "/opt/global.deb":
-    source => "puppet:///modules/dev/global_6.2.10-0_amd64.deb"
+    source => "puppet:///modules/dev/global_6.5.1-0.1_amd64.deb"
   }
   ->
   package { "global":
