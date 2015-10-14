@@ -6,4 +6,4 @@ echo "pbuilder ALL=(ALL:ALL) NOPASSWD:  ALL" > /etc/sudoers.d/pbuilder
 cd /build/*/debian/..
 export TERM=xterm
 sudo -u pbuilder wget -qO - https://vincentbernat-zshrc.s3.amazonaws.com/zsh-install.sh | sudo -u pbuilder sh
-sudo -u pbuilder /bin/zsh < /dev/tty > /dev/tty 2> /dev/tty
+sudo -u pbuilder env PBUILDERPID=$PBUILDERPID /bin/zsh < /dev/tty > /dev/tty 2> /dev/tty
