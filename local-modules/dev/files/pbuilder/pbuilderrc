@@ -1,6 +1,9 @@
 # -*- sh -*-
 
 MIRRORSITE=http://httpredir.debian.org/debian
+OTHERMIRROR="deb [trusted=yes] file:///etc/pbuilder/deps ./"
+BINDMOUNTS="/etc/pbuilder/deps"
+EXTRAPACKAGES="apt-utils"
 HOOKDIR=/etc/pbuilder/hooks
 
 export PBUILDERPID=$$
