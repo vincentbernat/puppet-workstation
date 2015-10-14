@@ -1,8 +1,9 @@
 #!/bin/sh
 # Invoke shell if build fails.
 
-apt-get -qqy install mg less zsh wget ca-certificates
-cd /tmp/buildd/*/debian/..
+apt-get -qqy install mg less zsh wget ca-certificates sudo
+echo "pbuilder ALL=(ALL:ALL) NOPASSWD:  ALL" > /etc/sudoers.d/pbuilder
+cd /buildd/*/debian/..
 export TERM=xterm
-wget -qO - https://vincentbernat-zshrc.s3.amazonaws.com/zsh-install.sh | sh
-/bin/zsh < /dev/tty > /dev/tty 2> /dev/tty
+sudo -u pbuilder wget -qO - https://vincentbernat-zshrc.s3.amazonaws.com/zsh-install.sh | sudo -u pbuilder sh
+sudo -u pbuilder /bin/zsh < /dev/tty > /dev/tty 2> /dev/tty
