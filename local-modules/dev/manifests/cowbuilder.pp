@@ -17,6 +17,15 @@ class dev::cowbuilder {
     require => Package["cowbuilder"]
   }
 
+  file { "/etc/pbuilder/deps":
+    ensure  => directory,
+    require => Package["cowbuilder"]
+  }
+  file { "/etc/pbuilder/deps/Packages":
+    ensure  => present,
+    require => Package["cowbuilder"]
+  }
+
   file { "/etc/pbuilder/hooks":
     ensure => directory,
     require => Package["cowbuilder"]
