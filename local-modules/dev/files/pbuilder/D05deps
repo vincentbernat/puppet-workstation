@@ -2,6 +2,7 @@
 
 if ls /etc/pbuilder/deps | grep -qFxv Packages; then
     (cd /etc/pbuilder/deps ; apt-ftparchive packages . > Packages)
+    echo "deb [trusted=yes] file:///etc/pbuilder/deps ./" >> /etc/apt/sources.list
     apt-get update
 else
     : > /etc/pbuilder/deps/Packages
