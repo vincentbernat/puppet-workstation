@@ -3,4 +3,6 @@
 if ls /etc/pbuilder/deps | grep -qFxv Packages; then
     (cd /etc/pbuilder/deps ; apt-ftparchive packages . > Packages)
     apt-get update
+else
+    : > /etc/pbuilder/deps/Packages
 fi
