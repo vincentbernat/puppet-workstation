@@ -1,4 +1,6 @@
 #!/bin/sh
 
-(cd /etc/pbuilder/deps ; apt-ftparchive packages . > Packages)
-[ ! -s /etc/pbuilder/deps/Packages ] || apt-get update
+if ls /etc/pbuilder/deps | grep -qFxv Packages; then
+    (cd /etc/pbuilder/deps ; apt-ftparchive packages . > Packages)
+    apt-get update
+fi
