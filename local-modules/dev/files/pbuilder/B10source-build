@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Stolen from: http://www.corsac.net/?rub=blog&post=1579
+
+generate_change_file() {
+  local version=$(dpkg-parsechangelog -Sversion)
+  local package=$(dpkg-parsechangelog -Ssource)
+  echo "Generating source changes file"
+  dpkg-genchanges -S > ../${package}_${version}_source.changes
+}
+
+cd /tmp/buildd/*/debian/..
+generate_change_file
