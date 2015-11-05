@@ -27,28 +27,11 @@ class dev::cowbuilder {
   }
 
   file { "/etc/pbuilder/hooks":
-    ensure => directory,
-    require => Package["cowbuilder"]
-  }
-  ->
-  file { "/etc/pbuilder/hooks/C99shell":
-    source => "puppet:///modules/dev/pbuilder/C99shell",
-    mode => 0755
-  }
-  ->
-  file { "/etc/pbuilder/hooks/D05deps":
-    source => "puppet:///modules/dev/pbuilder/D05deps",
-    mode => 0755
-  }
-  ->
-  file { "/etc/pbuilder/hooks/D10mandb":
-    source => "puppet:///modules/dev/pbuilder/D10mandb",
-    mode => 0755
-  }
-  ->
-  file { "/etc/pbuilder/hooks/D40speed":
-    source => "puppet:///modules/dev/pbuilder/D40speed",
-    mode => 0755
+    ensure  => directory,
+    require => Package["cowbuilder"],
+    recurse => true,
+    purge   => true,
+    source  => "puppet:///modules/dev/pbuilder/hooks"
   }
 
 }
