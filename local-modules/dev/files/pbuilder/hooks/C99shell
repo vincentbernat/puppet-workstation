@@ -7,5 +7,5 @@ cd /build/*/debian/..
 export TERM=xterm
 export HOME=/home/pbuilder
 mkdir -p $HOME
-sudo -u pbuilder wget -qO - https://vincentbernat-zshrc.s3.amazonaws.com/zsh-install.sh | sudo -u pbuilder sh
-sudo -u pbuilder env PBUILDERPID=$PBUILDERPID /bin/zsh < /dev/tty > /dev/tty 2> /dev/tty
+sudo -u pbuilder env HOME=$HOME wget -qO - https://vincentbernat-zshrc.s3.amazonaws.com/zsh-install.sh | sudo -u pbuilder sh
+sudo -u pbuilder env HOME=$HOME PBUILDERPID=$PBUILDERPID /bin/zsh < /dev/tty > /dev/tty 2> /dev/tty
