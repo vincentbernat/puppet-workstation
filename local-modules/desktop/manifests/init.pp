@@ -20,6 +20,7 @@ class desktop {
   # various stuff
   package { "desktop-base": ensure => installed }
   package { "evince-gtk": ensure => installed }
+  package { "file-roller": ensure => installed }
   package { "geeqie": ensure => installed }
   package { "giggle": ensure => installed }
   package { "gimp": ensure => installed }
