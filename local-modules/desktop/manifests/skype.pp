@@ -1,17 +1,22 @@
 class skype {
 
-  exec { 'retrieve_skype':
-    command => "/usr/bin/wget -q http://www.skype.com/go/getskype-linux-deb-32 -O /opt/skype.deb",
-    creates => "/opt/skype.deb",
-    notify => Package["skype"]
+  # Use Ubuntu repository for that
+  apt::source { 'ubuntu-partners':
+    location          => 'http://archive.canonical.com/',
+    release           => 'trusty',
+    repos             => 'partner',
+    required_packages => 'ubuntu-archive-keyring',
+    include_src       => false,
+    key               => '40976EAF437D05B5',
+    pin               => -100
+  }
+  apt::pin { 'skype':
+    priority   => 200,
+    component  => partner,
+    originator => Canonical,
+    packages   => skype-bin
   }
 
-  # This won't work as the dependencies are missing. The use has to do "apt-get install -f".
-  package { "skype":
-    provider => dpkg,
-    ensure   => installed,
-    source   => "/opt/skype.deb",
-    require  => Exec['retrieve_skype']
-  }
+  package { "skype-bin:i386": ensure => installed }
 
 }
