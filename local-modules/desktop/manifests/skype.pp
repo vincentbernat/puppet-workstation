@@ -15,7 +15,7 @@ class skype {
     priority   => 200,
     component  => partner,
     originator => Canonical,
-    packages   => skype-bin
+    packages   => "skype-bin:i386"
   }
   ->
   package { "skype-bin:i386": ensure => installed }
