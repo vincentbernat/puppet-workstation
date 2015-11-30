@@ -10,13 +10,14 @@ class skype {
     key               => '40976EAF437D05B5',
     pin               => -100
   }
+  ->
   apt::pin { 'skype':
     priority   => 200,
     component  => partner,
     originator => Canonical,
     packages   => skype-bin
   }
-
+  ->
   package { "skype-bin:i386": ensure => installed }
 
 }
