@@ -1,0 +1,7 @@
+# Disable seccomp sandbox. Unfortunate, but this is a workaround for
+# http://bugs.debian.org/804901.
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --disable-seccomp-filter-sandbox"
+
+# Local Variables:
+# mode: sh
+# End:

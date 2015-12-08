@@ -23,6 +23,9 @@ class chromium {
   file { '/etc/chromium.d/bts-783858':
     ensure => absent
   }
+  file { '/etc/chromium.d/bts-804901':
+    source => "puppet:///modules/desktop/chromium/bts-804901"
+  }
   file { '/etc/chromium.d/tls':
     source => "puppet:///modules/desktop/chromium/tls"
   }
