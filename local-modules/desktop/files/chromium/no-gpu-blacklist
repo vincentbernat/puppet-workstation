@@ -1,0 +1,6 @@
+# Do not hide extensions
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --ignore-gpu-blacklist"
+
+# Local Variables:
+# mode: sh
+# End:
