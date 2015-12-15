@@ -1,6 +1,6 @@
 class chromium {
 
-  package { "chromium": ensure => installed }
+  package { ["chromium", "chromium-l10n"]: ensure => installed }
   ->
   apt::source { 'google-chrome-beta':
     location    => 'http://dl.google.com/linux/chrome/deb/',
