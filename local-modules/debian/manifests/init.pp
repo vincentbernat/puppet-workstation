@@ -30,10 +30,10 @@ class debian {
   }
 
   apt::source { 'experimental':
-    location          => 'http://httpredir.debian.org/debian/',
-    release           => 'experimental',
-    repos             => 'main',
-    include_src       => false
+    location    => 'http://httpredir.debian.org/debian/',
+    release     => 'experimental',
+    repos       => 'main',
+    include_src => false
   }
   apt::source { 'experimental-debug':
     location    => "http://debug.mirrors.debian.org/debian-debug/",
@@ -42,7 +42,7 @@ class debian {
     include_src => false
   }
 
-  apt::pin { 'experimental':
+  apt::pin { ['experimental', 'experimental-debug']:
     priority => 101
   }
 
