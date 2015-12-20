@@ -22,12 +22,24 @@ class debian {
     required_packages => 'debian-keyring debian-archive-keyring',
     include_src       => true
   }
+  apt::source { 'unstable-debug':
+    location    => "http://debug.mirrors.debian.org/debian-debug/",
+    release     => "unstable-debug",
+    repos       => 'main',
+    include_src => false
+  }
 
   apt::source { 'experimental':
     location          => 'http://httpredir.debian.org/debian/',
     release           => 'experimental',
     repos             => 'main',
     include_src       => false
+  }
+  apt::source { 'experimental-debug':
+    location    => "http://debug.mirrors.debian.org/debian-debug/",
+    release     => "experimental-debug",
+    repos       => 'main',
+    include_src => false
   }
 
   apt::pin { 'experimental':
