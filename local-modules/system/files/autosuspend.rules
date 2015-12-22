@@ -22,7 +22,7 @@ ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card0-DP-5", ATTR{status}=="con
                       GOTO="power_autosuspend_disable"
 
 # Enable autosuspend for the remaining
-ACTION=="add|change", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="auto"
+# ACTION=="add|change", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="auto"
 ACTION=="add|change", SUBSYSTEM=="pci", TEST=="power/control", ATTR{power/control}="auto"
 ACTION=="add|change", SUBSYSTEM=="drm", TEST=="power/control", ATTR{power/control}="auto"
 GOTO="power_autosuspend_end"
