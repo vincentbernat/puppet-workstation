@@ -34,6 +34,7 @@ class desktop {
   package { "pinentry-curses": ensure => installed }
   package { "pinentry-gtk2": ensure => installed }
   package { "pinentry-gtk3": ensure => absent }
+  package { "pinentry-gnome3": ensure => absent }
   package { "thunar": ensure => installed }
   package { "unison": ensure => installed }
   package { "vim-tiny": ensure => installed }
