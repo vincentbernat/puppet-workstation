@@ -6,4 +6,5 @@ if ls /etc/pbuilder/deps | grep -qFxv Packages; then
     apt-get update
 else
     : > /etc/pbuilder/deps/Packages
+    sed -i '/^deb.*\/etc\/pbuilder\/deps.*/d' /etc/apt/sources.list
 fi
