@@ -1,6 +1,10 @@
 class x11 {
 
-  package { "xserver-xorg": ensure => installed }
+  package { ["xserver-xorg",
+             "xserver-xorg-video-all",
+             "xserver-xorg-video-intel",
+             "xserver-xorg-input-all",
+             "xserver-xorg-input-evdev"]: ensure => installed }
 
   package { "lightdm": ensure => installed }
   ->
