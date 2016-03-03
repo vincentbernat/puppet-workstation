@@ -28,6 +28,10 @@ class dev {
   package { "cookiecutter": ensure => installed }
   package { "python-virtualenv": ensure => installed }
   package { "python-twisted": ensure => installed }
+  package { "python-autopep8": ensure => installed }
+  package { "python-rope": ensure => installed }
+  package { "python-jedi": ensure => installed }
+  package { "python3-jedi": ensure => installed }
 
   # Maintainers don't want to ship a correct version...
   file { "/opt/global.deb":
