@@ -3,13 +3,14 @@ class chromium {
   package { ["chromium", "chromium-l10n"]: ensure => installed }
   ->
   apt::source { 'google-chrome-beta':
-    location    => 'http://dl.google.com/linux/chrome/deb/',
-    release     => 'stable',
-    repos       => 'main',
-    key         => '7FAC5991',
-    key_server  => 'subkeys.pgp.net',
-    include_src => false,
-    pin         => 400
+    location     => 'http://dl.google.com/linux/chrome/deb/',
+    release      => 'stable',
+    repos        => 'main',
+    key          => '7FAC5991',
+    key_server   => 'subkeys.pgp.net',
+    include_src  => false,
+    pin          => 400,
+    architecture => 'amd64' 
   }
   ->
   package { 'google-chrome-beta': ensure => installed }
