@@ -1,4 +1,4 @@
-forge "http://forge.puppetlabs.com"
+forge "https://forgeapi.puppetlabs.com"
 
 # Pull modules from the puppet forge first. Be sure to add appropriate
 # version. From time to time, it is possible to check for new versions
