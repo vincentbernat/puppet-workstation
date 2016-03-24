@@ -12,6 +12,7 @@ class system {
   include plymouth
 
   package { "ca-certificates": ensure => installed }
+  package { "ca-cacert":       ensure => absent }
   package { "systemd-sysv":    ensure => installed }
   package { "sysfsutils":      ensure => installed }
   package { "tlp":             ensure => installed }
