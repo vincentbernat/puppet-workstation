@@ -34,6 +34,9 @@ class system {
   udev::rule { "90-autosuspend.rules":
     source => 'puppet:///modules/system/autosuspend.rules'
   }
+  udev::rule { '70-more-uaccess.rules':
+    source => 'puppet:///modules/system/uaccess.rules'
+  }
 
   service { "sysfsutils": }
   service { "puppet":
