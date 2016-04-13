@@ -3,6 +3,7 @@
 
 apt-get -qqy install mg less zsh wget ca-certificates sudo
 echo "pbuilder ALL=(ALL:ALL) NOPASSWD:  ALL" > /etc/sudoers.d/pbuilder
+chmod 0440 /etc/sudoers.d/pbuilder
 cd /build/*/debian/..
 export TERM=xterm
 export HOME=/build
