@@ -45,7 +45,11 @@ class desktop {
   package { "wireshark": ensure => installed }
   package { "libreoffice": ensure => installed }
   package { "libreoffice-gtk": ensure => installed }
+
+  # Firefox
   package { "firefox": ensure => installed }
+  package { "firefox-esr": ensure => purged }
+  package { "iceweasel": ensure => purged }
 
   # Blacklisting some annoying packages
   package { "gnome-keyring": ensure => absent }
