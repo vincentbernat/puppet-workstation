@@ -10,7 +10,7 @@ class fonts {
   package { "ttf-mscorefonts-installer": ensure => installed }
   package { "ttf-ancient-fonts": ensure => installed }
   package { "xfonts-terminus": ensure => installed }
-  package { "fonts-powerline": ensure => installed }
+  package { "fonts-powerline": ensure => purged }
 
   file { "/usr/local/share/fonts/PowerlineSymbols.otf":
     ensure => absent
