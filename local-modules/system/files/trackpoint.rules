@@ -1,0 +1,4 @@
+# Managed by puppet
+
+# For some reason, the trackpoint has become less sensible
+ACTION=="add|change", SUBSYSTEM=="input", ATTR{name}=="TPPS/2 IBM TrackPoint", ATTR{device/sensitivity}="240"
