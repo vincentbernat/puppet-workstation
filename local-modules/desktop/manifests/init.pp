@@ -50,6 +50,7 @@ class desktop {
   package { "firefox": ensure => installed }
   package { "firefox-esr": ensure => purged }
   package { "iceweasel": ensure => purged }
+  package { 'gstreamer1.0-vaapi': ensure => installed }
 
   # Blacklisting some annoying packages
   package { "gnome-keyring": ensure => absent }
