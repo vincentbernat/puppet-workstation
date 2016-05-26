@@ -1,8 +1,9 @@
 class x11 {
 
   package { ["xserver-xorg",
-             "xserver-xorg-input-all",
-             "xserver-xorg-input-evdev"]: ensure => installed }
+             "xserver-xorg-input-evdev",
+             "xserver-xorg-input-libinput"]: ensure => installed }
+  package { "xserver-xorg-input-synaptics": ensure => absent }
 
   package { "lightdm": ensure => installed }
   ->
