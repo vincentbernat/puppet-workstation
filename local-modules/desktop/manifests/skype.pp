@@ -3,7 +3,7 @@ class skype {
   # Use Ubuntu repository for that
   apt::source { 'ubuntu-partners':
     location          => 'http://archive.canonical.com/',
-    release           => 'trusty',
+    release           => 'xenial',
     repos             => 'partner',
     required_packages => 'ubuntu-archive-keyring',
     include_src       => false,
