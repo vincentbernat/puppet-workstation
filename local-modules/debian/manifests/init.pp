@@ -17,27 +17,27 @@ class debian {
   }
 
   apt::source { 'unstable':
-    location          => 'http://cdn-fastly-v6.deb.debian.org/debian/',
+    location          => 'http://cloudfront.debian.net/debian/',
     release           => 'unstable',
     repos             => 'main contrib non-free',
     required_packages => 'debian-keyring debian-archive-keyring',
     include_src       => true
   }
   apt::source { 'unstable-debug':
-    location    => "http://cdn-fastly-v6.deb.debian.org/debian-debug/",
+    location    => "http://debug.mirrors.debian.org/debian-debug/",
     release     => "unstable-debug",
     repos       => 'main',
     include_src => false
   }
 
   apt::source { 'experimental':
-    location    => 'http://cdn-fastly-v6.deb.debian.org/debian/',
+    location    => 'http://cloudfront.debian.net/debian/',
     release     => 'experimental',
     repos       => 'main',
     include_src => false
   }
   apt::source { 'experimental-debug':
-    location    => "http://cdn-fastly-v6.deb.debian.org/debian-debug/",
+    location    => "http://debug.mirrors.debian.org/debian-debug/",
     release     => "experimental-debug",
     repos       => 'main',
     include_src => false
