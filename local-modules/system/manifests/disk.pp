@@ -1,4 +1,4 @@
-class disk {
+class system::disk {
 
   udev::rule { "60-schedulers.rules":
     ensure => absent

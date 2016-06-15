@@ -1,4 +1,4 @@
-class skype {
+class desktop::skype {
 
   # Use Ubuntu repository for that
   apt::source { 'ubuntu-partners':
@@ -13,8 +13,8 @@ class skype {
   ->
   apt::pin { 'skype':
     priority   => 200,
-    component  => partner,
-    originator => Canonical,
+    component  => "partner",
+    originator => "Canonical",
     packages   => "skype-bin:i386"
   }
   ->

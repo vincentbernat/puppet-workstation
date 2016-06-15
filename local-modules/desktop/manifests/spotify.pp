@@ -1,4 +1,4 @@
-class spotify {
+class desktop::spotify {
 
   apt::source { 'spotify':
     location    => 'http://repository.spotify.com',

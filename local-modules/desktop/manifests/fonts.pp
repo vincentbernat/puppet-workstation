@@ -1,4 +1,4 @@
-class fonts {
+class desktop::fonts {
 
   # fonts
   package { "fonts-dejavu": ensure => installed }

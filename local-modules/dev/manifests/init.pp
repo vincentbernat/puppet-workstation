@@ -44,6 +44,6 @@ class dev {
     ensure => latest
   }
 
-  include cowbuilder
+  include dev::cowbuilder
 
 }

@@ -1,4 +1,4 @@
-class awesome {
+class desktop::awesome {
   package { "awesome": ensure => held }
   package { "awesome-extra": ensure => installed }
 

@@ -1,4 +1,4 @@
-class network {
+class system::network {
 
   # For networking, we rely on network manager.
   package { "network-manager": ensure => installed }

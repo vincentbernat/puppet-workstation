@@ -1,4 +1,4 @@
-class applications {
+class tools::applications {
 
   package { "git": ensure => installed }
   package { "glances": ensure => installed }
@@ -12,7 +12,6 @@ class applications {
   package { "lshw": ensure => installed }
   package { "lsof": ensure => installed }
   package { "mercurial": ensure => installed }
-  package { "openssh-client": ensure => installed }
   package { "silversearcher-ag": ensure => installed }
   package { "strace": ensure => installed }
   package { "subversion": ensure => installed }

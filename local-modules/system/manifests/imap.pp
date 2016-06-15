@@ -1,4 +1,4 @@
-class imap {
+class system::imap {
 
   package { "isync": ensure => present }
   package { "dovecot-imapd": ensure => present } ->

@@ -1,7 +1,7 @@
 # command-line related applications
 
 class tools {
-  include shell
-  include applications
-  include network
+  include tools::shell
+  include tools::applications
+  include tools::network
 }

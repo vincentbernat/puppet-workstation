@@ -1,4 +1,4 @@
-class chromium {
+class desktop::chromium {
 
   package { ["chromium", "chromium-l10n"]: ensure => installed }
   ->

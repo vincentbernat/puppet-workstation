@@ -1,4 +1,4 @@
-class sudo {
+class system::sudo {
 
   package { "sudo": ensure => installed } ->
   User <| title == "${::user}" |> { groups +> "sudo" }

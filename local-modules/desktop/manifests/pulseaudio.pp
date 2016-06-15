@@ -1,4 +1,4 @@
-class pulseaudio {
+class desktop::pulseaudio {
   # Configure pulseaudio with bluetooth support
   package { "bluez": ensure => installed } ->
   package { "bluez-tools": ensure => installed }

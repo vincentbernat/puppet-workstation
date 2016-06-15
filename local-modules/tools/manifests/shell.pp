@@ -1,4 +1,4 @@
-class shell {
+class tools::shell {
   package { "zsh":
     ensure => installed
   }

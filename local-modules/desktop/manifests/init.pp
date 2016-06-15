@@ -2,20 +2,20 @@
 
 class desktop {
 
-  include x11
+  include desktop::x11
 
   # Base desktop
-  include pulseaudio
-  include awesome
-  include fonts
+  include desktop::pulseaudio
+  include desktop::awesome
+  include desktop::fonts
 
   # Some applications
-  include emacs
-  include chromium
-  include spotify
-  include skype
-  include latex
-  include camera
+  include desktop::emacs
+  include desktop::chromium
+  include desktop::spotify
+  include desktop::skype
+  include desktop::latex
+  include desktop::camera
 
   # various stuff
   package { "desktop-base": ensure => installed }

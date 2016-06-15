@@ -1,2 +1,2 @@
-postfix::relay: "smtp.luffy.cx"
-postfix::origin: "luffy.cx"
+system::postfix::relay: "smtp.luffy.cx"
+system::postfix::origin: "luffy.cx"

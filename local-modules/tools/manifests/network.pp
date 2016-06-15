@@ -1,4 +1,4 @@
-class network {
+class tools::network {
 
   package { "bmon": ensure => installed }
   package { "curl": ensure => installed }
@@ -9,7 +9,6 @@ class network {
   package { "mtr-tiny": ensure => installed }
   package { "netcat": ensure => installed }
   package { "openssh-client": ensure => installed }
-  package { "oping": ensure => installed }
   package { "oping": ensure => installed }
   package { "snmp": ensure => installed } ->
   package { "snmp-mibs-downloader": ensure => installed }

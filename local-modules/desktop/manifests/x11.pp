@@ -1,4 +1,4 @@
-class x11 {
+class desktop::x11 {
 
   package { ["xserver-xorg",
              "xserver-xorg-input-evdev",

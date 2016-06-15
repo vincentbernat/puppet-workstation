@@ -1,6 +1,6 @@
 # Camera related stuff
 
-class camera {
+class desktop::camera {
 
   package { "exfat-fuse": ensure => installed } # exFAT filesystem
   package { "gphotofs": ensure => installed }   # PTP mount

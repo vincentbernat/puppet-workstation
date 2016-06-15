@@ -2,14 +2,14 @@
 
 class system {
 
-  include sudo
-  include network
-  include disk
-  include postfix
-  include imap
-  include ssh
-  include logging
-  include plymouth
+  include system::sudo
+  include system::network
+  include system::disk
+  include system::postfix
+  include system::imap
+  include system::ssh
+  include system::logging
+  include system::plymouth
 
   package { "ca-certificates": ensure => installed }
   package { "ca-cacert":       ensure => absent }

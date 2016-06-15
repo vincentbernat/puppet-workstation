@@ -1,4 +1,4 @@
-class ssh {
+class system::ssh {
 
   package { "openssh-server": ensure => installed }
 

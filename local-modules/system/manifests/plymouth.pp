@@ -1,4 +1,4 @@
-class plymouth {
+class system::plymouth {
 
   package { ["plymouth", "plymouth-themes"]:
     ensure => installed

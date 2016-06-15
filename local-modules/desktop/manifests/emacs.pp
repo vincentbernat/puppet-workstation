@@ -1,4 +1,4 @@
-class emacs {
+class desktop::emacs {
 
   package { "emacs24": ensure => installed } ->
   package { "emacs24-el": ensure => installed }

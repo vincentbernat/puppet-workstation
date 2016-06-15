@@ -1,4 +1,4 @@
-class latex {
+class desktop::latex {
 
   package { ["texlive",
              "texlive-xetex",

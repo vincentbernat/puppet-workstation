@@ -1,4 +1,4 @@
-class postfix($relay = undef, $cert = undef, $key = undef, $origin = undef) {
+class system::postfix($relay = undef, $cert = undef, $key = undef, $origin = undef) {
 
   package { postfix: ensure => installed }
 
@@ -19,7 +19,7 @@ class postfix($relay = undef, $cert = undef, $key = undef, $origin = undef) {
 
   if ($key != undef) {
     file { "/etc/ssl/private/postfix.key":
-      mode => 0600,
+      mode => "0600",
       content => "${key}",
       notify => Service["postfix"]
     }

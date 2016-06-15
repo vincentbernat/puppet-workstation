@@ -1,4 +1,4 @@
-class logging {
+class system::logging {
 
   # Logging with systemd journal.
 
