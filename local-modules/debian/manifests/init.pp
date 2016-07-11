@@ -17,7 +17,7 @@ class debian {
   }
 
   apt::source { 'unstable':
-    location          => 'https://mirror.dc16.debconf.org/debian/',
+    location          => 'http://cloudfront.debian.net/debian/',
     release           => 'unstable',
     repos             => 'main contrib non-free',
     required_packages => 'debian-keyring debian-archive-keyring',
@@ -31,7 +31,7 @@ class debian {
   }
 
   apt::source { 'experimental':
-    location    => 'https://mirror.dc16.debconf.org/debian/',
+    location    => 'http://cloudfront.debian.net/debian/',
     release     => 'experimental',
     repos       => 'main',
     include_src => false
