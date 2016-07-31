@@ -10,7 +10,7 @@ class desktop::chromium {
     key_server   => 'subkeys.pgp.net',
     include_src  => false,
     pin          => 400,
-    architecture => 'amd64' 
+    architecture => 'amd64'
   }
   ->
   package { 'google-chrome-beta': ensure => installed }
@@ -26,5 +26,19 @@ class desktop::chromium {
     # Provided with Debian package, leave as is
     ensure => present
   }
+
+  /* Hangout */
+  apt::source { 'google-talkplugin':
+    location     => 'http://dl.google.com/linux/talkplugin/deb/',
+    release      => 'stable',
+    repos        => 'main',
+    key          => '7FAC5991',
+    key_server   => 'subkeys.pgp.net',
+    include_src  => false,
+    pin          => 400,
+    architecture => 'amd64'
+  }
+  ->
+  package { 'google-talkplugin': ensure => installed }
 
 }
