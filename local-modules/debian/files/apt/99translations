@@ -1,2 +1,2 @@
 // Disable translations
-Acquire::Languages "none";
+Acquire::Languages "en";
