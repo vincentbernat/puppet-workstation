@@ -44,7 +44,7 @@ class desktop {
   package { "vlc": ensure => installed }
   package { "wireshark": ensure => installed }
   package { "libreoffice": ensure => installed }
-  package { "libreoffice-gtk": ensure => installed }
+  package { "libreoffice-gtk3": ensure => installed }
 
   # Firefox
   package { "firefox": ensure => installed }
