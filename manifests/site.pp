@@ -6,9 +6,12 @@ File {
 node default {
   # external modules
   class { "apt":
-    purge_sources_list   => true,
-    purge_sources_list_d => true,
-    purge_preferences_d  => true
+    purge => {
+      "sources.list"   => true,
+      "sources.list.d" => true,
+      "preferences"    => true,
+      "preferences.d"  => true
+    }
   }
   class { "udev": }
 

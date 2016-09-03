@@ -7,8 +7,7 @@ class desktop::chromium {
     release      => 'stable',
     repos        => 'main',
     key          => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
-    key_server   => 'subkeys.pgp.net',
-    include_src  => false,
+    include      => { 'src' => false },
     pin          => 400,
     architecture => 'amd64'
   }
@@ -33,8 +32,7 @@ class desktop::chromium {
     release      => 'stable',
     repos        => 'main',
     key          => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
-    key_server   => 'subkeys.pgp.net',
-    include_src  => false,
+    include      => { 'src' => false },
     pin          => 400,
     architecture => 'amd64'
   }

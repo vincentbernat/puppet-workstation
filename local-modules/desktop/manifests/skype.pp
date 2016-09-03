@@ -5,8 +5,7 @@ class desktop::skype {
     location          => 'http://archive.canonical.com/',
     release           => 'xenial',
     repos             => 'partner',
-    required_packages => 'ubuntu-archive-keyring',
-    include_src       => false,
+    include           => { 'src' => false },
     key               => '630239CC130E1A7FD81A27B140976EAF437D05B5',
     pin               => -100
   }

@@ -1,5 +1,9 @@
 class debian {
 
+  package { ['ubuntu-archive-keyring',
+             'debian-keyring',
+             'debian-archive-keyring']: ensure => installed }
+
   package { 'debian-security-support': ensure => installed }
   package { 'apt-forktracer': ensure => installed }
   package { "aptitude": ensure => installed } ->
@@ -20,27 +24,26 @@ class debian {
     location          => 'http://cloudfront.debian.net/debian/',
     release           => 'unstable',
     repos             => 'main contrib non-free',
-    required_packages => 'debian-keyring debian-archive-keyring',
-    include_src       => true
+    include           => { 'src' => true }
   }
   apt::source { 'unstable-debug':
-    location    => "http://debug.mirrors.debian.org/debian-debug/",
-    release     => "unstable-debug",
-    repos       => 'main',
-    include_src => false
+    location => "http://debug.mirrors.debian.org/debian-debug/",
+    release  => "unstable-debug",
+    repos    => 'main',
+    include  => { 'src' => false }
   }
 
   apt::source { 'experimental':
-    location    => 'http://cloudfront.debian.net/debian/',
-    release     => 'experimental',
-    repos       => 'main',
-    include_src => false
+    location => 'http://cloudfront.debian.net/debian/',
+    release  => 'experimental',
+    repos    => 'main',
+    include  => { 'src' => false }
   }
   apt::source { 'experimental-debug':
-    location    => "http://debug.mirrors.debian.org/debian-debug/",
-    release     => "experimental-debug",
-    repos       => 'main',
-    include_src => false
+    location => "http://debug.mirrors.debian.org/debian-debug/",
+    release  => "experimental-debug",
+    repos    => 'main',
+    include  => { 'src' => false }
   }
 
   apt::pin { ['experimental', 'experimental-debug']:
