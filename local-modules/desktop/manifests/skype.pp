@@ -7,7 +7,7 @@ class desktop::skype {
     repos             => 'partner',
     required_packages => 'ubuntu-archive-keyring',
     include_src       => false,
-    key               => '40976EAF437D05B5',
+    key               => '630239CC130E1A7FD81A27B140976EAF437D05B5',
     pin               => -100
   }
   ->

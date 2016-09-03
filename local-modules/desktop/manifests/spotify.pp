@@ -4,7 +4,7 @@ class desktop::spotify {
     location    => 'http://repository.spotify.com',
     release     => 'testing',
     repos       => 'non-free',
-    key         => 'D2C19886',
+    key         => 'BBEBDCB318AD50EC6865090613B00F1FD2C19886',
     key_server  => 'subkeys.pgp.net',
     include_src => false,
     pin         => 400
