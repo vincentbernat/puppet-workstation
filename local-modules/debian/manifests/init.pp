@@ -21,26 +21,26 @@ class debian {
   }
 
   apt::source { 'unstable':
-    location          => 'http://cloudfront.debian.net/debian/',
+    location          => 'http://cdn-fastly-v6.deb.debian.org/debian/',
     release           => 'unstable',
     repos             => 'main contrib non-free',
     include           => { 'src' => true }
   }
   apt::source { 'unstable-debug':
-    location => "http://debug.mirrors.debian.org/debian-debug/",
+    location => "http://cdn-fastly-v6.deb.debian.org/debian-debug/",
     release  => "unstable-debug",
     repos    => 'main',
     include  => { 'src' => false }
   }
 
   apt::source { 'experimental':
-    location => 'http://cloudfront.debian.net/debian/',
+    location => 'http://cdn-fastly-v6.deb.debian.org/debian/',
     release  => 'experimental',
     repos    => 'main',
     include  => { 'src' => false }
   }
   apt::source { 'experimental-debug':
-    location => "http://debug.mirrors.debian.org/debian-debug/",
+    location => "http://cdn-fastly-v6.deb.debian.org/debian-debug/",
     release  => "experimental-debug",
     repos    => 'main',
     include  => { 'src' => false }
