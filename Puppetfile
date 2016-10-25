@@ -5,7 +5,7 @@ forge "https://forgeapi.puppetlabs.com"
 # with `librarian-puppet outdated` command.
 
 mod "puppetlabs/stdlib",                 "~> 4.12.0"
-mod "puppetlabs/apt",                    "~> 2.2.2"
+mod "puppetlabs/apt",                    "~> 2.3.0"
 mod "jhoblitt/udev",                     "~> 1.2.0"
 mod "saz/timezone",                      "~> 3.3.0"
 mod "herculesteam/augeasproviders_grub", "~> 2.4.0"
