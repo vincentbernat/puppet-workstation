@@ -2,7 +2,10 @@ class debian {
 
   package { ['ubuntu-archive-keyring',
              'debian-keyring',
-             'debian-archive-keyring']: ensure => installed }
+             'debian-archive-keyring',
+             'apt-transport-https']:
+               ensure => installed
+  }
 
   package { 'debian-security-support': ensure => installed }
   package { 'apt-forktracer': ensure => installed }
@@ -21,26 +24,26 @@ class debian {
   }
 
   apt::source { 'unstable':
-    location          => 'http://cdn-fastly-v6.deb.debian.org/debian/',
+    location          => 'https://deb.debian.org/debian/',
     release           => 'unstable',
     repos             => 'main contrib non-free',
     include           => { 'src' => true }
   }
   apt::source { 'unstable-debug':
-    location => "http://cdn-fastly-v6.deb.debian.org/debian-debug/",
+    location => "https://deb.debian.org/debian-debug/",
     release  => "unstable-debug",
     repos    => 'main',
     include  => { 'src' => false }
   }
 
   apt::source { 'experimental':
-    location => 'http://cdn-fastly-v6.deb.debian.org/debian/',
+    location => 'https://deb.debian.org/debian/',
     release  => 'experimental',
     repos    => 'main',
     include  => { 'src' => false }
   }
   apt::source { 'experimental-debug':
-    location => "http://cdn-fastly-v6.deb.debian.org/debian-debug/",
+    location => "https://deb.debian.org/debian-debug/",
     release  => "experimental-debug",
     repos    => 'main',
     include  => { 'src' => false }
