@@ -1,5 +1,8 @@
 class desktop::emacs {
 
+  package { ["emacs24", "emacs24-el"]:
+    ensure => purged
+  }
   package { "emacs25": ensure => installed } ->
   package { "emacs25-el": ensure => installed }
 
