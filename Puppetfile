@@ -11,6 +11,8 @@ mod "saz/timezone",                      "~> 3.3.0"
 mod "herculesteam/augeasproviders_grub", "~> 2.4.0"
 mod "herculesteam/augeasproviders_ssh",  "~> 2.5.0"
 
+mod "saz/sudo",                          :git => "https://github.com/saz/puppet-sudo.git", :ref => "6dad85360bf119368a2fe396da2e22c81e01f4dd"
+
 # Local Variables:
 # mode: Ruby
 # End:

@@ -1,6 +1,21 @@
 class system::sudo {
 
-  package { "sudo": ensure => installed } ->
-  User <| title == "${::user}" |> { groups +> "sudo" }
+  User <| title == "${::user}" |> {
+    require => Package["sudo"],
+    groups +> "sudo"
+  }
 
+  class { 'sudo':
+    config_file_replace => false,
+  }
+
+  sudo::conf { 'apt':
+    content => "${::user} ALL=(ALL) NOPASSWD: /usr/bin/apt update, /usr/bin/apt full-upgrade"
+  }
+  sudo::conf { 'brightness':
+    content => "${::user} ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/class/backlight/intel_backlight/brightness"
+  }
+  sudo::conf { 'systemctl':
+    content => "${::user} ALL=(ALL) NOPASSWD: /usr/bin/systemctl start *, /usr/bin/systemctl restart *, /usr/bin/systemctl stop *"
+  }
 }
