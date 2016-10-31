@@ -16,6 +16,6 @@ class system::sudo {
     content => "${::user} ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/class/backlight/intel_backlight/brightness"
   }
   sudo::conf { 'systemctl':
-    content => "${::user} ALL=(ALL) NOPASSWD: /usr/bin/systemctl start *, /usr/bin/systemctl restart *, /usr/bin/systemctl stop *"
+    content => "${::user} ALL=(ALL) NOPASSWD: /usr/bin/systemctl start *, /usr/bin/systemctl restart *, /usr/bin/systemctl stop *, /usr/bin/systemctl status *"
   }
 }
