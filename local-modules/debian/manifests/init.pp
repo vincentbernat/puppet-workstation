@@ -2,8 +2,7 @@ class debian {
 
   package { ['ubuntu-archive-keyring',
              'debian-keyring',
-             'debian-archive-keyring',
-             'apt-transport-https']:
+             'debian-archive-keyring']:
                ensure => installed
   }
 
@@ -24,26 +23,26 @@ class debian {
   }
 
   apt::source { 'unstable':
-    location          => 'https://deb.debian.org/debian/',
+    location          => 'http://httpredir.debian.org/debian/',
     release           => 'unstable',
     repos             => 'main contrib non-free',
     include           => { 'src' => true }
   }
   apt::source { 'unstable-debug':
-    location => "https://deb.debian.org/debian-debug/",
+    location => "http://debug.mirrors.debian.org/debian-debug/",
     release  => "unstable-debug",
     repos    => 'main',
     include  => { 'src' => false }
   }
 
   apt::source { 'experimental':
-    location => 'https://deb.debian.org/debian/',
+    location => 'http://httpredir.debian.org/debian/',
     release  => 'experimental',
     repos    => 'main',
     include  => { 'src' => false }
   }
   apt::source { 'experimental-debug':
-    location => "https://deb.debian.org/debian-debug/",
+    location => "http://debug.mirrors.debian.org/debian-debug/",
     release  => "experimental-debug",
     repos    => 'main',
     include  => { 'src' => false }
