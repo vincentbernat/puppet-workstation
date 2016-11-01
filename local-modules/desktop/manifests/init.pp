@@ -13,7 +13,6 @@ class desktop {
   include desktop::emacs
   include desktop::chromium
   include desktop::spotify
-  include desktop::skype
   include desktop::latex
   include desktop::camera
 
