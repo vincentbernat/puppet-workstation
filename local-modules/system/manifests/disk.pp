@@ -44,8 +44,8 @@ class system::disk {
   }
 
   $noatime = split($::fstab_missing_noatime, ',')
-  fstab_add_noatime { $noatime: }
+  system::disk::fstab_add_noatime { $noatime: }
   $nodiscard = split($::fstab_missing_discard, ',')
-  fstab_add_discard { $nodiscard: }
+  system::disk::fstab_add_discard { $nodiscard: }
 
 }
