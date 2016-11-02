@@ -10,7 +10,7 @@ class system::sudo {
   }
 
   sudo::conf { 'apt':
-    content => "${::user} ALL=(ALL) NOPASSWD: /usr/bin/apt update, /usr/bin/apt full-upgrade"
+    content => "${::user} ALL=(ALL) NOPASSWD: /usr/bin/apt update, /usr/bin/apt full-upgrade, /usr/bin/apt autoremove"
   }
   sudo::conf { 'brightness':
     content => "${::user} ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/class/backlight/intel_backlight/brightness"
