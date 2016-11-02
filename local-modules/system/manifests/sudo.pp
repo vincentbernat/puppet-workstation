@@ -10,12 +10,12 @@ class system::sudo {
   }
 
   sudo::conf { 'apt':
-    content => "${::user} ALL=(ALL) NOPASSWD: /usr/bin/apt update, /usr/bin/apt full-upgrade, /usr/bin/apt autoremove"
+    content => "%sudo ALL=(ALL) NOPASSWD: /usr/bin/apt update, /usr/bin/apt full-upgrade, /usr/bin/apt autoremove"
   }
   sudo::conf { 'brightness':
-    content => "${::user} ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/class/backlight/intel_backlight/brightness"
+    content => "%sudo ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/class/backlight/intel_backlight/brightness"
   }
   sudo::conf { 'systemctl':
-    content => "${::user} ALL=(ALL) NOPASSWD: /usr/bin/systemctl start *, /usr/bin/systemctl restart *, /usr/bin/systemctl stop *, /usr/bin/systemctl status *"
+    content => "%sudo ALL=(ALL) NOPASSWD: /usr/bin/systemctl start *, /usr/bin/systemctl restart *, /usr/bin/systemctl stop *, /usr/bin/systemctl status *"
   }
 }
