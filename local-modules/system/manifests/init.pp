@@ -52,4 +52,12 @@ class system {
   class { "timezone":
     timezone => "Europe/Zurich"
   }
+
+  # We need vsyscall emulation to be able to use older distributions
+  # (like wheezy). This is set to none with recent Debian kernels.
+  kernel_parameter { "vsyscall":
+    ensure => present,
+    value  => "emulate"
+  }
+
 }
