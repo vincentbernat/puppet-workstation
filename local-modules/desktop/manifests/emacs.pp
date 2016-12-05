@@ -9,5 +9,6 @@ class desktop::emacs {
   package { "debian-el": ensure => installed, require => Package["emacs25"] }
   package { "dpkg-dev-el": ensure => installed, require => Package["emacs25"] }
   package { "fortune-mod": ensure => installed }
+  package { "gpgsm": ensure => installed }
 
 }
