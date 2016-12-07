@@ -17,6 +17,10 @@ class dev {
   package { "gdb": ensure => installed }
   package { "valgrind": ensure => installed }
   package { "ccache": ensure => installed }
+  package { "global":
+    ensure          => installed,
+    install_options => "-t experimental"
+  }
 
   package { "ipython": ensure => installed }
   package { "ipython3": ensure => installed }
@@ -32,17 +36,6 @@ class dev {
   package { "python-rope": ensure => installed }
   package { "python-jedi": ensure => installed }
   package { "python3-jedi": ensure => installed }
-
-  # Maintainers don't want to ship a correct version...
-  file { "/opt/global.deb":
-    source => "puppet:///modules/dev/global_6.5.1-0.1_amd64.deb"
-  }
-  ->
-  package { "global":
-    provider => dpkg,
-    source => "/opt/global.deb",
-    ensure => latest
-  }
 
   include dev::cowbuilder
 
