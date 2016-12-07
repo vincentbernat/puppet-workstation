@@ -1,4 +1,0 @@
-# Managed by puppet
-
-# Let the user handle backlight without being root
-ACTION=="add|change", SUBSYSTEM=="backlight", ATTR{brightness}=="?*", TAG+="uaccess"
