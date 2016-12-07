@@ -44,6 +44,10 @@ class desktop {
   package { "wireshark": ensure => installed }
   package { "libreoffice": ensure => installed }
   package { "libreoffice-gtk3": ensure => installed }
+  package { "gnome-settings-daemon":
+    ensure          => installed,
+    install_options => ["--no-install-recommends"]
+  }
 
   # Firefox
   package { "firefox": ensure => installed }
