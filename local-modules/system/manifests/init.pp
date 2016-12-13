@@ -13,11 +13,14 @@ class system {
 
   package { "ca-certificates": ensure => installed }
   package { "ca-cacert":       ensure => absent }
-  package { "systemd-sysv":    ensure => installed }
   package { "sysfsutils":      ensure => installed }
   package { "tlp":             ensure => installed }
   package { "ncdu":            ensure => installed }
   package { "at":              ensure => absent }
+  package { "systemd-sysv":    ensure => installed } ->
+  package { ["initscripts", "sysv-rc", "insserv", "startpar"]:
+    ensure => purged
+  }
 
   # Defragmentation of transparent huge page can slow down a host when
   # copying to slow devices (like USB keys)
