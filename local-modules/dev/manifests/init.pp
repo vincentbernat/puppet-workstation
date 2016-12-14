@@ -17,10 +17,7 @@ class dev {
   package { "gdb": ensure => installed }
   package { "valgrind": ensure => installed }
   package { "ccache": ensure => installed }
-  package { "global":
-    ensure          => installed,
-    install_options => "-t experimental"
-  }
+  package { "global": ensure => installed }
 
   package { "ipython": ensure => installed }
   package { "ipython3": ensure => installed }
