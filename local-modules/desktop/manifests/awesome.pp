@@ -1,6 +1,6 @@
 class desktop::awesome {
   package { "awesome": ensure => held }
-  package { "awesome-extra": ensure => installed }
+  package { "awesome-extra": ensure => held }
 
   package { "alsa-utils": ensure => installed }
   package { "compton": ensure => installed }
