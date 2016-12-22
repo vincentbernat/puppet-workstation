@@ -1,0 +1,2 @@
+# Disable the builtin media router (bug #833477)
+export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --media-router=0"
