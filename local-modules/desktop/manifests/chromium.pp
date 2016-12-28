@@ -6,7 +6,7 @@ class desktop::chromium {
     location     => 'http://dl.google.com/linux/chrome/deb/',
     release      => 'stable',
     repos        => 'main',
-    key          => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
+    key          => '9534C9C4130B4DC9927992BF4F30B6B4C07CB649',
     include      => { 'src' => false },
     pin          => 400,
     architecture => 'amd64'
@@ -31,7 +31,7 @@ class desktop::chromium {
     location     => 'http://dl.google.com/linux/talkplugin/deb/',
     release      => 'stable',
     repos        => 'main',
-    key          => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
+    key          => '9534C9C4130B4DC9927992BF4F30B6B4C07CB649',
     include      => { 'src' => false },
     pin          => 400,
     architecture => 'amd64'
