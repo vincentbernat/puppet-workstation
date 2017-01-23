@@ -4,8 +4,11 @@
 #   udevadm info --attribute-walk --path=/sys/bus/usb/devices/usb3/...
 
 # Blacklist:
-## OneLink Pro Dock (otherwise, link won't come up)
+## OneLink Pro Dock ethernet device (otherwise, link won't come up)
 ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="ThinkPad Dock Giga", \
+                      GOTO="power_autosuspend_disable"
+## OneLink Pro Dock USB stuff (otherwise, they pause all the time and keyboard doesn't work)
+ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="OneLink Pro Dock", \
                       GOTO="power_autosuspend_disable"
 ## Logitech Unify receiver (otherwise, long pauses when moving the mouse)
 ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="USB Receiver", ATTR{manufacturer}=="Logitech", \
