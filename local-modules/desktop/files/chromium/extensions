@@ -1,6 +1,0 @@
-# Do not hide extensions
-CHROMIUM_FLAGS="$CHROMIUM_FLAGS --show-component-extension-options"
-
-# Local Variables:
-# mode: sh
-# End:

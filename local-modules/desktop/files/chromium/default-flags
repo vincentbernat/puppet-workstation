@@ -1,0 +1,32 @@
+# A set of command line flags that we want to set by default.
+
+# Do not hide any extensions in the about:extensions dialog
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --show-component-extension-options"
+
+# Don't use the GPU blacklist (bug #802933)
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --ignore-gpu-blacklist"
+
+# Don't display any warnings about not being the default browser
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --no-default-browser-check"
+
+# Disable pinging
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --disable-pings"
+
+# Disable the builtin media router (bug #833477)
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --media-router=0"
+
+# Disable SSLv3
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --ssl-version-min=tls1"
+
+# Disable RC4 ciphers.
+# See :
+#  - https://cc.dcsec.uni-hannover.de/
+#  - https://www.howsmyssl.com/
+#  - https://www.ssllabs.com/ssltest/viewMyClient.html
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --cipher-suite-blacklist=0x0005,0x0004,0xc007,0xc011"
+
+export CHROMIUM_FLAGS
+
+# Local Variables:
+# mode: sh
+# End:

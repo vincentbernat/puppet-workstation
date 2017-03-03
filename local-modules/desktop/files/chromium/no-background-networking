@@ -1,4 +1,0 @@
-# Disable background networking. It seems Google is collecting data
-# through background network requests when the browser is idle.
-export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --disable-background-networking"
-export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --disable-pings"
