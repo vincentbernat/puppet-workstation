@@ -25,6 +25,9 @@ CHROMIUM_FLAGS="$CHROMIUM_FLAGS --ssl-version-min=tls1"
 #  - https://www.ssllabs.com/ssltest/viewMyClient.html
 CHROMIUM_FLAGS="$CHROMIUM_FLAGS --cipher-suite-blacklist=0x0005,0x0004,0xc007,0xc011"
 
+# Enable remote extensions
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --enable-remote-extensions"
+
 export CHROMIUM_FLAGS
 
 # Local Variables:
