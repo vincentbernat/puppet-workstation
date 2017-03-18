@@ -27,16 +27,6 @@ class desktop::chromium {
   }
 
   /* Hangout */
-  apt::source { 'google-talkplugin':
-    location     => 'http://dl.google.com/linux/talkplugin/deb/',
-    release      => 'stable',
-    repos        => 'main',
-    key          => '9534C9C4130B4DC9927992BF4F30B6B4C07CB649',
-    include      => { 'src' => false },
-    pin          => 400,
-    architecture => 'amd64'
-  }
-  ->
-  package { 'google-talkplugin': ensure => installed }
+  package { 'google-talkplugin': ensure => absent }
 
 }
