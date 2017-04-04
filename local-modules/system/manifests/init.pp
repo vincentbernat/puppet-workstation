@@ -38,7 +38,7 @@ class system {
     source => 'puppet:///modules/system/autosuspend.rules'
   }
   udev::rule { '70-more-uaccess.rules':
-    ensure => absent
+    source => 'puppet:///modules/system/uaccess.rules'
   }
   # Fix trackpoint speed
   udev::rule { '90-trackpoint.rules':

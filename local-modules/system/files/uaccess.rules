@@ -1,0 +1,4 @@
+# Managed by puppet
+
+# ttyUSBx
+SUBSYSTEM=="tty", ENV{DEVNAME}=="/dev/ttyUSB*", TAG+="uaccess"
