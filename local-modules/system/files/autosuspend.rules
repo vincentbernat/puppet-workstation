@@ -11,12 +11,6 @@ ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="ThinkPad Dock Giga", \
 ## OneLink Pro Dock USB stuff (otherwise, they pause all the time and keyboard doesn't work)
 ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="OneLink Pro Dock", \
                       GOTO="power_autosuspend_disable"
-## Logitech Unify receiver (otherwise, long pauses when moving the mouse)
-ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="USB Receiver", ATTR{manufacturer}=="Logitech", \
-                      GOTO="power_autosuspend_disable"
-## Microsoft Mouse (same reason)
-ACTION=="add|change", SUBSYSTEM=="usb", ATTR{product}=="Microsoft 3-Button Mouse with IntelliEye(TM)", \
-                      GOTO="power_autosuspend_disable"
 ## MST screens
 ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card0-DP-3", ATTR{status}=="connected", \
                       GOTO="power_autosuspend_disable"
@@ -24,6 +18,11 @@ ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card0-DP-4", ATTR{status}=="con
                       GOTO="power_autosuspend_disable"
 ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card0-DP-5", ATTR{status}=="connected", \
                       GOTO="power_autosuspend_disable"
+
+## Generic HID stuff
+ACTION=="add|change", SUBSYSTEM=="usb", DRIVER=="usbhid", \
+                      TEST=="../power/control", ATTR{../power/control}="on", \
+                      GOTO="power_autosuspend_end"
 
 # Enable autosuspend for the remaining
 ACTION=="add|change", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="auto"
