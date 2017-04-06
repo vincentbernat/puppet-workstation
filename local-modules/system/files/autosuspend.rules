@@ -2,6 +2,7 @@
 
 # To get attributes, use:
 #   udevadm info --attribute-walk --path=/sys/bus/usb/devices/usb3/...
+# Note this may conflict with TLP (check USB_AUTOSUSPEND in /etc/default/tlp)
 
 # Blacklist:
 ## OneLink Pro Dock ethernet device (otherwise, link won't come up)
@@ -25,7 +26,7 @@ ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card0-DP-5", ATTR{status}=="con
                       GOTO="power_autosuspend_disable"
 
 # Enable autosuspend for the remaining
-# ACTION=="add|change", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="auto"
+ACTION=="add|change", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="auto"
 ACTION=="add|change", SUBSYSTEM=="pci", TEST=="power/control", ATTR{power/control}="auto"
 ACTION=="add|change", SUBSYSTEM=="drm", TEST=="power/control", ATTR{power/control}="auto"
 GOTO="power_autosuspend_end"
