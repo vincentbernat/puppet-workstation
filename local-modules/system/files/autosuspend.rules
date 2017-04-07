@@ -19,8 +19,9 @@ ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card0-DP-4", ATTR{status}=="con
 ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card0-DP-5", ATTR{status}=="connected", \
                       GOTO="power_autosuspend_disable"
 
-## Generic HID stuff
+## Generic HID stuff (exc
 ACTION=="add|change", SUBSYSTEM=="usb", DRIVER=="usbhid", \
+                      ATTR{../manufacturer}!="ELAN", \
                       TEST=="../power/control", ATTR{../power/control}="on", \
                       GOTO="power_autosuspend_end"
 
