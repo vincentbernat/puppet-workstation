@@ -4,6 +4,7 @@ MIRRORSITE=http://httpredir.debian.org/debian
 BINDMOUNTS="/etc/pbuilder/deps"
 EXTRAPACKAGES="apt-utils"
 HOOKDIR=/etc/pbuilder/hooks
+#USENETWORK=yes
 
 export PBUILDERPID=$$
 if [ "x$PBCURRENTCOMMANDLINEOPERATION" = xlogin ]; then
