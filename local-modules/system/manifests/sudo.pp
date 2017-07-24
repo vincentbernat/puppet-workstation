@@ -12,9 +12,6 @@ class system::sudo {
   sudo::conf { 'apt':
     content => "%sudo ALL=(ALL) NOPASSWD: /usr/bin/apt update, /usr/bin/apt full-upgrade, /usr/bin/apt upgrade, /usr/bin/apt autoremove, /usr/bin/aptitude safe-upgrade"
   }
-  sudo::conf { 'brightness':
-    content => "%sudo ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/class/backlight/intel_backlight/brightness"
-  }
   sudo::conf { 'systemctl':
     content => "%sudo ALL=(ALL) NOPASSWD: /usr/bin/systemctl start *, /usr/bin/systemctl restart *, /usr/bin/systemctl stop *, /usr/bin/systemctl status *"
   }
