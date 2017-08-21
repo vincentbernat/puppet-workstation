@@ -6,8 +6,7 @@ class dev {
   package { "git-buildpackage": ensure => installed }
   package { "dput-ng": ensure => installed }
 
-  package { "nodejs": ensure => installed } ->
-  package { "nodejs-legacy": ensure => installed }
+  package { "nodejs": ensure => installed }
 
   package { "make": ensure => installed }
   package { "pkg-config": ensure => installed }
