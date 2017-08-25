@@ -31,8 +31,4 @@ class desktop::awesome {
   package { "xinput": ensure => installed }
   package { "xsel": ensure => installed }
   package { "xsettingsd": ensure => installed }
-
-  # For 32bits app
-  package { "gnome-themes-standard:i386": ensure => installed }
-  package { "gtk2-engines-pixbuf:i386": ensure => installed }
 }
