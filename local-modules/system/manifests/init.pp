@@ -14,7 +14,6 @@ class system {
   package { "ca-certificates": ensure => installed }
   package { "ca-cacert":       ensure => absent }
   package { "sysfsutils":      ensure => installed }
-  package { "tlp":             ensure => installed }
   package { "ncdu":            ensure => installed }
   package { "at":              ensure => absent }
   package { "systemd-sysv":    ensure => installed } ->
@@ -60,6 +59,14 @@ class system {
   kernel_parameter { "vsyscall":
     ensure => present,
     value  => "emulate"
+  }
+
+  package { 'tlp': ensure => installed } ->
+  file_line { 'disable usb autosuspend':
+    ensure => present,
+    line   => 'USB_AUTOSUSPEND=0',
+    match  => '^USB_AUTOSUSPEND=.',
+    path   => '/etc/default/tlp'
   }
 
 }
