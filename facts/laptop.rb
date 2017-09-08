@@ -1,7 +1,7 @@
 Facter.add(:laptop) do
   setcode do
-    if File.exists?("/usr/sbin/laptop-detect") then
-      system("/usr/sbin/laptop-detect")
+    if File.exists?("/usr/bin/laptop-detect") then
+      !!system("/usr/bin/laptop-detect")
     end
   end
 end

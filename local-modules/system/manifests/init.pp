@@ -67,6 +67,15 @@ class system {
     line   => 'USB_AUTOSUSPEND=0',
     match  => '^USB_AUTOSUSPEND=.',
     path   => '/etc/default/tlp'
+  } ->
+  file_line { 'enable/disable WOL':
+    ensure    => present,
+    line      => $facts['laptop'] ? {
+      true    => 'WOL_DISABLE=Y',
+      default => 'WOL_DISABLE=N',
+    },
+    match     => '^WOL_DISABLE=.',
+    path      => '/etc/default/tlp'
   }
 
 }
