@@ -1,0 +1,2 @@
+// Don't use pdiffs, they are just slow
+Acquire::PDiffs "false";
