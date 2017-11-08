@@ -28,11 +28,6 @@ CHROMIUM_FLAGS="$CHROMIUM_FLAGS --cipher-suite-blacklist=0x0005,0x0004,0xc007,0x
 # Enable remote extensions
 CHROMIUM_FLAGS="$CHROMIUM_FLAGS --enable-remote-extensions"
 
-# Scale factor correct value (Chromium 60 only detects non-fractional values)
-factor=$(echo $(xrdb -query | sed -n 's/^Xft.dpi:\t\([0-9]*\)$/\1/p')/96 \
-             | LC_NUMERIC=en_US.utf8 bc -l)
-CHROMIUM_FLAGS="$CHROMIUM_FLAGS --force-device-scale-factor=$factor"
-
 export CHROMIUM_FLAGS
 
 # Local Variables:
