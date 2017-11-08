@@ -15,16 +15,6 @@ CHROMIUM_FLAGS="$CHROMIUM_FLAGS --disable-pings"
 # Disable the builtin media router (bug #833477)
 CHROMIUM_FLAGS="$CHROMIUM_FLAGS --media-router=0"
 
-# Disable SSLv3
-CHROMIUM_FLAGS="$CHROMIUM_FLAGS --ssl-version-min=tls1"
-
-# Disable RC4 ciphers.
-# See :
-#  - https://cc.dcsec.uni-hannover.de/
-#  - https://www.howsmyssl.com/
-#  - https://www.ssllabs.com/ssltest/viewMyClient.html
-CHROMIUM_FLAGS="$CHROMIUM_FLAGS --cipher-suite-blacklist=0x0005,0x0004,0xc007,0xc011"
-
 # Enable remote extensions
 CHROMIUM_FLAGS="$CHROMIUM_FLAGS --enable-remote-extensions"
 
