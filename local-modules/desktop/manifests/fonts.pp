@@ -6,7 +6,7 @@ class desktop::fonts {
   package { "fonts-droid-fallback": ensure => installed }
   package { "fonts-freefont-ttf": ensure => installed }
   package { "fonts-liberation": ensure => installed }
-  package { "fonts-inconsolata": ensure => installed }
+  package { "fonts-inconsolata": ensure => purged }
   package { "fonts-roboto": ensure => installed }
   package { "ttf-mscorefonts-installer": ensure => installed }
   package { "ttf-ancient-fonts": ensure => installed }
