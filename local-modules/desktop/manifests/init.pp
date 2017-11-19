@@ -28,8 +28,7 @@ class desktop {
   package { "mdbus2": ensure => installed }
   package { "mpv": ensure => installed }
   package { "pidgin": ensure => installed } ->
-  package { "pidgin-skype": ensure => installed } ->
-  package { "pidgin-sipe": ensure => installed }
+  package { "pidgin-skype": ensure => installed }
   package { "pinentry-curses": ensure => installed }
   package { "pinentry-gtk2": ensure => installed }
   package { "pinentry-gtk3": ensure => absent }
