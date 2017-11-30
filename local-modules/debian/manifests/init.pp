@@ -52,12 +52,4 @@ class debian {
     priority => 101
   }
 
-  # Enable multiarch
-  if $::architecture == 'amd64' {
-    exec { '/usr/bin/dpkg --add-architecture i386':
-      notify => Exec['apt_update'],
-      unless => '/usr/bin/dpkg --print-foreign-architectures | /bin/grep -qFx i386'
-    }
-  }
-
 }
