@@ -16,4 +16,8 @@ class system::imap {
     source => "puppet:///modules/system/imap/dovecot.conf"
   }
 
+  file { "/etc/apparmor.d/tunables/dovecot":
+    source => "puppet:///modules/system/imap/apparmor.conf"
+  }
+
 }
