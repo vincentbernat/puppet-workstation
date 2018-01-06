@@ -17,7 +17,7 @@ class system {
   package { "ncdu":            ensure => installed }
   package { "at":              ensure => absent }
   package { "systemd-sysv":    ensure => installed } ->
-  package { ["initscripts", "sysv-rc", "insserv", "startpar"]:
+  package { ["initscripts", "sysv-rc", "insserv", "startpar", "rpcbind"]:
     ensure => purged
   }
 
