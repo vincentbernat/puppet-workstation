@@ -16,6 +16,8 @@ class system {
   package { "sysfsutils":      ensure => installed }
   package { "ncdu":            ensure => installed }
   package { "at":              ensure => absent }
+  package { "ntp":             ensure => absent }
+  package { "sntp":            ensure => absent }
   package { "systemd-sysv":    ensure => installed } ->
   package { ["initscripts", "sysv-rc", "insserv", "startpar", "rpcbind"]:
     ensure => purged
@@ -52,6 +54,10 @@ class system {
 
   class { "timezone":
     timezone => "Europe/Zurich"
+  }
+  service { "systemd-timesyncd":
+    ensure => running,
+    enable => true
   }
 
   # We need vsyscall emulation to be able to use older distributions
