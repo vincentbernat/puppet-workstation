@@ -1,18 +1,7 @@
 class desktop::chromium {
-
   package { ["chromium", "chromium-l10n"]: ensure => installed }
   ->
-  apt::source { 'google-chrome-beta':
-    location     => 'http://dl.google.com/linux/chrome/deb/',
-    release      => 'stable',
-    repos        => 'main',
-    key          => '9534C9C4130B4DC9927992BF4F30B6B4C07CB649',
-    include      => { 'src' => false },
-    pin          => 400,
-    architecture => 'amd64'
-  }
-  ->
-  package { 'google-chrome-beta': ensure => installed }
+  package { ["google-chrome-beta", "google-talkplugin"]: ensure => purged }
   ->
   file { '/etc/chromium.d':
     ensure  => directory,
@@ -25,8 +14,4 @@ class desktop::chromium {
     # Provided with Debian package, leave as is
     ensure => present
   }
-
-  /* Hangout */
-  package { 'google-talkplugin': ensure => absent }
-
 }
