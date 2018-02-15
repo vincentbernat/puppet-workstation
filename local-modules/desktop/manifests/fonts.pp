@@ -8,6 +8,7 @@ class desktop::fonts {
   package { "fonts-liberation": ensure => installed }
   package { "fonts-inconsolata": ensure => purged }
   package { "fonts-roboto": ensure => installed }
+  package { "fonts-noto-color-emoji": ensure => installed }
   package { "ttf-mscorefonts-installer": ensure => installed }
   package { "ttf-ancient-fonts": ensure => installed }
   package { "xfonts-terminus": ensure => installed }
