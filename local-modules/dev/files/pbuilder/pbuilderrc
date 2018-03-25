@@ -4,6 +4,7 @@ MIRRORSITE=http://httpredir.debian.org/debian
 BINDMOUNTS="/etc/pbuilder/deps"
 EXTRAPACKAGES="apt-utils"
 HOOKDIR=/etc/pbuilder/hooks
+SOURCE_ONLY_CHANGES=yes
 #USENETWORK=yes
 
 export PBUILDERPID=$$
