@@ -24,7 +24,7 @@ class desktop::fonts {
   ->
   file { "/etc/fonts/conf.d/10-sub-pixel-rgb.conf":
     ensure => link,
-    source => "/usr/share/fontconfig/conf.avail/10-sub-pixel-rgb.conf"
+    target => "/usr/share/fontconfig/conf.avail/10-sub-pixel-rgb.conf"
   }
   file { "/etc/fonts/conf.d/55-look-better.conf":
     ensure => absent
