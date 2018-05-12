@@ -27,7 +27,7 @@ class desktop::fonts {
     source => "/usr/share/fontconfig/conf.avail/10-sub-pixel-rgb.conf"
   }
   file { "/etc/fonts/conf.d/55-look-better.conf":
-    source => "puppet:///modules/desktop/fonts/look-better.conf"
-  }
+    ensure => absent
+ }
 
 }
