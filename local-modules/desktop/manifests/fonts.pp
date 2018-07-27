@@ -22,12 +22,8 @@ class desktop::fonts {
   # fontconfig
   package { "fontconfig": ensure => installed }
   ->
-  file { "/etc/fonts/conf.d/10-sub-pixel-rgb.conf":
-    ensure => link,
-    target => "/usr/share/fontconfig/conf.avail/10-sub-pixel-rgb.conf"
-  }
-  file { "/etc/fonts/conf.d/55-look-better.conf":
+  file { ["/etc/fonts/conf.d/10-sub-pixel-rgb.conf","/etc/fonts/conf.d/55-look-better.conf"]:
     ensure => absent
- }
+  }
 
 }
