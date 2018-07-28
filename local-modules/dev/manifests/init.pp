@@ -17,6 +17,7 @@ class dev {
   package { "valgrind": ensure => installed }
   package { "ccache": ensure => installed }
   package { "global": ensure => installed }
+  package { "bear": ensure => installed }
 
   package { "ipython": ensure => installed }
   package { "ipython3": ensure => installed }
