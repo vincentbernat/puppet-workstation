@@ -10,8 +10,6 @@ class desktop::fonts {
   package { "fonts-roboto": ensure => installed }
   package { "fonts-noto-color-emoji": ensure => installed }
   package { "ttf-mscorefonts-installer": ensure => installed }
-  package { "ttf-ancient-fonts": ensure => installed }
-  package { "ttf-bitstream-vera": ensure => installed }
   package { "xfonts-terminus": ensure => installed }
   package { "fonts-powerline": ensure => purged }
 
