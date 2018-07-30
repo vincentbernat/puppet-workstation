@@ -29,6 +29,7 @@ class desktop::awesome {
   package { "xdg-utils": ensure => installed }
   package { "xfce4-terminal": ensure => installed }
   package { "xinput": ensure => installed }
+  package { "xiccd": ensure => installed }
   package { "xsel": ensure => installed }
   package { "xsettingsd": ensure => installed }
 }
