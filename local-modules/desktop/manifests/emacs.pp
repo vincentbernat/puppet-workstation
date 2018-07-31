@@ -3,11 +3,11 @@ class desktop::emacs {
   package { ['emacs24', 'emacs24-el']:
     ensure => purged
   }
-  package { 'emacs25':    ensure => installed } ->
-  package { 'emacs25-el': ensure => installed }
+  package { 'emacs':    ensure => installed } ->
+  package { 'emacs-el': ensure => installed }
 
-  package { 'elpa-debian-el':   ensure => installed, require => Package['emacs25'] }
-  package { 'elpa-dpkg-dev-el': ensure => installed, require => Package['emacs25'] }
+  package { 'elpa-debian-el':   ensure => installed, require => Package['emacs'] }
+  package { 'elpa-dpkg-dev-el': ensure => installed, require => Package['emacs'] }
   package { 'fortune-mod':      ensure => installed }
   package { 'gpgsm':            ensure => installed }
 
