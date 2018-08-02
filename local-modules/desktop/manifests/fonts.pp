@@ -9,6 +9,7 @@ class desktop::fonts {
   package { 'fonts-inconsolata':         ensure => purged }
   package { 'fonts-hack':                ensure => installed }
   package { 'fonts-roboto':              ensure => installed }
+  package { 'fonts-symbola':             ensure => installed }
   package { 'fonts-noto-color-emoji':    ensure => installed }
   package { 'ttf-mscorefonts-installer': ensure => installed }
   package { 'xfonts-terminus':           ensure => installed }
