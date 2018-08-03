@@ -8,16 +8,17 @@ class dev {
 
   package { 'nodejs': ensure => installed }
 
-  package { 'make':       ensure => installed }
-  package { 'pkg-config': ensure => installed }
-  package { 'autoconf':   ensure => installed }
-  package { 'automake':   ensure => installed }
-  package { 'libtool':    ensure => installed }
-  package { 'gdb':        ensure => installed }
-  package { 'valgrind':   ensure => installed }
-  package { 'ccache':     ensure => installed }
-  package { 'global':     ensure => installed }
-  package { 'bear':       ensure => installed }
+  package { 'make':        ensure => installed }
+  package { 'pkg-config':  ensure => installed }
+  package { 'autoconf':    ensure => installed }
+  package { 'automake':    ensure => installed }
+  package { 'libtool':     ensure => installed }
+  package { 'gdb':         ensure => installed }
+  package { 'valgrind':    ensure => installed }
+  package { 'ccache':      ensure => installed }
+  package { 'global':      ensure => installed }
+  package { 'bear':        ensure => installed }
+  package { 'clang-tools': ensure => installed }
 
   package { 'ipython':           ensure => installed }
   package { 'ipython3':          ensure => installed }
