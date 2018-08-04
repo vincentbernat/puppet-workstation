@@ -1,31 +1,35 @@
-class system::postfix($relay, $relayauth, $origin) {
+class system::postfix($relays, $origin = "${::domain}") {
 
   package { postfix: ensure => installed }
 
   file { "/etc/postfix/main.cf":
     content => template("system/postfix/main.cf.erb"),
-    notify => Service["postfix"]
+    notify  => Service["postfix"]
   }
   file { "/etc/postfix/sasl_passwd":
-    content => "# Managed by Puppet.\n[${relay}]:587 ${relayauth}\n",
-    mode    => "0640",
+    content   => template("system/postfix/sasl_passwd.erb"),
+    mode      => "0640",
+    show_diff => false,
+    notify    => Exec["postmap"]
+  }
+  file { "/etc/postfix/relayhost_maps":
+    content => template("system/postfix/relayhost_maps.erb"),
     notify  => Exec["postmap"]
   }
-
   file { "/etc/aliases":
     content => template("system/postfix/aliases.erb"),
-    notify => Exec["postalias"]
+    notify  => Exec["postalias"]
   }
 
   service { postfix:
-    ensure => running,
+    ensure  => running,
     require => Package["postfix"]
   }
 
 
   file { "/etc/mailname":
     content => template("system/postfix/mailname.erb"),
-    notify => Service["postfix"]
+    notify  => Service["postfix"]
   }
 
   exec { "postalias":
@@ -33,7 +37,7 @@ class system::postfix($relay, $relayauth, $origin) {
     refreshonly => true
   }
   exec { "postmap":
-    command     => "/usr/sbin/postmap /etc/postfix/sasl_passwd",
+    command     => "/usr/sbin/postmap /etc/postfix/sasl_passwd /etc/postfix/relayhost_maps",
     refreshonly => true
   }
 
