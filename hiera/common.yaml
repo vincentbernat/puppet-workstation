@@ -1,2 +1,2 @@
-system::postfix::relay: "smtp.luffy.cx"
+system::postfix::relay: "smtp.fastmail.com"
 system::postfix::origin: "luffy.cx"

@@ -1,10 +1,15 @@
-class system::postfix($relay = undef, $cert = undef, $key = undef, $origin = undef) {
+class system::postfix($relay, $relayauth, $origin) {
 
   package { postfix: ensure => installed }
 
   file { "/etc/postfix/main.cf":
     content => template("system/postfix/main.cf.erb"),
     notify => Service["postfix"]
+  }
+  file { "/etc/postfix/sasl_passwd":
+    content => "# Managed by Puppet.\n[${relay}]:587 ${relayauth}\n",
+    mode    => "0640",
+    notify  => Exec["postmap"]
   }
 
   file { "/etc/aliases":
@@ -17,35 +22,18 @@ class system::postfix($relay = undef, $cert = undef, $key = undef, $origin = und
     require => Package["postfix"]
   }
 
-  if ($key != undef) {
-    file { "/etc/ssl/private/postfix.key":
-      mode => "0600",
-      content => "${key}",
-      notify => Service["postfix"]
-    }
-  }
-  else {
-    warning('no key present for postfix')
-  }
-  if ($cert != undef) {
-    file { "/etc/ssl/postfix.pem":
-      content => "${cert}",
-      notify => Service["postfix"]
-    }
-  }
-  else {
-    warning('no certificate present for postfix')
-  }
 
-  if ($origin != undef) {
-    file { "/etc/mailname":
-      content => template("system/postfix/mailname.erb"),
-      notify => Service["postfix"]
-    }
+  file { "/etc/mailname":
+    content => template("system/postfix/mailname.erb"),
+    notify => Service["postfix"]
   }
 
   exec { "postalias":
-    command => "/usr/sbin/postalias /etc/aliases",
+    command     => "/usr/sbin/postalias /etc/aliases",
+    refreshonly => true
+  }
+  exec { "postmap":
+    command     => "/usr/sbin/postmap /etc/postfix/sasl_passwd",
     refreshonly => true
   }
 
