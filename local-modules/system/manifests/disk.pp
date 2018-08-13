@@ -36,16 +36,12 @@ class system::disk {
       value => "noatime"
     }
   }
-  define fstab_add_discard() {
-    fstab_add_option { "${title}-nodiscard":
-      entry => $title,
-      value => "discard"
-    }
-  }
 
   $noatime = split($::fstab_missing_noatime, ',')
   system::disk::fstab_add_noatime { $noatime: }
-  $nodiscard = split($::fstab_missing_discard, ',')
-  system::disk::fstab_add_discard { $nodiscard: }
 
+  # For SSD, better use fstrim weekly
+  service { "fstrim.timer":
+    enable => true
+  }
 }
