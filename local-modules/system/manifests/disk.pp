@@ -42,6 +42,7 @@ class system::disk {
 
   # For SSD, better use fstrim weekly
   service { "fstrim.timer":
-    enable => true
+    ensure => running,
+    enable => true,
   }
 }
