@@ -10,6 +10,7 @@ class desktop::spotify {
   }
   ->
   package { 'xdotool': ensure => installed } ->
+  package { 'playerctl': ensure => installed } ->
   package { 'spotify-client': ensure => installed }
 
 }
