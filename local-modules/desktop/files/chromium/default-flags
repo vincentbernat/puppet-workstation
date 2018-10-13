@@ -18,6 +18,9 @@ CHROMIUM_FLAGS="$CHROMIUM_FLAGS --media-router=0"
 # Enable remote extensions
 CHROMIUM_FLAGS="$CHROMIUM_FLAGS --enable-remote-extensions"
 
+# Enable locally installed extensions
+CHROMIUM_FLAGS="$CHROMIUM_FLAGS --load-extension=`ls -dm /usr/share/chromium/extensions/* 2>/dev/null | tr -d '\n'`"
+
 export CHROMIUM_FLAGS
 
 # Local Variables:
