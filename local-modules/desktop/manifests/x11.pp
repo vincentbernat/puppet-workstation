@@ -3,7 +3,8 @@ class desktop::x11 {
   package { ["xserver-xorg",
              "xserver-xorg-input-evdev",
              "xserver-xorg-input-libinput"]: ensure => installed }
-  package { "xserver-xorg-input-synaptics": ensure => absent }
+  package { ["xserver-xorg-input-synaptics",
+             "xserver-xorg-legacy"]: ensure => absent }
 
   package { "lightdm": ensure => installed }
   ->
