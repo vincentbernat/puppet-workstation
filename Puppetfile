@@ -10,7 +10,7 @@ mod "jhoblitt/udev",                     "~> 1.2.0"
 mod "saz/timezone",                      "~> 3.3.0"
 mod "herculesteam/augeasproviders_grub", "~> 2.4.0"
 mod "herculesteam/augeasproviders_ssh",  "~> 2.5.0"
-mod "saz/sudo",                          "~> 4.0.0"
+mod "saz/sudo",                          "~> 5.0.0"
 
 # Local Variables:
 # mode: Ruby
