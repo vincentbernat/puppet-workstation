@@ -25,7 +25,6 @@ class desktop {
   package { "gimp": ensure => installed }
   package { "gpicview": ensure => installed }
   package { "inkscape": ensure => installed }
-  package { "mdbus2": ensure => installed }
   package { "mpv": ensure => installed }
   package { "pidgin": ensure => installed } ->
   package { "pidgin-skype": ensure => installed }
