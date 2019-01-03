@@ -19,7 +19,7 @@ class system {
   package { "at":              ensure => absent }
   package { "ntp":             ensure => absent }
   package { "sntp":            ensure => absent }
-  package { "mlocate":         ensure => absent }
+  package { "mlocate":         ensure => purged }
   package { "systemd-sysv":    ensure => installed } ->
   package { ["initscripts", "sysv-rc", "insserv", "startpar", "rpcbind"]:
     ensure => purged
