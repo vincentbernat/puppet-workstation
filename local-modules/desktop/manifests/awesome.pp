@@ -9,7 +9,7 @@ class desktop::awesome {
   package { 'fvwm-crystal':              ensure => installed }
   package { 'gconf2':                    ensure => installed }
   package { 'gnome-icon-theme':          ensure => installed }
-  package { 'gnome-icon-theme-symbolic': ensure => installed }
+  package { 'adwaita-icon-theme':        ensure => installed }
   package { 'gnome-themes-standard':     ensure => installed }
   package { 'gnupg-agent':               ensure => installed }
   package { 'hsetroot':                  ensure => installed }
