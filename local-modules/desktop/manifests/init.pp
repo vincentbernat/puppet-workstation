@@ -43,7 +43,7 @@ class desktop {
   package { "libreoffice": ensure => installed }
   package { "libreoffice-gtk3": ensure => installed }
   package { "libreoffice-sdbc-firebird": ensure => purged }
-  package { "gnome-settings-daemon":
+  package { ["gnome-settings-daemon", "gvfs-daemons", "gvfs-backends"]:
     ensure          => installed,
     install_options => ["--no-install-recommends"]
   }
@@ -56,8 +56,6 @@ class desktop {
 
   # Blacklisting some annoying packages
   package { "gnome-keyring": ensure => absent }
-  package { "gvfs-daemons": ensure => absent }
-  package { "gvfs-bin": ensure => absent }
   package { "flashplugin-nonfree": ensure => purged }
 
 }
