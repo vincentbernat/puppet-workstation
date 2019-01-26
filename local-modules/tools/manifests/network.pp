@@ -2,6 +2,7 @@ class tools::network {
 
   package { "bmon": ensure => installed }
   package { "curl": ensure => installed }
+  package { "dublin-traceroute": ensure => installed }
   package { "fping": ensure => installed }
   package { "httping": ensure => installed }
   package { "lftp": ensure => installed }
