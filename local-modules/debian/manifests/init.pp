@@ -16,7 +16,7 @@ class debian {
     source => "puppet:///modules/debian/apt/02periodic"
   }
   file { "/etc/apt/apt.conf.d/10disable-pdiff":
-    source => "puppet:///modules/debian/apt/10disable-pdiff"
+    ensure => absent
   }
   file { "/etc/apt/apt.conf.d/99translations":
     source => "puppet:///modules/debian/apt/99translations"
