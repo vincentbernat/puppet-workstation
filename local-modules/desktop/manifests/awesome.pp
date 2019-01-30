@@ -1,4 +1,6 @@
 class desktop::awesome {
+  # awesome-extra=2012061101
+  # awesome=3.4.15-1
   package { 'awesome':                   ensure => held }
   package { 'awesome-extra':             ensure => held }
 
