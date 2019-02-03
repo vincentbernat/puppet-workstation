@@ -1,27 +1,25 @@
 # A set of command line flags that we want to set by default.
 
 # Do not hide any extensions in the about:extensions dialog
-CHROMIUM_FLAGS="$CHROMIUM_FLAGS --show-component-extension-options"
+export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --show-component-extension-options"
 
-# Don't use the GPU blacklist (bug #802933)
-CHROMIUM_FLAGS="$CHROMIUM_FLAGS --ignore-gpu-blacklist"
+# Enable GPU rasterization.
+export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --enable-gpu-rasterization"
 
 # Don't display any warnings about not being the default browser
-CHROMIUM_FLAGS="$CHROMIUM_FLAGS --no-default-browser-check"
+export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --no-default-browser-check"
 
 # Disable pinging
-CHROMIUM_FLAGS="$CHROMIUM_FLAGS --disable-pings"
+export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --disable-pings"
 
 # Disable the builtin media router (bug #833477)
-CHROMIUM_FLAGS="$CHROMIUM_FLAGS --media-router=0"
+export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --media-router=0"
 
 # Enable remote extensions
-CHROMIUM_FLAGS="$CHROMIUM_FLAGS --enable-remote-extensions"
+export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --enable-remote-extensions"
 
 # Enable locally installed extensions
-CHROMIUM_FLAGS="$CHROMIUM_FLAGS --load-extension=`ls -dm /usr/share/chromium/extensions/* 2>/dev/null | tr -d '\n'`"
-
-export CHROMIUM_FLAGS
+export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --load-extension=`ls -dm /usr/share/chromium/extensions/* 2>/dev/null | tr -d '\n'`"
 
 # Local Variables:
 # mode: sh
