@@ -14,6 +14,7 @@ class tools::applications {
   package { 'mercurial': ensure         => installed }
   package { 'silversearcher-ag': ensure => installed }
   package { 'strace': ensure            => installed }
+  package { 'bpftrace': ensure          => installed }
   package { 'subversion': ensure        => installed }
   package { 'tmux': ensure              => installed }
 
