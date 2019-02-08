@@ -10,5 +10,6 @@ class desktop::emacs {
   package { 'elpa-dpkg-dev-el': ensure => installed, require => Package['emacs'] }
   package { 'fortune-mod':      ensure => installed }
   package { 'gpgsm':            ensure => installed }
+  package { 'zbar-tools':       ensure => installed }
 
 }
