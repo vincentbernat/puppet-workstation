@@ -22,7 +22,7 @@ class desktop::fonts {
   # fontconfig
   package { 'fontconfig': ensure => installed }
   ->
-  file { ['/etc/fonts/conf.d/10-sub-pixel-rgb.conf','/etc/fonts/conf.d/55-look-better.conf']:
+  file { '/etc/fonts/conf.d/10-sub-pixel-rgb.conf':
     ensure => absent
   }
 
