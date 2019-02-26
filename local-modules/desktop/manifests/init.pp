@@ -62,9 +62,12 @@ class desktop {
     location => 'https://flathub.org/repo/flathub.flatpakrepo'
   }
   ->
-  flatpak { ['com.slack.Slack',
+  flatpak { [
+             'com.slack.Slack',
+             'com.snes9x.Snes9x',
+             'com.spotify.Client',
              'us.zoom.Zoom',
-             'com.spotify.Client']:
+             ]:
     ensure => installed,
     remote => 'flathub'
   }
