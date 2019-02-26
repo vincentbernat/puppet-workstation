@@ -49,4 +49,6 @@ class debian {
     priority => 101
   }
 
+  package { 'flatpak': ensure => installed }
+
 }

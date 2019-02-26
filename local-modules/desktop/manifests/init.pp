@@ -57,4 +57,14 @@ class desktop {
   package { 'gnome-keyring':       ensure => absent }
   package { 'flashplugin-nonfree': ensure => purged }
 
+  # Software packaged with Flatpak
+  flatpak_remote { 'flathub':
+    ensure   => present,
+    location => 'https://flathub.org/repo/flathub.flatpakrepo'
+  }
+  ->
+  flatpak { ['com.slack.Slack', 'us.zoom.Zoom']:
+    ensure => installed,
+    remote => 'flathub'
+  }
 }
