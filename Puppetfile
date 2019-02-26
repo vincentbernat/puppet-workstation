@@ -4,13 +4,13 @@ forge 'https://forgeapi.puppetlabs.com'
 # version. From time to time, it is possible to check for new versions
 # with `librarian-puppet outdated` command.
 
-mod 'puppetlabs/stdlib',                 '~> 4.12.0'
-mod 'puppetlabs/apt',                    '~> 2.3.0'
-mod 'jhoblitt/udev',                     '~> 1.2.0'
-mod 'saz/timezone',                      '~> 3.3.0'
-mod 'herculesteam/augeasproviders_grub', '~> 2.4.0'
-mod 'herculesteam/augeasproviders_ssh',  '~> 2.5.0'
-mod 'saz/sudo',                          '~> 5.0.0'
+mod 'puppetlabs/stdlib',                 '~> 4.25.1'
+mod 'puppetlabs/apt',                    '~> 6.3.0'
+mod 'jhoblitt/udev',                     '~> 2.3.0'
+mod 'saz/timezone',                      '~> 5.1.1'
+mod 'herculesteam/augeasproviders_grub', '~> 3.0.1'
+mod 'herculesteam/augeasproviders_ssh',  '~> 3.1.0'
+mod 'saz/sudo',                          '~> 6.0.0'
 
 # Local Variables:
 # mode: Ruby
