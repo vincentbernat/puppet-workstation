@@ -12,7 +12,6 @@ class desktop {
   # Some applications
   include desktop::emacs
   include desktop::chromium
-  include desktop::spotify
   include desktop::latex
   include desktop::camera
 
@@ -52,6 +51,7 @@ class desktop {
   package { 'firefox-esr':        ensure => purged }
   package { 'iceweasel':          ensure => purged }
   package { 'gstreamer1.0-vaapi': ensure => installed }
+  package { 'spotify-client':     ensure => purged }
 
   # Blacklisting some annoying packages
   package { 'gnome-keyring':       ensure => absent }
@@ -63,7 +63,9 @@ class desktop {
     location => 'https://flathub.org/repo/flathub.flatpakrepo'
   }
   ->
-  flatpak { ['com.slack.Slack', 'us.zoom.Zoom']:
+  flatpak { ['com.slack.Slack',
+             'us.zoom.Zoom',
+             'com.spotify.Client']:
     ensure => installed,
     remote => 'flathub'
   }
