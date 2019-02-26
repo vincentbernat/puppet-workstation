@@ -51,7 +51,6 @@ class desktop {
   package { 'firefox-esr':        ensure => purged }
   package { 'iceweasel':          ensure => purged }
   package { 'gstreamer1.0-vaapi': ensure => installed }
-  package { 'spotify-client':     ensure => purged }
 
   # Blacklisting some annoying packages
   package { 'gnome-keyring':       ensure => absent }
