@@ -82,12 +82,9 @@ class system {
     enable => true
   }
 
-  # We need vsyscall emulation to be able to use older distributions
+  # We needed vsyscall emulation to be able to use older distributions
   # (like wheezy). This is set to none with recent Debian kernels.
-  kernel_parameter { "vsyscall":
-    ensure => present,
-    value  => "emulate"
-  }
+  kernel_parameter { 'vsyscall': ensure => absent }
 
   # Enable user namespaces. This is a security risk, but I end up
   # enabling it after each boot anyway.
