@@ -89,6 +89,10 @@ class system {
     value  => "emulate"
   }
 
+  # Enable user namespaces. This is a security risk, but I end up
+  # enabling it after each boot anyway.
+  sysctl { 'kernel.unprivileged_userns_clone': value => '1' }
+
   package { 'tlp': ensure => installed } ->
   file_line { 'disable usb autosuspend':
     ensure => present,

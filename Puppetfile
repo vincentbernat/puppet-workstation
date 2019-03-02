@@ -12,6 +12,7 @@ mod 'herculesteam/augeasproviders_grub', '~> 3.0.1'
 mod 'herculesteam/augeasproviders_ssh',  '~> 3.1.0'
 mod 'saz/sudo',                          '~> 6.0.0'
 mod 'brwyatt/flatpak',                   '~> 0.2.3'
+mod 'thias/sysctl',                      '~> 1.0.6'
 
 # Local Variables:
 # mode: Ruby
