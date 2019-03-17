@@ -5,6 +5,7 @@ class dev {
   package { 'debhelper':        ensure => installed }
   package { 'git-buildpackage': ensure => installed }
   package { 'dput-ng':          ensure => installed }
+  package { 'ubuntu-dev-tools': ensure => installed }
 
   package { 'nodejs': ensure => installed }
 
