@@ -1,5 +1,6 @@
 class dev {
 
+  # Debian
   package { 'build-essential':  ensure => installed }
   package { 'dpkg-dev':         ensure => installed }
   package { 'debhelper':        ensure => installed }
@@ -8,9 +9,11 @@ class dev {
   package { 'ubuntu-dev-tools': ensure => installed }
   package { 'lintian':          ensure => installed }
   package { 'lintian-brush':    ensure => installed }
+  include dev::cowbuilder
 
   package { 'nodejs': ensure => installed }
 
+  # C-related
   package { 'make':            ensure => installed }
   package { 'pkg-config':      ensure => installed }
   package { 'autoconf':        ensure => installed }
@@ -22,6 +25,7 @@ class dev {
   package { 'global':          ensure => installed }
   package { 'bear':            ensure => installed }
 
+  # Python-related
   package { 'ipython':           ensure => installed }
   package { 'ipython3':          ensure => installed }
   package { 'python-all-dev':    ensure => installed }
@@ -36,7 +40,4 @@ class dev {
   package { 'python-rope':       ensure => installed }
   package { 'python-jedi':       ensure => installed }
   package { 'python3-jedi':      ensure => installed }
-
-  include dev::cowbuilder
-
 }
