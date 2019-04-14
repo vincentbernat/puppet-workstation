@@ -35,7 +35,7 @@ class system {
 
   # Enable power control for most devices
   udev::rule { "90-autosuspend.rules":
-    source => 'puppet:///modules/system/autosuspend.rules'
+    ensure => absent
   }
   udev::rule { '70-more-uaccess.rules':
     source => 'puppet:///modules/system/uaccess.rules'
@@ -85,22 +85,4 @@ class system {
   # Enable user namespaces. This is a security risk, but I end up
   # enabling it after each boot anyway.
   sysctl { 'kernel.unprivileged_userns_clone': value => '1' }
-
-  package { 'tlp': ensure => installed } ->
-  file_line { 'disable usb autosuspend':
-    ensure => present,
-    line   => 'USB_AUTOSUSPEND=0',
-    match  => '^USB_AUTOSUSPEND=.',
-    path   => '/etc/default/tlp'
-  } ->
-  file_line { 'enable/disable WOL':
-    ensure    => present,
-    line      => $facts['laptop'] ? {
-      true    => 'WOL_DISABLE=Y',
-      default => 'WOL_DISABLE=N',
-    },
-    match     => '^WOL_DISABLE=.',
-    path      => '/etc/default/tlp'
-  }
-
 }
