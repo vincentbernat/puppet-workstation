@@ -6,7 +6,7 @@ class debian {
                ensure => installed
   }
 
-  package { 'debian-security-support': ensure => installed }
+  package { 'debian-security-support': ensure => purged }
   package { 'apt-forktracer': ensure => installed }
   package { "aptitude": ensure => installed } ->
   file { "/etc/apt/apt.conf.d/25aptitude":
