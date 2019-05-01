@@ -2,7 +2,8 @@ class desktop::x11 {
 
   package { ["xserver-xorg",
              "xserver-xorg-input-evdev",
-             "xserver-xorg-input-libinput"]: ensure => installed }
+             "xserver-xorg-input-libinput",
+             "va-driver-all"]: ensure => installed }
   package { ["xserver-xorg-input-synaptics",
              "xserver-xorg-legacy"]: ensure => absent }
 
