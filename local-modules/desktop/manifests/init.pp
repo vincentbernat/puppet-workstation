@@ -47,7 +47,7 @@ class desktop {
 
   # Firefox
   package { 'firefox':            ensure => installed } ->
-  package { 'webext-browserpass': ensure => installed }
+  package { 'webext-browserpass': ensure => held } # 2.0.22-2
   package { 'firefox-esr':        ensure => purged }
   package { 'iceweasel':          ensure => purged }
   package { 'gstreamer1.0-vaapi': ensure => installed }
