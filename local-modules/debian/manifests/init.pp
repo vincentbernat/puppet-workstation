@@ -36,7 +36,7 @@ class debian {
     location => 'http://httpredir.debian.org/debian/',
     release  => 'experimental',
     repos    => 'main contrib non-free',
-    include  => { 'src' => false }
+    include  => { 'src' => true }
   }
   apt::source { 'experimental-debug':
     location => "http://debug.mirrors.debian.org/debian-debug/",
