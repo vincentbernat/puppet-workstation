@@ -63,7 +63,6 @@ class desktop {
   }
   ->
   flatpak { [
-             'com.meetfranz.Franz',
              'com.obsproject.Studio',
              'com.skype.Client',
              'com.slack.Slack',
