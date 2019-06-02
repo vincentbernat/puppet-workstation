@@ -20,5 +20,6 @@ class tools::applications {
   package { 'strace': ensure              => installed }
   package { 'subversion': ensure          => installed }
   package { 'tmux': ensure                => installed }
+  package { 'tzdiff': ensure              => installed }
 
 }
