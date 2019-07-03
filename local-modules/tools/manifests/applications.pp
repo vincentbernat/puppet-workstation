@@ -13,6 +13,7 @@ class tools::applications {
   package { 'lshw': ensure                => installed }
   package { 'lsof': ensure                => installed }
   package { 'mercurial': ensure           => installed }
+  package { 'neofetch':ensure             => installed }
   package { 'pass': ensure                => installed }
   package { 'pass-extension-otp': ensure  => installed }
   package { 'pass-extension-tail': ensure => installed }
