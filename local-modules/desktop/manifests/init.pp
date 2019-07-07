@@ -24,7 +24,6 @@ class desktop {
   package { 'gimp':                      ensure => installed }
   package { 'gpicview':                  ensure => installed }
   package { 'inkscape':                  ensure => installed }
-  package { 'mpv':                       ensure => installed }
   package { 'pinentry-curses':           ensure => installed }
   package { 'pinentry-gtk2':             ensure => installed }
   package { 'pinentry-gtk3':             ensure => absent }
@@ -43,6 +42,11 @@ class desktop {
   package { ['gnome-settings-daemon', 'gvfs-daemons', 'gvfs-backends']:
     ensure          => installed,
     install_options => ['--no-install-recommends']
+  }
+
+  package { 'mpv': ensure => installed }
+  -> file { '/etc/mpv/mpv.conf':
+    content => template('desktop/mpv.conf.erb')
   }
 
   # Firefox
