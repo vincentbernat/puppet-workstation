@@ -26,6 +26,7 @@ class system::sudo {
       %sudo ALL=(ALL) NOPASSWD:\
        /usr/bin/systemctl start *,\
        /usr/bin/systemctl restart *,\
+       /usr/bin/systemctl reload *,\
        /usr/bin/systemctl stop *,\
        /usr/bin/systemctl status *
       |- SUDO
