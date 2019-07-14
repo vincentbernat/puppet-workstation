@@ -50,5 +50,11 @@ class debian {
   }
 
   package { 'flatpak': ensure => installed }
+  package { 'needrestart': ensure => installed }
+  -> file { '/etc/needrestart/conf.d/puppet.conf':
+    content => @(END)
+      $nrconf{override_rc}->{q(^bluetooth)} = 0;
+      | END
+  }
 
 }
