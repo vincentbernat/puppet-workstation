@@ -10,6 +10,7 @@ class tools::applications {
   package { 'ioping': ensure              => installed }
   package { 'iotop': ensure               => installed }
   package { 'less': ensure                => installed }
+  package { 'linux-perf': ensure          => installed }
   package { 'lshw': ensure                => installed }
   package { 'lsof': ensure                => installed }
   package { 'mercurial': ensure           => installed }
