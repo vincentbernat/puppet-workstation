@@ -17,7 +17,8 @@ class system::sudo {
        /usr/bin/apt upgrade,\
        /usr/bin/apt autoremove,\
        /usr/bin/apt autoclean,\
-       /usr/bin/aptitude safe-upgrade,\
+       /usr/bin/aptitude purge ~o,\
+       /usr/bin/aptitude purge ~c,\
        /usr/bin/flatpak update
       |- SUDO
   }
