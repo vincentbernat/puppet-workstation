@@ -71,7 +71,7 @@ class system {
   }
 
   class { "timezone":
-    timezone => "Europe/Zurich"
+    timezone => "Europe/Paris"
   }
   service { "systemd-timesyncd":
     ensure => running,
