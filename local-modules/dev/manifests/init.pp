@@ -26,18 +26,12 @@ class dev {
   package { 'bear':            ensure => installed }
 
   # Python-related
-  package { 'ipython':           ensure => installed }
   package { 'ipython3':          ensure => installed }
-  package { 'python-all-dev':    ensure => installed }
   package { 'python3-all-dev':   ensure => installed }
-  package { 'python-tox':        ensure => installed }
-  package { 'python-nose':       ensure => installed }
-  package { 'python3-nose':      ensure => installed }
+  package { 'tox':               ensure => installed }
+  package { 'python3-pytest':    ensure => installed }
   package { 'cookiecutter':      ensure => installed }
   package { 'python-virtualenv': ensure => installed }
-  package { 'python-twisted':    ensure => installed }
-  package { 'python-autopep8':   ensure => installed }
-  package { 'python-rope':       ensure => installed }
   package { 'python-jedi':       ensure => installed }
   package { 'python3-jedi':      ensure => installed }
 }
