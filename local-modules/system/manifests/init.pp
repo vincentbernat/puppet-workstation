@@ -34,10 +34,6 @@ class system {
     require => Package["sysfsutils"]
   }
 
-  # Enable power control for most devices
-  udev::rule { "90-autosuspend.rules":
-    ensure => absent
-  }
   udev::rule { '70-more-uaccess.rules':
     source => 'puppet:///modules/system/uaccess.rules'
   }
