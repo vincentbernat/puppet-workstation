@@ -6,6 +6,10 @@ class system::postfix($relays, $origin = "${::domain}") {
     content => template("system/postfix/main.cf.erb"),
     notify  => Service["postfix"]
   }
+  file { "/etc/postfix/master.cf":
+    source => "/usr/share/postfix/master.cf.dist",
+    notify  => Service["postfix"]
+  }
   file { "/etc/postfix/sasl_passwd":
     content   => template("system/postfix/sasl_passwd.erb"),
     mode      => "0640",
