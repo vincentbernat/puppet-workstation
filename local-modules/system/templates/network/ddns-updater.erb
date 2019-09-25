@@ -280,6 +280,9 @@ def ipv6(kind):
         logger.debug("Unable to get IPv6 address: %s", e)
         return None
     ip, _, _, _ = s.getsockname()
+    if ip.startswith("fe80::"):
+        logger.debug("Got a link-local IPv6")
+        return None
     logger.info("IPv6 is %s", ip)
     return ip
 
