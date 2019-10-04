@@ -51,6 +51,7 @@ class desktop {
 
   # Firefox
   package { 'firefox':            ensure => installed } ->
+  package { 'firefox-l10n-fr':    ensure => installed } ->
   package { 'webext-browserpass': ensure => held } # 2.0.22-2
   package { 'firefox-esr':        ensure => purged }
   package { 'iceweasel':          ensure => purged }
