@@ -4,6 +4,7 @@ class tools::network {
   package { 'curl':                 ensure => installed }
   package { 'fping':                ensure => installed }
   package { 'httping':              ensure => installed }
+  package { 'ldnsutils':            ensure => installed }
   package { 'lftp':                 ensure => installed }
   package { 'lldpd':                ensure => installed }
   package { 'mtr-tiny':             ensure => installed }
