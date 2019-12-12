@@ -15,12 +15,6 @@ export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --disable-pings"
 # Disable the builtin media router (bug #833477)
 export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --media-router=0"
 
-# Enable remote extensions
-export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --enable-remote-extensions"
-
-# Enable locally installed extensions
-export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --load-extension=`ls -dm /usr/share/chromium/extensions/* 2>/dev/null | tr -d '\n'`"
-
 # Local Variables:
 # mode: sh
 # End:
