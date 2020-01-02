@@ -6,9 +6,10 @@ class tools::shell {
   User <| title == "${::user}" |> { shell => "/bin/zsh" }
   ->
   file { "${::home}/.zshrc":
-    owner => "${::user}",
-    group => "${::group}",
-    content => template("tools/shell/zshrc.erb")
+    owner  => "${::user}",
+    group  => "${::group}",
+    ensure => link,
+    target => "${::home}/.zsh/zshrc"
   }
 
   package { "python-pygments": ensure => installed }
