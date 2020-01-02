@@ -12,6 +12,6 @@ class tools::shell {
     target => "${::home}/.zsh/zshrc"
   }
 
-  package { "python-pygments": ensure => installed }
+  package { "python3-pygments": ensure => installed }
 
 }
