@@ -18,9 +18,8 @@ This requires:
  - Debian unstable
  - `puppet` package
  - `librarian-puppet` package
- - `apt-transport-https` package
 
-Debian is installed using the Jessie installer, asking to use the
+Debian is installed using the Stretch installer, asking to use the
 whole disk in a guided partitioning scheme with encryption and
 separate partitions for everything. Then:
 
