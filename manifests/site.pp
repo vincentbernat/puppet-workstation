@@ -13,6 +13,10 @@ node default {
       "preferences.d"  => true
     }
   }
+  file { '/sbin/udevadm':
+    ensure => link,
+    target => '../bin/udevadm'
+  } ->
   class { "udev": }
 
   # The current user is virtual to allow modifications from multiple places
