@@ -9,3 +9,6 @@ KERNEL=="hidraw*", ATTRS{idVendor}=="16[dD]0", ATTRS{idProduct}=="0[bB]1[aA]", T
 
 # KVM
 KERNEL=="kvm", TAG+="uaccess"
+
+# Backlight
+SUBSYSTEM=="backlight", TAG+="uaccess"
