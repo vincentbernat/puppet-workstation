@@ -27,7 +27,7 @@ class system::disk {
     }
   }
   define fstab_add_noatime() {
-    fstab_add_option { "${title}-noatime":
+    system::disk::fstab_add_option { "${title}-noatime":
       entry => $title,
       value => "noatime"
     }
