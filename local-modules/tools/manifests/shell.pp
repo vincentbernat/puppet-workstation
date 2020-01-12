@@ -1,5 +1,5 @@
 class tools::shell {
-  package { "zsh":
+  package { ["zsh", "zsh-static"]:
     ensure => installed
   }
   ->
