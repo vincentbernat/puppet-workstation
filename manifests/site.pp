@@ -13,7 +13,9 @@ node default {
       "preferences.d"  => true
     }
   }
-  class { "udev": }
+  class { "udev":
+    udevadm_path => '/bin'
+  }
 
   # The current user is virtual to allow modifications from multiple places
   @user { "${::user}":
