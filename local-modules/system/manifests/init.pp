@@ -38,9 +38,8 @@ class system {
   udev::rule { '70-more-uaccess.rules':
     source => 'puppet:///modules/system/uaccess.rules'
   }
-  # Fix trackpoint speed
   udev::rule { '90-trackpoint.rules':
-    source => 'puppet:///modules/system/trackpoint.rules'
+    ensure => absent,
   }
 
   if $facts['dmi']['manufacturer'] == 'LENOVO' {
