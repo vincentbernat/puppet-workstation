@@ -48,9 +48,8 @@ class system {
       ensure => absent,
       notify => Exec['update initramfs for modprobe']
     }
-    # Enable PSR (better battery life)
     file { '/etc/modprobe.d/i915-psr.conf':
-      source => 'puppet:///modules/system/i915-psr.conf',
+      ensure => absent,
       notify => Exec['update initramfs for modprobe']
     }
     # Prefer MBIM over ACM
