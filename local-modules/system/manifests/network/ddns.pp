@@ -12,7 +12,7 @@ class system::network::ddns($key, $secret, $domain, $ttl=60) {
   $mstart = fqdn_rand(15)
   $sleep = fqdn_rand(40)
   cron { "ddns-updater":
-    command => "/bin/sleep ${sleep} ; /usr/local/bin/ddns-updater --ipv6=public 2> /dev/null",
+    command => "/bin/sleep ${sleep} ; /usr/local/bin/ddns-updater --ipv6=public",
     minute => "${mstart}-59/15",
     require => File['/usr/local/bin/ddns-updater']
   }
