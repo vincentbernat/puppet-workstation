@@ -52,9 +52,8 @@ class system {
       ensure => absent,
       notify => Exec['update initramfs for modprobe']
     }
-    # Prefer MBIM over ACM
     file { '/etc/modprobe.d/prefer-mbim.conf':
-      source => 'puppet:///modules/system/prefer-mbim.conf',
+      ensure => absent,
       notify => Exec['update initramfs for modprobe']
     }
   }
