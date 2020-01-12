@@ -42,21 +42,6 @@ class system {
     ensure => absent,
   }
 
-  if $facts['dmi']['manufacturer'] == 'LENOVO' {
-    file { '/etc/modprobe.d/rmi-smbus-blacklist.conf':
-      ensure => absent,
-      notify => Exec['update initramfs for modprobe']
-    }
-    file { '/etc/modprobe.d/i915-psr.conf':
-      ensure => absent,
-      notify => Exec['update initramfs for modprobe']
-    }
-    file { '/etc/modprobe.d/prefer-mbim.conf':
-      ensure => absent,
-      notify => Exec['update initramfs for modprobe']
-    }
-  }
-
   exec { 'update initramfs for modprobe':
     command     => '/usr/sbin/update-initramfs -k all -u',
     refreshonly => true
