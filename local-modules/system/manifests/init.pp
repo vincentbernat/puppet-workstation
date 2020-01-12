@@ -16,6 +16,7 @@ class system {
   package { "sysfsutils":      ensure => installed }
   package { "ncdu":            ensure => installed }
   package { "fwupd":           ensure => installed }
+  package { "acpi":            ensure => installed }
   package { "at":              ensure => absent }
   package { "ntp":             ensure => absent }
   package { "sntp":            ensure => absent }
