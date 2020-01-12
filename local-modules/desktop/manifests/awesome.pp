@@ -27,7 +27,6 @@ class desktop::awesome {
   package { 'redshift':                  ensure => installed }
   package { 'x11-xkb-utils':             ensure => installed }
   package { 'x11-xserver-utils':         ensure => installed }
-  package { 'xbacklight':                ensure => installed }
   package { 'xdg-utils':                 ensure => installed }
   package { 'xdotool':                   ensure => installed }
   package { 'xfce4-terminal':            ensure => installed }
@@ -36,4 +35,10 @@ class desktop::awesome {
   package { 'xsel':                      ensure => installed }
   package { 'xsettingsd':                ensure => installed }
   package { 'xss-lock':                  ensure => installed }
+
+  package { 'brightnessctl':
+    ensure          => installed,
+    install_options => ['--no-install-recommends']
+  }
+
 }
