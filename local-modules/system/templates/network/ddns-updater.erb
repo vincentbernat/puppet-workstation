@@ -92,7 +92,6 @@ import logging
 import logging.handlers
 import argparse
 import platform
-import string
 import errno
 from boto import route53
 
@@ -111,8 +110,9 @@ logger = logging.getLogger("ddns-updater")
 
 class ColorizingStreamHandler(logging.StreamHandler):
     """Provide a nicer logging output to error output with colors."""
-    colors = 'black red green yellow blue magenta cyan white'.split(" ")
-    color_map = dict([(x, colors.index(x)) for x in colors])
+    color_map = {c: i
+                 for i, c in enumerate('black red green yellow '
+                                       'blue magenta cyan white'.split(" "))}
     level_map = {
         logging.DEBUG:    (None,  'blue',   " DBG"),
         logging.INFO:     (None,  'green',  "INFO"),
@@ -218,7 +218,7 @@ def setup_logging(debug, silent, syslog_facility, syslog):
     # To syslog
     if enable_syslog:
         facility = getattr(logging.handlers.SysLogHandler,
-                           "LOG_{0}".format(string.upper(syslog_facility)))
+                           "LOG_{0}".format(syslog_facility.upper()))
         sh = logging.handlers.SysLogHandler(address=str("/dev/log"),
                                             facility=facility)
         sh.setFormatter(logging.Formatter(
