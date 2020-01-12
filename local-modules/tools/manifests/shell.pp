@@ -11,6 +11,13 @@ class tools::shell {
     ensure => link,
     target => "${::home}/.zsh/zshrc"
   }
+  ->
+  file { "${::home}/.zshenv":
+    owner  => "${::user}",
+    group  => "${::group}",
+    ensure => link,
+    target => "${::home}/.zsh/zshenv"
+  }
 
   package { "python3-pygments": ensure => installed }
 
