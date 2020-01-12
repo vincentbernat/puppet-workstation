@@ -44,9 +44,8 @@ class system {
   }
 
   if $facts['dmi']['manufacturer'] == 'LENOVO' {
-    # Don't use SMB to access trackpoint on Lenovo (buggy)
     file { '/etc/modprobe.d/rmi-smbus-blacklist.conf':
-      source => 'puppet:///modules/system/rmi-smbus-blacklist.conf',
+      ensure => absent,
       notify => Exec['update initramfs for modprobe']
     }
     # Enable PSR (better battery life)
