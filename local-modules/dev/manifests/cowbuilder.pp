@@ -1,13 +1,5 @@
 class dev::cowbuilder {
 
-  # We require /var/lib/systems to exist. It is usually a LVM
-  # volume. We do not put the create to let this rule fail if it
-  # doesn't exist.
-  file { "/var/cache/pbuilder":
-    ensure => link,
-    target => "/var/lib/systems/pbuilder"
-  }
-  ->
   package { "cowbuilder":
     ensure => installed
   }
