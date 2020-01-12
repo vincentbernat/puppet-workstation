@@ -40,12 +40,8 @@ class desktop {
   package { 'libreoffice-gtk3':          ensure => installed }
   package { 'libreoffice-sdbc-firebird': ensure => purged }
   package { 'libreoffice-java-common':   ensure => purged }
-  package { ['gvfs-daemons', 'gvfs-backends']:
+  package { ['gvfs-daemons', 'gvfs-backends', 'gnome-settings-daemon']:
     ensure => purged
-  }
-  package { 'gnome-settings-daemon':
-    ensure          => installed,
-    install_options => ['--no-install-recommends']
   }
 
   package { 'mpv': ensure => installed }
