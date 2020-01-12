@@ -32,6 +32,5 @@ class dev {
   package { 'python3-pytest':    ensure => installed }
   package { 'cookiecutter':      ensure => installed }
   package { 'python-virtualenv': ensure => installed }
-  package { 'python-jedi':       ensure => installed }
   package { 'python3-jedi':      ensure => installed }
 }
