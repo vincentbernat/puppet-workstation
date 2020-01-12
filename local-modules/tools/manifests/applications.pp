@@ -1,7 +1,6 @@
 class tools::applications {
 
   package { 'bpftrace': ensure            => installed }
-  package { 'git': ensure                 => installed }
   package { 'glances': ensure             => installed }
   package { 'gnupg': ensure               => installed }
   package { 'htop': ensure                => installed }
@@ -24,4 +23,12 @@ class tools::applications {
   package { 'tmux': ensure                => installed }
   package { 'tzdiff': ensure              => installed }
 
+  package { 'git':
+    ensure => installed
+  } ->
+  exec { 'create diff-highlight helper':
+    command => '/usr/bin/make',
+    cwd     => '/usr/share/doc/git/contrib/diff-highlight',
+    creates => '/usr/share/doc/git/contrib/diff-highlight/diff-highlight'
+  }
 }
