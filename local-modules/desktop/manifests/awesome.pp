@@ -8,6 +8,7 @@ class desktop::awesome {
 
   package { ['adwaita-icon-theme',
              'alsa-utils',
+             'bc',
              'compton',
              'dconf-cli',
              'fvwm',
