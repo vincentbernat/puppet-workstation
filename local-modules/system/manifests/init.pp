@@ -38,6 +38,10 @@ class system {
   udev::rule { '70-more-uaccess.rules':
     source => 'puppet:///modules/system/uaccess.rules'
   }
+  file { '/etc/modprobe.d/iwlwifi-btcoex.conf':
+    source => 'puppet:///modules/system/iwlwifi-btcoex.conf',
+    notify => Exec['update initramfs for modprobe']
+  }
 
   exec { 'update initramfs for modprobe':
     command     => '/usr/sbin/update-initramfs -k all -u',
