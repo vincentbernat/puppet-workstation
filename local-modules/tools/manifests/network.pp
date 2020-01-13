@@ -2,6 +2,7 @@ class tools::network {
 
   package { 'bmon':                 ensure => installed }
   package { 'curl':                 ensure => installed }
+  package { 'ethtool':              ensure => installed }
   package { 'fping':                ensure => installed }
   package { 'gnutls-bin':           ensure => installed }
   package { 'httping':              ensure => installed }
