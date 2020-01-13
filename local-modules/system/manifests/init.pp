@@ -38,9 +38,6 @@ class system {
   udev::rule { '70-more-uaccess.rules':
     source => 'puppet:///modules/system/uaccess.rules'
   }
-  udev::rule { '90-trackpoint.rules':
-    ensure => absent,
-  }
 
   exec { 'update initramfs for modprobe':
     command     => '/usr/sbin/update-initramfs -k all -u',
