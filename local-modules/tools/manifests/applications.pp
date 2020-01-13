@@ -1,6 +1,7 @@
 class tools::applications {
 
   package { 'bpftrace': ensure            => installed }
+  package { 'colordiff': ensure           => installed }
   package { 'glances': ensure             => installed }
   package { 'gnupg': ensure               => installed }
   package { 'htop': ensure                => installed }
