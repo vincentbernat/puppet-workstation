@@ -23,7 +23,9 @@ class system {
   package { "mlocate":         ensure => purged }
   package { "systemd-sysv":    ensure => installed } ->
   package { 'systemd-cron':    ensure => installed } ->
-  package { ["initscripts", "sysv-rc", "insserv", "startpar", "rpcbind"]:
+  package { ["initscripts", "sysv-rc", "insserv", "startpar",
+             "rpcbind",
+             "cron", "anacron"]:
     ensure => purged
   }
 
