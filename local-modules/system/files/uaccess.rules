@@ -11,7 +11,7 @@ KERNEL=="hidraw*", ATTRS{idVendor}=="16[dD]0", ATTRS{idProduct}=="0[bB]1[aA]", T
 KERNEL=="kvm", TAG+="uaccess"
 
 # Backlight
-SUBSYSTEM=="backlight", TAG+="uaccess"
+ACTION=="add", SUBSYSTEM=="backlight", RUN+="/usr/bin/setfacl -m group:adm:rw- %S%p/brightness"
 
 # rfkill
 KERNEL=="rfkill", SUBSYSTEM=="misc", TAG+="uaccess"
