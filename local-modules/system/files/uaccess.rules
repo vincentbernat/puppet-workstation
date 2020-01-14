@@ -12,3 +12,6 @@ KERNEL=="kvm", TAG+="uaccess"
 
 # Backlight
 SUBSYSTEM=="backlight", TAG+="uaccess"
+
+# rfkill
+KERNEL=="rfkill", SUBSYSTEM=="misc", TAG+="uaccess"
