@@ -22,6 +22,7 @@ class system {
   package { "sntp":            ensure => absent }
   package { "mlocate":         ensure => purged }
   package { "linux-cpupower":  ensure => installed }
+  package { "inxi":            ensure => installed }
   package { "systemd-sysv":    ensure => installed } ->
   package { 'systemd-cron':    ensure => installed } ->
   package { ["initscripts", "sysv-rc", "insserv", "startpar",
