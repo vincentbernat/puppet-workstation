@@ -21,7 +21,6 @@ class system {
   package { "ntp":             ensure => absent }
   package { "sntp":            ensure => absent }
   package { "mlocate":         ensure => purged }
-  package { "powertop":        ensure => installed }
   package { "linux-cpupower":  ensure => installed }
   package { "systemd-sysv":    ensure => installed } ->
   package { 'systemd-cron':    ensure => installed } ->
@@ -29,6 +28,12 @@ class system {
              "rpcbind",
              "cron", "anacron"]:
     ensure => purged
+  }
+
+  # Laptop tools
+  if $facts['laptop'] {
+    package { "tlp":             ensure => installed }
+    package { "powertop":        ensure => installed }
   }
 
   # Defragmentation of transparent huge page can slow down a host when
