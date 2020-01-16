@@ -47,4 +47,9 @@ class desktop::awesome {
     install_options => ['--no-install-recommends']
   }
 
+  # Prevent autorandr to run on monitor plug.
+  service { 'autorandr':
+    enable => mask
+  }
+
 }
