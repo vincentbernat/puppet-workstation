@@ -11,8 +11,6 @@ class dev {
   package { 'lintian-brush':    ensure => installed }
   include dev::cowbuilder
 
-  package { 'nodejs': ensure => installed }
-
   # C-related
   package { 'make':            ensure => installed }
   package { 'pkg-config':      ensure => installed }
@@ -26,11 +24,19 @@ class dev {
   package { 'bear':            ensure => installed }
 
   # Python-related
-  package { 'ipython3':          ensure => installed }
-  package { 'python3-all-dev':   ensure => installed }
-  package { 'tox':               ensure => installed }
-  package { 'python3-pytest':    ensure => installed }
-  package { 'cookiecutter':      ensure => installed }
-  package { 'python-virtualenv': ensure => installed }
-  package { 'python3-jedi':      ensure => installed }
+  package { 'ipython3':           ensure => installed }
+  package { 'python3-all-dev':    ensure => installed }
+  package { 'tox':                ensure => installed }
+  package { 'python3-pytest':     ensure => installed }
+  package { 'cookiecutter':       ensure => installed }
+  package { 'python-virtualenv':  ensure => installed }
+  package { 'python3-virtualenv': ensure => installed }
+  package { 'python3-jedi':       ensure => installed }
+  package { 'black':              ensure => installed }
+  package { 'pyflakes':           ensure => installed }
+  package { 'pylint':             ensure => installed }
+
+  # Others
+  package { 'golang': ensure => installed }
+  package { 'nodejs': ensure => installed }
 }
