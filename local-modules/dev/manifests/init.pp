@@ -34,7 +34,6 @@ class dev {
   package { 'python3-jedi':       ensure => installed }
   package { 'black':              ensure => installed }
   package { 'pyflakes':           ensure => installed }
-  package { 'pylint':             ensure => installed }
 
   # Others
   package { 'golang': ensure => installed }
