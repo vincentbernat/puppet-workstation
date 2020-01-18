@@ -24,7 +24,7 @@ class tools::applications {
   package { 'tmux': ensure                => installed }
   package { 'tzdiff': ensure              => installed }
 
-  package { 'git':
+  package { ['git', 'git-annex']:
     ensure => installed
   } ->
   exec { 'create diff-highlight helper':
