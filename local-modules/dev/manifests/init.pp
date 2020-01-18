@@ -36,6 +36,7 @@ class dev {
   package { 'pyflakes':           ensure => installed }
 
   # Others
-  package { 'golang': ensure => installed }
-  package { 'nodejs': ensure => installed }
+  package { 'golang':     ensure => installed }
+  package { ['nodejs',
+             'uglifyjs']: ensure => installed }
 }
