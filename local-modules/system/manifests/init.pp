@@ -37,6 +37,12 @@ class system {
     package { "powertop":        ensure => installed }
   }
 
+  # Locales
+  class { 'locales':
+    default_locale => 'en_US.UTF-8',
+    locales        => ['en_US.UTF-8 UTF-8', 'fr_FR.UTF-8 UTF-8']
+  }
+
   # Defragmentation of transparent huge page can slow down a host when
   # copying to slow devices (like USB keys)
   file { "/etc/sysfs.d/usb-performance.conf":
