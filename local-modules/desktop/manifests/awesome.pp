@@ -23,7 +23,6 @@ class desktop::awesome {
              'inputplug',
              'libnotify-bin',
              'libvte-2.91-0',
-             'numlockx',
              'playerctl',
              'policykit-1-gnome',
              'python3-pil',
