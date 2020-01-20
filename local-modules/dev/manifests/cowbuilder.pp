@@ -23,6 +23,7 @@ class dev::cowbuilder {
     require => Package["cowbuilder"],
     recurse => true,
     purge   => true,
+    mode    => '0755',
     source  => "puppet:///modules/dev/pbuilder/hooks"
   }
 
