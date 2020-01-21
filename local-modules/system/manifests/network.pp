@@ -13,6 +13,7 @@ class system::network {
   package { "network-manager-vpnc-gnome": ensure => installed }
   package { "firewall-applet": ensure => installed }
   package { "firewalld": ensure => installed }
+  package { "wireguard": ensure => installed }
 
   # Enable dnsmasq
   package { "resolvconf": ensure => purged }
