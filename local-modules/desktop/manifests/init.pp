@@ -40,7 +40,7 @@ class desktop {
   package { 'libreoffice-gtk3':          ensure => installed }
   package { 'libreoffice-sdbc-firebird': ensure => purged }
   package { 'libreoffice-java-common':   ensure => purged }
-  package { ['gvfs-daemons', 'gvfs-backends', 'gnome-settings-daemon']:
+  package { ['gvfs-daemons', 'gvfs-backends', 'gnome-settings-daemon', 'geoclue-2.0']:
     ensure => purged
   }
 
