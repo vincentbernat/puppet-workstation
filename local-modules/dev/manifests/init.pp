@@ -31,6 +31,7 @@ class dev {
   package { 'cookiecutter':       ensure => installed }
   package { 'python-virtualenv':  ensure => installed }
   package { 'python3-virtualenv': ensure => installed }
+  package { 'python3-pip':        ensure => installed }
   package { 'python3-jedi':       ensure => installed }
   package { 'black':              ensure => installed }
   package { 'pyflakes':           ensure => installed }
