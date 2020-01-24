@@ -35,6 +35,7 @@ class desktop::awesome {
              'xfce4-terminal',
              'xiccd',
              'xinput',
+             'xscreensaver-screensaver-bsod',
              'xsel',
              'xsettingsd',
              'xss-lock']:
