@@ -46,9 +46,12 @@ class desktop::awesome {
     install_options => ['--no-install-recommends']
   }
 
-  # Prevent autorandr to run on monitor plug.
+  # Prevent autorandr to run on monitor plug or on sleep.
   service { 'autorandr':
     enable => mask
+  }
+  file { '/etc/pm/sleep.d/40autorandr':
+    ensure => absent
   }
 
 }
