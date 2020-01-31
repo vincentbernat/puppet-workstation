@@ -73,6 +73,7 @@ class desktop {
              'com.slack.Slack',
              'com.snes9x.Snes9x',
              'com.spotify.Client',
+             'com.valvesoftware.Steam',
              'us.zoom.Zoom',
              ]:
     ensure => installed,
