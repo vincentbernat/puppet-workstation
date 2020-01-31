@@ -15,6 +15,7 @@ class system {
   package { "ca-cacert":        ensure => absent }
   package { "sysfsutils":       ensure => installed }
   package { "ncdu":             ensure => installed }
+  package { "busybox-static":   ensure => installed }
   package { "fwupd":            ensure => installed }
   package { "acpi":             ensure => installed }
   package { "at":               ensure => absent }
