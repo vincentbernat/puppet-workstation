@@ -58,10 +58,13 @@ class system {
   }
   file { '/etc/modprobe.d/iwlwifi-btcoex.conf':
     source => 'puppet:///modules/system/iwlwifi-btcoex.conf',
-    notify => Exec['update initramfs for modprobe']
+    notify => Exec['update initramfs']
   }
-
-  exec { 'update initramfs for modprobe':
+  file { '/etc/initramfs-tools/conf.d/modules':
+    content => "MODULES=dep\n"
+  }
+  ~>
+  exec { 'update initramfs':
     command     => '/usr/sbin/update-initramfs -k all -u',
     refreshonly => true
   }
