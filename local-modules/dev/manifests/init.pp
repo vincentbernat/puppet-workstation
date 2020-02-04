@@ -36,7 +36,8 @@ class dev {
   package { 'pyflakes':           ensure => installed }
 
   # Others
-  package { 'golang':     ensure => installed }
+  package { 'ruby-wirble': ensure => installed }
+  package { 'golang':      ensure => installed }
   package { ['nodejs',
-             'uglifyjs']: ensure => installed }
+             'uglifyjs']:  ensure => installed }
 }
