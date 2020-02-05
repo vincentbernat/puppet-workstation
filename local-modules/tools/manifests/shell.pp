@@ -20,5 +20,6 @@ class tools::shell {
   }
 
   package { "python3-pygments": ensure => installed }
+  package { "jq": ensure => installed }
 
 }
