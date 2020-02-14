@@ -1,4 +1,4 @@
-class system::plymouth {
+class system::boot {
 
   # Plymouth theme
   package { ['plymouth', 'plymouth-themes']:

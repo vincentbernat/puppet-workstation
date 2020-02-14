@@ -9,7 +9,7 @@ class system {
   include system::imap
   include system::ssh
   include system::logging
-  include system::plymouth
+  include system::boot
 
   package { "ca-certificates":  ensure => installed }
   package { "ca-cacert":        ensure => absent }
