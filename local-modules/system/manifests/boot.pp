@@ -26,6 +26,9 @@ class system::boot {
   file { '/etc/default/grub':
     source => 'puppet:///modules/system/grub'
   } ->
+  file { '/boot/grub/.background_cache.png':
+    ensure => absent
+  } ->
   exec { 'unpack grub fallout theme':
     path    => [ '/sbin', '/bin', '/usr/sbin', '/usr/bin' ],
     creates => '/boot/grub/themes/fallout/theme.txt',
