@@ -29,6 +29,7 @@ class system::sudo {
        /usr/bin/systemctl restart *,\
        /usr/bin/systemctl reload *,\
        /usr/bin/systemctl stop *,\
+       /usr/bin/systemctl status,\
        /usr/bin/systemctl status *
       |- SUDO
   }
