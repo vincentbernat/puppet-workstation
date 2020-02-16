@@ -15,4 +15,9 @@ class system::logging {
 
   package { "acl": ensure => installed }
 
+  service { "rsyslog":
+    ensure => stopped,
+    enable => false
+  }
+
 }
