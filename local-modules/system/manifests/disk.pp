@@ -37,8 +37,13 @@ class system::disk {
   system::disk::fstab_add_noatime { $noatime: }
 
   # For SSD, better use fstrim weekly
+  package { "util-linux": ensure => present }
+  ->
   service { "fstrim.timer":
     ensure => running,
     enable => true,
   }
+
+  # Monitor disks with smartmontools
+  package { "smartmontools": ensure => present }
 }
