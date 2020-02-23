@@ -17,7 +17,10 @@ class desktop {
 
   # various stuff
   package { 'desktop-base':              ensure => installed }
-  package { 'evince':                    ensure => installed }
+  package { ['zathura',
+             'zathura-djvu',
+             'zathura-ps',
+             'zathura-cb']:              ensure => installed }
   package { 'file-roller':               ensure => installed }
   package { 'geeqie':                    ensure => installed }
   package { 'giggle':                    ensure => installed }
