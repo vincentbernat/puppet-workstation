@@ -5,16 +5,14 @@ class system::ssh {
   sshd_config { "PermitRootLogin":
     ensure => present,
     value => "no",
-    require => Package["openssh-server"]
+    require => Package["openssh-server"],
+    notify => Service[ssh]
   }
 
   sshd_config { "PasswordAuthentication":
     ensure => present,
     value => "no",
-    require => Package["openssh-server"]
-  }
-
-  Sshd_config {
+    require => Package["openssh-server"],
     notify => Service[ssh]
   }
 
