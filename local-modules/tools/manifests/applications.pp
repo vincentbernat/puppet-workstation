@@ -25,6 +25,7 @@ class tools::applications {
   package { 'subversion': ensure          => installed }
   package { 'tmux': ensure                => installed }
   package { 'tzdiff': ensure              => installed }
+  package { 'urlscan': ensure             => installed }
   package { "linux-headers-${::os['architecture']}":
     ensure => installed }
 
