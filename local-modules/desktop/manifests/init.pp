@@ -82,6 +82,12 @@ class desktop {
     ensure => installed,
     remote => 'flathub'
   }
+  -> file { "/var/lib/flatpak/overrides/com.skype.Client":
+    content => @(END)
+      [Context]
+      filesystems=!home;
+      | END
+  }
   -> file { "/var/lib/flatpak/overrides/us.zoom.Zoom":
     content => @(END)
       [Context]
