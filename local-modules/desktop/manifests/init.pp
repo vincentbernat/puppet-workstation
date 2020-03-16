@@ -82,6 +82,7 @@ class desktop {
     ensure => installed,
     remote => 'flathub'
   }
+  # For permissions, check with "flatpak info -M us.zoom.Zoom"
   -> file { "/var/lib/flatpak/overrides/com.skype.Client":
     content => @(END)
       [Context]
