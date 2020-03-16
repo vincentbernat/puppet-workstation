@@ -82,11 +82,16 @@ class desktop {
     ensure => installed,
     remote => 'flathub'
   }
-  ->
-  file { "/var/lib/flatpak/overrides/us.zoom.Zoom":
+  -> file { "/var/lib/flatpak/overrides/us.zoom.Zoom":
     content => @(END)
       [Context]
       filesystems=!home;~/.zoom;
+      | END
+  }
+  -> file { "/var/lib/flatpak/overrides/com.spotify.Client":
+    content => @(END)
+      [Context]
+      filesystems=!xdg-pictures;
       | END
   }
 }
