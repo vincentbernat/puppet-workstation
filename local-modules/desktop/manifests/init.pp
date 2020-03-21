@@ -23,7 +23,7 @@ class desktop {
              'zathura-cb']:              ensure => installed }
   package { 'file-roller':               ensure => installed }
   package { 'geeqie':                    ensure => installed }
-  package { 'giggle':                    ensure => installed }
+  package { 'gitg':                      ensure => installed }
   package { 'gimp':                      ensure => installed }
   package { 'gpicview':                  ensure => installed }
   package { 'inkscape':                  ensure => installed }
