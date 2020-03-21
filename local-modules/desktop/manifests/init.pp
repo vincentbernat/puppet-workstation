@@ -77,13 +77,14 @@ class desktop {
              'com.snes9x.Snes9x',
              'com.spotify.Client',
              'com.valvesoftware.Steam',
+             'org.signal.Signal',
              'us.zoom.Zoom',
              ]:
     ensure => installed,
     remote => 'flathub'
   }
   # For permissions, check with "flatpak info -M us.zoom.Zoom"
-  -> file { "/var/lib/flatpak/overrides/com.skype.Client":
+  -> file { ["/var/lib/flatpak/overrides/com.skype.Client", "/var/lib/flatpak/overrides/org.signal.Signal"]:
     content => @(END)
       [Context]
       filesystems=!home;
