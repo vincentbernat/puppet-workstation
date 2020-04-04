@@ -106,4 +106,16 @@ class desktop {
       filesystems=!xdg-pictures;
       | END
   }
+
+  # Xsession shouldn't start much stuff
+  file_line { 'no Xsession dbus':
+    ensure => absent,
+    line   => 'use-session-dbus',
+    path   => '/etc/X11/Xsession.options'
+  }
+  file_line { 'no Xsession ssh-agent':
+    ensure => absent,
+    line   => 'use-ssh-agent',
+    path   => '/etc/X11/Xsession.options'
+  }
 }
