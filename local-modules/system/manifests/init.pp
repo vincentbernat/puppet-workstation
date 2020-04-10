@@ -11,22 +11,23 @@ class system {
   include system::logging
   include system::boot
 
-  package { "ca-certificates":  ensure => installed }
-  package { "ca-cacert":        ensure => absent }
-  package { "sysfsutils":       ensure => installed }
-  package { "ncdu":             ensure => installed }
-  package { "busybox-static":   ensure => installed }
-  package { "fwupd":            ensure => installed }
-  package { "acpi":             ensure => installed }
-  package { "at":               ensure => absent }
-  package { "ntp":              ensure => absent }
-  package { "sntp":             ensure => absent }
-  package { "mlocate":          ensure => purged }
-  package { "linux-cpupower":   ensure => installed }
-  package { "inxi":             ensure => installed }
-  package { "systemd-sysv":     ensure => installed } ->
-  package { 'systemd-coredump': ensure => installed } ->
-  package { 'systemd-cron':     ensure => installed } ->
+  package { "ca-certificates":   ensure => installed }
+  package { "ca-cacert":         ensure => absent }
+  package { "sysfsutils":        ensure => installed }
+  package { "ncdu":              ensure => installed }
+  package { "busybox-static":    ensure => installed }
+  package { "fwupd":             ensure => installed }
+  package { "acpi":              ensure => installed }
+  package { "at":                ensure => absent }
+  package { "ntp":               ensure => absent }
+  package { "sntp":              ensure => absent }
+  package { "mlocate":           ensure => purged }
+  package { "linux-cpupower":    ensure => installed }
+  package { "inxi":              ensure => installed }
+  package { "systemd-sysv":      ensure => installed } ->
+  package { 'systemd-coredump':  ensure => installed } ->
+  package { 'systemd-container': ensure => installed } ->
+  package { 'systemd-cron':      ensure => installed } ->
   package { ["initscripts", "sysv-rc", "insserv", "startpar",
              "rpcbind",
              "cron", "anacron"]:
