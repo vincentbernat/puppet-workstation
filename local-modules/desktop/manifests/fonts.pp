@@ -12,8 +12,8 @@ class desktop::fonts {
   package { 'fonts-symbola':             ensure => installed }
   package { 'fonts-noto':                ensure => installed }
   package { 'fonts-noto-color-emoji':    ensure => installed }
+  package { 'fonts-terminus':            ensure => installed }
   package { 'ttf-mscorefonts-installer': ensure => installed }
-  package { 'xfonts-terminus':           ensure => installed }
   package { 'fonts-powerline':           ensure => purged }
 
   # fontconfig
