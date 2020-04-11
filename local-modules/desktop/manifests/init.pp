@@ -106,6 +106,12 @@ class desktop {
       filesystems=!xdg-pictures;
       | END
   }
+  -> file { "/var/lib/flatpak/overrides/global":
+    content => @(END)
+      [Environment]
+      XCURSOR_THEME=Adwaita;
+      | END
+  }
 
   # Xsession shouldn't start much stuff
   file_line { 'no Xsession dbus':
