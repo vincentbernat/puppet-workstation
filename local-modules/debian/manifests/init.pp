@@ -36,6 +36,11 @@ class debian {
     repos    => 'main',
     include  => { 'src' => false }
   }
+  apt::source { 'testing':
+    location          => 'http://httpredir.debian.org/debian/',
+    release           => 'testing',
+    repos             => 'main',
+  }
 
   apt::source { 'experimental':
     location => 'http://httpredir.debian.org/debian/',
