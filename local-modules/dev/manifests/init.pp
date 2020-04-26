@@ -33,7 +33,7 @@ class dev {
   package { 'python3-pip':        ensure => installed }
   package { 'python3-jedi':       ensure => installed }
   package { 'black':              ensure => installed }
-  package { 'pyflakes':           ensure => installed }
+  package { 'pyflakes3':           ensure => installed }
 
   # Others
   package { 'ruby-wirble': ensure => installed }
