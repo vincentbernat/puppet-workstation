@@ -52,11 +52,13 @@ class desktop {
   }
 
   # OpenCL
-  package{ ['clinfo',
-            'intel-opencl-icd',
-            'mesa-opencl-icd',
-            'pocl-opencl-icd']:
-    ensure => installed
+  package{ 'clinfo': ensure => installed }
+  package{
+    $facts['vga']['vendor'] ? {
+      'Intel Corporation' => 'intel-opencl-icd',
+      'Advanced Micro Devices, Inc. [AMD/ATI]' => 'mesa-opencl-icd',
+      default => 'pocl-opencl-icd'
+    }: ensure => installed
   }
 
   package { 'mpv': ensure => installed }
