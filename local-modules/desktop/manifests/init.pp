@@ -51,6 +51,14 @@ class desktop {
     ensure => purged
   }
 
+  # OpenCL
+  package{ ['clinfo',
+            'intel-opencl-icd',
+            'mesa-opencl-icd',
+            'pocl-opencl-icd']:
+    ensure => installed
+  }
+
   package { 'mpv': ensure => installed }
   -> file { '/etc/mpv/mpv.conf':
     content => template('desktop/mpv.conf.erb')
