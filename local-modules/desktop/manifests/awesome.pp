@@ -3,7 +3,7 @@ class desktop::awesome {
   # awesome=3.4.15-1
   package { ['awesome',
              'awesome-extra']:
-               ensure => held
+               mark => hold
   }
 
   package { ['adwaita-icon-theme',
