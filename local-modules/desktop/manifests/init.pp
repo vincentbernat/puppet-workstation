@@ -27,6 +27,7 @@ class desktop {
   package { 'gimp':                      ensure => installed }
   package { 'gpicview':                  ensure => installed }
   package { 'inkscape':                  ensure => installed }
+  package { 'krita':                     ensure => installed }
   package { 'pinentry-curses':           ensure => installed }
   package { 'pinentry-gtk2':             ensure => installed }
   package { 'pinentry-gtk3':             ensure => absent }
