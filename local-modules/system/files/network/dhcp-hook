@@ -1,6 +1,6 @@
 # -*- sh -*-
 
-case reason in
+case $reason in
     BOUND|RENEW|REBIND|REBOOT)
         /usr/local/bin/ddns-updater --ipv6=public || true
         ;;
