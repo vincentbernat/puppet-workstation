@@ -5,6 +5,14 @@ class desktop::awesome {
              'awesome-extra']:
                mark => hold
   }
+  ->
+  file_line { 'accept actions for naughty notifications':
+    # But ignore them...
+    ensure => present,
+    line => '        return "as", { "s", "body", "s", "body-markup", "s", "icon-static", "s", "actions" }',
+    match => '        return "as", { "s", "body", "s", "body-markup", "s", "icon-static".*}',
+    path => '/usr/share/awesome/lib/naughty.lua',
+  }
 
   package { ['adwaita-icon-theme',
              'alsa-utils',
