@@ -11,8 +11,6 @@ class system::network {
   package { "network-manager-pptp-gnome": ensure => installed }
   package { "network-manager-vpnc": ensure => installed }
   package { "network-manager-vpnc-gnome": ensure => installed }
-  package { "firewall-applet": ensure => installed }
-  package { "firewalld": ensure => installed }
   package { "wireguard": ensure => installed }
 
   # Enable dnsmasq
@@ -24,6 +22,22 @@ class system::network {
 
   file { "/etc/network/interfaces":
     source => "puppet:///modules/system/network/interfaces"
+  }
+
+  # Make firewalld uses iptables (compat with Docker)
+  package { "firewall-applet": ensure => installed }
+  package { "firewalld": ensure => installed }
+  ->
+  file_line { 'firewalld uses iptables':
+    ensure => present,
+    line   => "FirewallBackend=iptables",
+    match  => "^[# ]*FirewallBackend=",
+    path   => '/etc/firewalld/firewalld.conf'
+  }
+  ~>
+  service { "firewalld":
+    ensure => running,
+    enable => true
   }
 
   file { "/etc/NetworkManager/NetworkManager.conf":
