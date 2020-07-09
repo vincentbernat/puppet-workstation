@@ -27,9 +27,7 @@ class dev::cowbuilder {
     source  => "puppet:///modules/dev/pbuilder/hooks"
   }
   file { "/etc/pbuilder/hooks/B90lintian":
-    ensure  => link,
-    target  => "/usr/share/doc/pbuilder/examples/B90lintian",
-    require => Package["cowbuilder"],
+    ensure  => absent
   }
   file { "/etc/pbuilder/hooks/B20autopkgtest":
     ensure  => link,
