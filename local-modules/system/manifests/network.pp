@@ -1,17 +1,18 @@
 class system::network {
 
   # For networking, we rely on network manager.
-  package { "network-manager": ensure => installed }
-  package { "network-manager-gnome": ensure => installed }
-  package { "network-manager-openvpn": ensure => installed }
-  package { "network-manager-openvpn-gnome": ensure => installed }
-  package { "network-manager-openconnect": ensure => installed }
-  package { "network-manager-openconnect-gnome": ensure => installed }
-  package { "network-manager-pptp": ensure => installed }
-  package { "network-manager-pptp-gnome": ensure => installed }
-  package { "network-manager-vpnc": ensure => installed }
-  package { "network-manager-vpnc-gnome": ensure => installed }
-  package { "wireguard": ensure => installed }
+  package { ["network-manager",
+             "network-manager-gnome",
+             "network-manager-openvpn",
+             "network-manager-openvpn-gnome",
+             "network-manager-openconnect",
+             "network-manager-openconnect-gnome",
+             "network-manager-pptp",
+             "network-manager-pptp-gnome",
+             "network-manager-vpnc",
+             "network-manager-vpnc-gnome",
+             "wireguard",
+             "iwd"]: ensure => installed }
 
   # Enable dnsmasq
   package { "resolvconf": ensure => purged }
@@ -43,6 +44,10 @@ class system::network {
   file { "/etc/NetworkManager/NetworkManager.conf":
     require => Package["network-manager"],
     source => "puppet:///modules/system/network/NetworkManager.conf"
+  }
+  service { "wpa_supplicant":
+    ensure => stopped,
+    enable => false
   }
 
   include system::network::ddns
