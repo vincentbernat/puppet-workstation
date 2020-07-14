@@ -30,9 +30,7 @@ class dev::cowbuilder {
     ensure  => absent
   }
   file { "/etc/pbuilder/hooks/B20autopkgtest":
-    ensure  => link,
-    target  => "/usr/share/doc/pbuilder/examples/B20autopkgtest",
-    require => Package["cowbuilder"],
+    ensure  => absent
   }
   file { "/etc/pbuilder/hooks/D80no-man-db-rebuild":
     ensure  => link,
