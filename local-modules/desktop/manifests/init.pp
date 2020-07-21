@@ -36,6 +36,7 @@ class desktop {
   package { 'ssh-askpass-fullscreen':    ensure => absent }
   package { 'ssh-askpass':               ensure => absent } # Buggy as hell
   package { 'thunar':                    ensure => installed }
+  package { 'thunar-volman':             ensure => purged }
   package { 'unison':                    ensure => installed }
   package { 'vim-tiny':                  ensure => installed }
   package { 'vlc':                       ensure => installed }
