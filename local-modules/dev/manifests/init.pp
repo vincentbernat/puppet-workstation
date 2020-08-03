@@ -28,7 +28,6 @@ class dev {
   package { 'python3-all-dev':    ensure => installed }
   package { 'tox':                ensure => installed }
   package { 'python3-pytest':     ensure => installed }
-  package { 'python-virtualenv':  ensure => installed }
   package { 'python3-virtualenv': ensure => installed }
   package { 'python3-pip':        ensure => installed }
   package { 'python3-jedi':       ensure => installed }
