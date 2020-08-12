@@ -13,6 +13,11 @@ class desktop::awesome {
     match => '        return "as", { "s", "body", "s", "body-markup", "s", "icon-static".*}',
     path => '/usr/share/awesome/lib/naughty.lua',
   }
+  file_line { 'add is_suspended function':
+    ensure => present,
+    line => 'function is_suspended() return suspended end',
+    path => '/usr/share/awesome/lib/naughty.lua',
+  }
 
   package { ['adwaita-icon-theme',
              'alsa-utils',
