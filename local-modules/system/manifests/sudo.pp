@@ -25,6 +25,7 @@ class system::sudo {
   sudo::conf { 'systemctl':
     content => @(SUDO/L)
       %sudo ALL=(ALL) NOPASSWD:\
+       /usr/bin/systemctl suspend,\
        /usr/bin/systemctl start *,\
        /usr/bin/systemctl restart *,\
        /usr/bin/systemctl reload *,\
