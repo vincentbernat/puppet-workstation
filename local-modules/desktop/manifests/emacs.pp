@@ -4,7 +4,11 @@ class desktop::emacs {
     ensure => purged
   }
   package { 'emacs':    ensure => installed } ->
-  package { 'emacs-el': ensure => installed }
+  package { 'emacs-el': ensure => installed } ->
+  file { "/etc/emacs/site-start.d":
+    ensure => absent,
+    force  => yes
+  }
 
   package { 'elpa-debian-el':   ensure => installed, require => Package['emacs'] }
   package { 'elpa-dpkg-dev-el': ensure => installed, require => Package['emacs'] }
