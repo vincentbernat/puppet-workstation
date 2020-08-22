@@ -6,8 +6,8 @@ class desktop::emacs {
   package { 'emacs':    ensure => installed } ->
   package { 'emacs-el': ensure => installed } ->
   file { "/etc/emacs/site-start.d":
-    ensure => absent,
-    force  => yes
+    ensure => directory,
+    purge  => true
   }
 
   package { 'elpa-debian-el':   ensure => installed, require => Package['emacs'] }
