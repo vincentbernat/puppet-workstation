@@ -3,6 +3,7 @@ class tools::applications {
   package { "jq": ensure                  => installed }
   package { "moreutils": ensure           => installed }
   package { 'bpftrace': ensure            => installed }
+  package { 'bat': ensure                 => installed }
   # package { 'bpytop': ensure              => installed }
   package { 'colordiff': ensure           => installed }
   package { 'glances': ensure             => installed }
