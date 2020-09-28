@@ -31,7 +31,7 @@ class tools::applications {
   package { "linux-headers-${::os['architecture']}":
     ensure => installed }
 
-  package { ['git', 'git-annex']:
+  package { ['git', 'git-annex', 'git-email']:
     ensure => installed
   } ->
   exec { 'create diff-highlight helper':
