@@ -49,7 +49,6 @@ class desktop::awesome {
              'xdotool',
              'xiccd',
              'xinput',
-             'xfce4-terminal',
              'xsel',
              'xsettingsd',
              'xss-lock']:
