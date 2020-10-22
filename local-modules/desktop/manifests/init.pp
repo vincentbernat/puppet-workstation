@@ -40,6 +40,7 @@ class desktop {
   package { 'unison':                    ensure => installed }
   package { 'vim-tiny':                  ensure => installed }
   package { 'vlc':                       ensure => installed }
+  package { 'cups':                      ensure => installed }
   package { 'wireshark':                 ensure => installed }
   package { 'libreoffice':               ensure => installed }
   package { 'libreoffice-gtk3':          ensure => installed }
