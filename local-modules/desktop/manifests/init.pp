@@ -41,6 +41,7 @@ class desktop {
   package { 'vim-tiny':                  ensure => installed }
   package { 'vlc':                       ensure => installed }
   package { 'cups':                      ensure => installed }
+  package { 'cups-browsed':              ensure => purged }
   package { 'wireshark':                 ensure => installed }
   package { 'libreoffice':               ensure => installed }
   package { 'libreoffice-gtk3':          ensure => installed }
