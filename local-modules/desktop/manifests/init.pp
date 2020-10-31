@@ -89,6 +89,7 @@ class desktop {
   }
   ->
   flatpak { [
+             'com.discordapp.Discord',
              'com.skype.Client',
              'com.slack.Slack',
              'com.snes9x.Snes9x',
