@@ -20,6 +20,7 @@ class desktop::awesome {
   }
 
   package { ['adwaita-icon-theme',
+             'adwaita-qt',
              'alsa-utils',
              'autorandr',
              'bc',
@@ -41,6 +42,7 @@ class desktop::awesome {
              'policykit-1-gnome',
              'python3-pil',
              'python3-xlib',
+             'qt5ct',
              'redshift',
              'x11-xkb-utils',
              'x11-xserver-utils',
