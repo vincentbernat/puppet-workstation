@@ -23,6 +23,7 @@ class tools::applications {
              'pass',
              'pass-extension-otp',
              'pass-extension-tail',
+             'pv',
              'silversearcher-ag',
              'strace',
              'subversion',
