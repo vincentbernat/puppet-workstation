@@ -46,6 +46,12 @@ class system {
     locales        => ['en_US.UTF-8 UTF-8', 'fr_FR.UTF-8 UTF-8']
   }
 
+  # Do not start anything as a user by default
+  file { "/etc/systemd/user/default.target.wants":
+    ensure => directory,
+    purge => true
+  }
+
   # Defragmentation of transparent huge page can slow down a host when
   # copying to slow devices (like USB keys)
   file { "/etc/sysfs.d/usb-performance.conf":
