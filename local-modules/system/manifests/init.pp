@@ -48,8 +48,9 @@ class system {
 
   # Do not start anything as a user by default
   file { "/etc/systemd/user/default.target.wants":
-    ensure => directory,
-    purge => true
+    ensure  => directory,
+    purge   => true,
+    recurse => true
   }
 
   # Defragmentation of transparent huge page can slow down a host when
