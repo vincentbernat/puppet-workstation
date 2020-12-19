@@ -5,6 +5,7 @@ class tools::applications {
              'bpftrace',
              'bpytop',
              'colordiff',
+             'fzf',
              'glances',
              'gnupg',
              'htop',
