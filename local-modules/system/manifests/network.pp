@@ -5,12 +5,6 @@ class system::network {
   package { "network-manager-gnome": ensure => installed }
   package { "network-manager-openvpn": ensure => installed }
   package { "network-manager-openvpn-gnome": ensure => installed }
-  package { "network-manager-openconnect": ensure => installed }
-  package { "network-manager-openconnect-gnome": ensure => installed }
-  package { "network-manager-pptp": ensure => installed }
-  package { "network-manager-pptp-gnome": ensure => installed }
-  package { "network-manager-vpnc": ensure => installed }
-  package { "network-manager-vpnc-gnome": ensure => installed }
   package { "wireguard": ensure => installed }
 
   # Enable dnsmasq
