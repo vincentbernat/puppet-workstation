@@ -11,10 +11,6 @@ class system::network {
   package { "resolvconf": ensure => purged }
   package { "dnsmasq": ensure => purged }
   package { "dnsmasq-base": ensure => installed }
-  file { "/etc/resolv.conf":
-    ensure => link,
-    target => "/run/systemd/resolve/stub-resolv.conf"
-  }
   file_line { "enable DNSSEC":
     ensure => present,
     match  => "^[# ]*DNSSEC=",
@@ -25,6 +21,11 @@ class system::network {
   service { "systemd-resolved":
     ensure => running,
     enable => true
+  }
+  ->
+  file { "/etc/resolv.conf":
+    ensure => link,
+    target => "/run/systemd/resolve/stub-resolv.conf"
   }
 
   file { "/etc/network/interfaces":
