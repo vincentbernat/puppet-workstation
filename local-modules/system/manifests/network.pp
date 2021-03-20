@@ -15,6 +15,17 @@ class system::network {
     ensure => link,
     target => "/run/systemd/resolve/stub-resolv.conf"
   }
+  file_line { "enable DNSSEC":
+    ensure => present,
+    match => "^[# ]*DNSSEC=",
+    line => "DNSSEC=allow-downgrade",
+    path => "/etc/systemd/resolved.conf"
+  }
+  ~>
+  service { "systemd-resolved":
+    ensure => running,
+    enable => true
+  }
 
   file { "/etc/network/interfaces":
     source => "puppet:///modules/system/network/interfaces"
