@@ -44,6 +44,7 @@ class desktop::awesome {
              'python3-xlib',
              'qt5ct',
              'redshift',
+             'slop',
              'x11-xkb-utils',
              'x11-xserver-utils',
              'xclip',
