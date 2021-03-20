@@ -49,7 +49,8 @@ class system::network {
   }
 
   file { "/etc/NetworkManager/NetworkManager.conf":
-    require => Package["network-manager"],
+    require => [ Package["network-manager"],
+                 File["/etc/resolv.conf"] ],
     source => "puppet:///modules/system/network/NetworkManager.conf"
   }
   ~>
