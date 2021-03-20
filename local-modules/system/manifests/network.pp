@@ -17,9 +17,9 @@ class system::network {
   }
   file_line { "enable DNSSEC":
     ensure => present,
-    match => "^[# ]*DNSSEC=",
-    line => "DNSSEC=allow-downgrade",
-    path => "/etc/systemd/resolved.conf"
+    match  => "^[# ]*DNSSEC=",
+    line   => "DNSSEC=allow-downgrade",
+    path   => "/etc/systemd/resolved.conf"
   }
   ~>
   service { "systemd-resolved":
