@@ -52,6 +52,11 @@ class system::network {
     require => Package["network-manager"],
     source => "puppet:///modules/system/network/NetworkManager.conf"
   }
+  ~>
+  service { "NetworkManager":
+    ensure => running,
+    enable => true
+  }
 
   include system::network::ddns
 
