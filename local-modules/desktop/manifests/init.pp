@@ -5,7 +5,7 @@ class desktop {
   include desktop::x11
 
   # Base desktop
-  include desktop::pulseaudio
+  include desktop::audio
   include desktop::awesome
   include desktop::fonts
 
