@@ -7,12 +7,14 @@ class system::network {
   package { "network-manager-openvpn-gnome": ensure => installed }
   package { "wireguard": ensure => installed }
 
-  # Enable dnsmasq
+  # DNS
   package { "resolvconf": ensure => purged }
-  ->
-  package { "dnsmasq-base": ensure => installed }
-  ->
   package { "dnsmasq": ensure => purged }
+  package { "dnsmasq-base": ensure => installed }
+  file { "/etc/resolv.conf":
+    ensure => link,
+    target => "/run/systemd/resolve/stub-resolv.conf"
+  }
 
   file { "/etc/network/interfaces":
     source => "puppet:///modules/system/network/interfaces"
