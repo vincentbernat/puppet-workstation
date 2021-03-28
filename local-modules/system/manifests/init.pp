@@ -90,8 +90,4 @@ class system {
     ensure => running,
     enable => true
   }
-
-  # Enable user namespaces. This is a security risk, but I end up
-  # enabling it after each boot anyway.
-  sysctl { 'kernel.unprivileged_userns_clone': value => '1' }
 }
