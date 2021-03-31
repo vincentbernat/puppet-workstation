@@ -82,6 +82,11 @@ class desktop {
   package { 'flashplugin-nonfree': ensure => purged }
 
   # Software packaged with Flatpak
+  flatpak { [
+    'com.microsoft.Teams',
+    'com.skype.Client',
+    'com.slack.Slack',
+    ]: ensure => absent }
   flatpak_remote { 'flathub':
     ensure   => present,
     location => 'https://flathub.org/repo/flathub.flatpakrepo'
@@ -89,9 +94,6 @@ class desktop {
   ->
   flatpak { [
              'com.discordapp.Discord',
-             'com.microsoft.Teams',
-             'com.skype.Client',
-             'com.slack.Slack',
              'com.snes9x.Snes9x',
              'com.spotify.Client',
              'com.valvesoftware.Steam',
@@ -102,7 +104,7 @@ class desktop {
     remote => 'flathub'
   }
   # For permissions, check with "flatpak info -M us.zoom.Zoom"
-  -> file { ["/var/lib/flatpak/overrides/com.skype.Client", "/var/lib/flatpak/overrides/org.signal.Signal"]:
+  -> file { ["/var/lib/flatpak/overrides/org.signal.Signal"]:
     content => @(END)
       [Context]
       filesystems=!home;
