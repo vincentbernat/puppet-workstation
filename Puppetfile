@@ -11,7 +11,7 @@ mod 'herculesteam/augeasproviders_ssh',  '~> 3.1.0'
 mod 'saz/timezone',                      '~> 5.1.1'
 mod 'saz/sudo',                          '~> 6.0.0'
 mod 'saz/locales',                       '~> 2.5.1'
-mod 'brwyatt/flatpak',                   '~> 0.2.3'
+mod 'brwyatt/flatpak',                   '~> 0.2.6'
 mod 'thias/sysctl',                      '~> 1.0.6'
 
 # Local Variables:
