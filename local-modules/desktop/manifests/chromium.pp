@@ -7,7 +7,7 @@ class desktop::chromium {
     location     => 'http://dl.google.com/linux/chrome/deb/',
     release      => 'stable',
     repos        => 'main',
-    key          => '9534C9C4130B4DC9927992BF4F30B6B4C07CB649',
+    key          => 'EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796',
     include      => { 'src' => false },
     pin          => 400,
     architecture => 'amd64'
