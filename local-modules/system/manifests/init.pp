@@ -8,6 +8,7 @@ class system {
   include system::postfix
   include system::imap
   include system::ssh
+  include system::docker
   include system::logging
   include system::boot
 
