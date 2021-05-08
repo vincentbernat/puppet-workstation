@@ -27,6 +27,7 @@ class dev {
   package { 'ipython3':           ensure => installed }
   package { 'python3-all-dev':    ensure => installed }
   package { 'tox':                ensure => installed }
+  package { 'pipenv':             ensure => installed }
   package { 'python3-pytest':     ensure => installed }
   package { 'python3-virtualenv': ensure => installed }
   package { 'python3-pip':        ensure => installed }
