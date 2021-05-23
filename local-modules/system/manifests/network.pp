@@ -32,13 +32,13 @@ class system::network {
     source => "puppet:///modules/system/network/interfaces"
   }
 
-  # Make firewalld uses iptables (compat with Docker)
-  package { "firewall-applet": ensure => installed }
-  package { "firewalld": ensure => installed }
+  package { ["firewall-applet",
+             "firewalld",
+             "nftables"]: ensure => installed }
   ->
-  file_line { 'firewalld uses iptables':
+  file_line { 'firewalld uses nftables':
     ensure => present,
-    line   => "FirewallBackend=iptables",
+    line   => "FirewallBackend=nftables",
     match  => "^[# ]*FirewallBackend=",
     path   => '/etc/firewalld/firewalld.conf'
   }
