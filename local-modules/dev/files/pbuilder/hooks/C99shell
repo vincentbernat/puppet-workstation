@@ -7,5 +7,5 @@ chmod 0440 /etc/sudoers.d/pbuilder
 cd /build/*/debian/..
 export TERM=xterm
 export HOME=/build
-sudo -n -u pbuilder wget -qO - https://vincentbernat-zshrc.s3.amazonaws.com/zsh-install.sh | sudo -n -u pbuilder env HOME=$HOME sh
+sudo -n -u pbuilder wget -qO - https://github.com/vincentbernat/zshrc/releases/download/latest/zsh-install.sh | sudo -n -u pbuilder env HOME=$HOME sh
 sudo -n -u pbuilder env HOME=$HOME PBUILDERPID=$PBUILDERPID /bin/zsh < /dev/tty > /dev/tty 2> /dev/tty
