@@ -6,7 +6,7 @@ class desktop {
 
   # Base desktop
   include desktop::audio
-  include desktop::awesome
+  include desktop::i3
   include desktop::fonts
 
   # Some applications

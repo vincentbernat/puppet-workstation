@@ -1,45 +1,25 @@
-class desktop::awesome {
-  # awesome-extra=2012061101
-  # awesome=3.4.15-1
-  package { ['awesome',
-             'awesome-extra']:
-               mark => hold
-  }
-  ->
-  file_line { 'accept actions for naughty notifications':
-    # But ignore them...
-    ensure => present,
-    line => '        return "as", { "s", "body", "s", "body-markup", "s", "icon-static", "s", "actions" }',
-    match => '        return "as", { "s", "body", "s", "body-markup", "s", "icon-static".*}',
-    path => '/usr/share/awesome/lib/naughty.lua',
-  }
-  file_line { 'add is_suspended function':
-    ensure => present,
-    line => 'function is_suspended() return suspended end',
-    path => '/usr/share/awesome/lib/naughty.lua',
-  }
-
+class desktop::i3 {
   package { ['adwaita-icon-theme',
              'adwaita-qt',
              'alsa-utils',
              'autorandr',
              'bc',
-             'compton',
              'dconf-cli',
              'flameshot',
-             'fvwm',
-             'fvwm-crystal',
              'gconf2',
              'gnome-icon-theme',
              'gnome-themes-standard',
              'gnupg-agent',
              'hsetroot',
+             'i3',
              'i3lock',
              'inputplug',
              'libnotify-bin',
              'libvte-2.91-0',
+             'picom',
              'playerctl',
              'policykit-1-gnome',
+             'polybar',
              'python3-pil',
              'python3-xlib',
              'qt5ct',
