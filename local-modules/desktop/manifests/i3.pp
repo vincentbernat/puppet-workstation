@@ -24,6 +24,7 @@ class desktop::i3 {
              'python3-xlib',
              'qt5ct',
              'redshift',
+             'rofi',
              'slop',
              'x11-xkb-utils',
              'x11-xserver-utils',
