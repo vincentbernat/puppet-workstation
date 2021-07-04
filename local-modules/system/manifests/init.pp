@@ -48,7 +48,9 @@ class system {
   }
 
   # Do not start anything as a user by default
-  file { "/etc/systemd/user/default.target.wants":
+  file { ["/etc/systemd/user/default.target.wants",
+          "/etc/systemd/user/graphical-session-pre.target.wants",
+          "/etc/systemd/user/graphical-session.target.wants"]:
     ensure  => directory,
     purge   => true,
     recurse => true
