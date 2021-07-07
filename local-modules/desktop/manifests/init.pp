@@ -72,21 +72,13 @@ class desktop {
 
   # Firefox
   package { 'firefox':            ensure => installed } ->
-  package { 'firefox-l10n-fr':    ensure => installed } ->
-  package { 'firefox-esr':        ensure => purged }
-  package { 'iceweasel':          ensure => purged }
+  package { 'firefox-l10n-fr':    ensure => installed }
   package { 'gstreamer1.0-vaapi': ensure => installed }
 
   # Blacklisting some annoying packages
   package { 'gnome-keyring':       ensure => absent }
-  package { 'flashplugin-nonfree': ensure => purged }
 
   # Software packaged with Flatpak
-  flatpak { [
-    'com.microsoft.Teams',
-    'com.skype.Client',
-    'com.slack.Slack',
-    ]: ensure => absent }
   flatpak_remote { 'flathub':
     ensure   => present,
     location => 'https://flathub.org/repo/flathub.flatpakrepo'

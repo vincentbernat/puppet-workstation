@@ -1,8 +1,5 @@
 class desktop::emacs {
 
-  package { ['emacs24', 'emacs24-el']:
-    ensure => purged
-  }
   package { 'emacs':    ensure => installed } ->
   package { 'emacs-el': ensure => installed } ->
   file { "/etc/emacs/site-start.d":
