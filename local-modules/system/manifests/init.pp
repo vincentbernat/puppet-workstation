@@ -71,7 +71,7 @@ class system {
     source => 'puppet:///modules/system/iwlwifi-btcoex.conf',
     notify => Exec['update initramfs']
   }
-  if $facts['dmi']['manufacturer'] == 'LENOVO' {
+  if $facts['dmi']['manufacturer'] == 'LENOVO' and $facts['dmi']['product']['name'] == '20A7005UMZ' {
     # Don't use SMB to access trackpoint on Lenovo (buggy)
     file { '/etc/modprobe.d/rmi-smbus-blacklist.conf':
       source => 'puppet:///modules/system/rmi-smbus-blacklist.conf',
