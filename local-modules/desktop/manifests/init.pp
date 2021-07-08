@@ -96,7 +96,10 @@ class desktop {
     remote => 'flathub'
   }
   # For permissions, check with "flatpak info -M us.zoom.Zoom"
-  -> file { ["/var/lib/flatpak/overrides/org.signal.Signal"]:
+  -> file { "/var/lib/flatpak/overrides":
+    ensure => directory
+  }
+  -> file { "/var/lib/flatpak/overrides/org.signal.Signal":
     content => @(END)
       [Context]
       filesystems=!home;
