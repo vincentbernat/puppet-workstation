@@ -1,6 +1,6 @@
 class system::boot {
 
-  # Plymouth theme
+  # Plymouth theme: https://www.gnome-look.org/p/1259515/
   package { ['plymouth', 'plymouth-themes']:
     ensure => installed
   } ->
