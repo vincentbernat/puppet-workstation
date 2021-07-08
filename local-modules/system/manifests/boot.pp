@@ -5,6 +5,7 @@ class system::boot {
     ensure => installed
   } ->
   exec { 'unpack plymouth fallout theme':
+    require => Package['curl'],
     path    => [ '/sbin', '/bin', '/usr/sbin', '/usr/bin' ],
     creates => '/usr/share/plymouth/themes/fallout/fallout.plymouth',
     command => @(END)
@@ -30,6 +31,7 @@ class system::boot {
     ensure => absent
   } ->
   exec { 'unpack grub fallout theme':
+    require => Package['curl'],
     path    => [ '/sbin', '/bin', '/usr/sbin', '/usr/bin' ],
     creates => '/boot/grub/themes/fallout/theme.txt',
     command => @(END)
