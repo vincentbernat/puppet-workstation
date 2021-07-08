@@ -71,6 +71,23 @@ class system {
     source => 'puppet:///modules/system/iwlwifi-btcoex.conf',
     notify => Exec['update initramfs']
   }
+  if $facts['dmi']['manufacturer'] == 'LENOVO' {
+    # Don't use SMB to access trackpoint on Lenovo (buggy)
+    file { '/etc/modprobe.d/rmi-smbus-blacklist.conf':
+      source => 'puppet:///modules/system/rmi-smbus-blacklist.conf',
+      notify => Exec['update initramfs']
+    }
+    # Enable PSR (better battery life)
+    file { '/etc/modprobe.d/i915-psr.conf':
+      source => 'puppet:///modules/system/i915-psr.conf',
+      notify => Exec['update initramfs']
+    }
+    # Prefer MBIM over ACM
+    file { '/etc/modprobe.d/prefer-mbim.conf':
+      source => 'puppet:///modules/system/prefer-mbim.conf',
+      notify => Exec['update initramfs']
+    }
+  }
   file { '/etc/initramfs-tools/conf.d/modules':
     content => "MODULES=dep\n"
   }
