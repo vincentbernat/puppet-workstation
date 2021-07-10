@@ -22,6 +22,7 @@ class desktop::i3 {
              'polybar',
              'python3-i3ipc',
              'python3-pil',
+             'python3-systemd',
              'python3-xlib',
              'qt5ct',
              'redshift',
