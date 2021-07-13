@@ -49,6 +49,7 @@ class desktop {
   package { 'libreoffice-java-common':   ensure => purged }
   package { ['gvfs-daemons',
              'gvfs-backends',
+             'gnome-online-miners',
              'gnome-settings-daemon',
              'at-spi2-core',
              'geoclue-2.0']:
