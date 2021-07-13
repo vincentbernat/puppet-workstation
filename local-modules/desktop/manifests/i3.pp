@@ -20,6 +20,7 @@ class desktop::i3 {
              'playerctl',
              'policykit-1-gnome',
              'polybar',
+             'python3-dbussy',
              'python3-i3ipc',
              'python3-pil',
              'python3-systemd',
