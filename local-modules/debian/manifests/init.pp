@@ -1,5 +1,14 @@
 class debian {
 
+  class { "apt":
+    purge => {
+      "sources.list"   => true,
+      "sources.list.d" => true,
+      "preferences"    => true,
+      "preferences.d"  => true
+    }
+  }
+
   package { ['ubuntu-archive-keyring',
              'debian-keyring',
              'debian-archive-keyring']:
