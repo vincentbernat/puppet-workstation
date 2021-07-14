@@ -51,6 +51,13 @@ class system {
     ensure => purged
   }
 
+  # udev module setup
+  file { '/sbin/udevadm':
+    ensure => link,
+    target => '../bin/udevadm'
+  } ->
+  class { "udev": }
+
   # Laptop tools
   if $facts['laptop'] {
     package { "tlp":             ensure => installed }
