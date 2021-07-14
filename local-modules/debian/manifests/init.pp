@@ -64,6 +64,7 @@ class debian {
     include  => { 'src' => false }
   }
 
+  # Do not use pin from apt::source which does use origin instead of release
   apt::pin { ['experimental', 'experimental-debug']:
     priority => 101
   }
