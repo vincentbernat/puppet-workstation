@@ -6,7 +6,6 @@ forge 'https://forgeapi.puppetlabs.com'
 
 mod 'puppetlabs/stdlib',                 '~> 4.25.1'
 mod 'puppetlabs/apt',                    '~> 4.5.1'
-mod 'jhoblitt/udev',                     '~> 2.3.0'
 mod 'herculesteam/augeasproviders_ssh',  '~> 3.1.0'
 mod 'saz/timezone',                      '~> 5.1.1'
 mod 'saz/sudo',                          '~> 6.0.0'

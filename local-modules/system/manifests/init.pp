@@ -51,13 +51,6 @@ class system {
     ensure => purged
   }
 
-  # udev module setup
-  file { '/sbin/udevadm':
-    ensure => link,
-    target => '../bin/udevadm'
-  } ->
-  class { "udev": }
-
   # Laptop tools
   if $facts['laptop'] {
     package { "tlp":             ensure => installed }
@@ -87,8 +80,13 @@ class system {
     require => Package["sysfsutils"]
   }
 
-  udev::rule { '70-more-uaccess.rules':
+  file { '/etc/udev/rules.d/70-more-uaccess.rules':
     source => 'puppet:///modules/system/uaccess.rules'
+  }
+  ~>
+  exec { 'update udev':
+    refreshonly => true,
+    command     => "/sbin/udevadm trigger --action=change"
   }
   file { '/etc/modprobe.d/iwlwifi-btcoex.conf':
     source => 'puppet:///modules/system/iwlwifi-btcoex.conf',
