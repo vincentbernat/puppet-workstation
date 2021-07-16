@@ -43,7 +43,7 @@ class desktop::i3 {
   ->
   file_line { 'lower CPU usage of python3-dbussy':
     ensure => present,
-    line   => '            self.loop.call_later(0.1, self._reaper, weak_ref(self))',
+    line   => '            self.loop.call_later(1, self._reaper, weak_ref(self))',
     match  => '            self.loop.call_.*self._reaper',
     path   => '/usr/lib/python3/dist-packages/dbussy.py',
     multiple => true,
