@@ -46,6 +46,7 @@ class desktop::i3 {
     line   => '            self.loop.call_later(0.1, self._reaper, weak_ref(self))',
     match  => '            self.loop.call_.*self._reaper',
     path   => '/usr/lib/python3/dist-packages/dbussy.py',
+    multiple => true,
     append_on_no_match => false,
     replace_all_matches_not_matching_line => true,
   }
