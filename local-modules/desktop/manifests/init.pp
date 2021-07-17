@@ -31,7 +31,7 @@ class desktop {
   package { 'pinentry-gtk2':             ensure => installed }
   package { 'pinentry-gtk3':             ensure => absent }
   package { 'pinentry-gnome3':           ensure => absent }
-  package { 'ristretto':                 ensure => installed }
+  package { 'sxiv':                      ensure => installed }
   package { 'ssh-askpass-gnome':         ensure => present }
   package { 'ssh-askpass-fullscreen':    ensure => absent }
   package { 'ssh-askpass':               ensure => absent } # Buggy as hell
