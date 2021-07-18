@@ -3,8 +3,9 @@ class desktop::emacs {
   package { 'emacs':    ensure => installed } ->
   package { 'emacs-el': ensure => installed } ->
   file { "/etc/emacs/site-start.d":
-    ensure => directory,
-    purge  => true
+    ensure  => directory,
+    purge   => true,
+    recurse => true
   }
 
   package { 'elpa-debian-el':   ensure => installed, require => Package['emacs'] }
