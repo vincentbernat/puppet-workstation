@@ -19,6 +19,9 @@ class tools::shell {
     target => "${::home}/.zsh/zshenv"
   }
 
-  package { "python3-pygments": ensure => installed }
+  package { ["python3-pygments",
+             "qualc"]:
+               ensure => installed
+  }
 
 }
