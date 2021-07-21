@@ -20,7 +20,7 @@ class tools::shell {
   }
 
   package { ["python3-pygments",
-             "qualc"]:
+             "qalc"]:
                ensure => installed
   }
 
