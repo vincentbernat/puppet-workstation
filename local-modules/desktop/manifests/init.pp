@@ -103,7 +103,7 @@ class desktop {
   -> file { "/var/lib/flatpak/overrides/org.signal.Signal":
     content => @(END)
       [Context]
-      filesystems=!home;
+      filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents
       | END
   }
   -> file { "/var/lib/flatpak/overrides/us.zoom.Zoom":
@@ -116,6 +116,18 @@ class desktop {
     content => @(END)
       [Context]
       filesystems=!xdg-pictures;
+      | END
+  }
+  -> file { "/var/lib/flatpak/overrides/com.discordapp.Discord":
+    content => @(END)
+      [Context]
+      filesystems=!xdg-pictures;!xdg-videos;
+      | END
+  }
+  -> file { "/var/lib/flatpak/overrides/com.valvesoftware.Steam":
+    content => @(END)
+      [Context]
+      filesystems=!xdg-pictures;!xdg-music;
       | END
   }
   -> file { "/var/lib/flatpak/overrides/global":
