@@ -39,3 +39,11 @@ Only install the following roles:
  - laptop tools (if needed)
  - base system tools
  - SSH server
+
+If you want to speedup package installation on first run, use:
+
+```
+./run --noop 2>&1 \
+  | sed -n 's,Notice:.*/Package\[\(.*\)\]/ensure:.*should be .present.*,\1,p' \
+  | xargs sudo apt install
+```
