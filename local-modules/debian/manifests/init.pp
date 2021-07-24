@@ -73,6 +73,8 @@ class debian {
     packages => [
       "tmux",                   # https://github.com/tmux/tmux/commit/b33a302235affc19d8a1d8f7473fe589d1bcd17e
       "firefox*",               # unstable not up-to-date currently
+      "pipewire*",              # unstable not up-to-date currently
+      "libspa-0.2-bluetooth"
     ],
     release => "experimental"
   }
