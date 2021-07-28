@@ -14,6 +14,7 @@ class desktop::i3 {
              'i3',
              'i3lock',
              'inputplug',
+             'libgtk3-nocsd0',
              'libnotify-bin',
              'libvte-2.91-0',
              'picom',
