@@ -10,6 +10,7 @@ class desktop::i3 {
              'gnome-icon-theme',
              'gnome-themes-standard',
              'gnupg-agent',
+             'gtk3-nocsd',
              'hsetroot',
              'i3',
              'i3lock',
