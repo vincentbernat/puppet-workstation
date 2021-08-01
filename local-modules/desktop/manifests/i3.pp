@@ -25,6 +25,7 @@ class desktop::i3 {
              'python3-i3ipc',
              'python3-pil',
              'python3-systemd',
+             'python3-xcffib',
              'python3-xlib',
              'qt5ct',
              'redshift',
