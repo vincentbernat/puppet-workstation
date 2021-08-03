@@ -86,12 +86,13 @@ class desktop {
   }
   ->
   flatpak { [
-             'com.discordapp.Discord',
-             'com.snes9x.Snes9x',
-             'com.spotify.Client',
-             'com.valvesoftware.Steam',
-             'org.signal.Signal',
-             'us.zoom.Zoom',
+    'com.discordapp.Discord',
+    'com.spotify.Client',
+    'com.valvesoftware.Steam',
+    'org.chromium.Chromium',
+    'org.signal.Signal',
+    'com.snes9x.Snes9x',
+    'us.zoom.Zoom',
              ]:
     ensure => installed,
     remote => 'flathub'
@@ -128,6 +129,12 @@ class desktop {
     content => @(END)
       [Context]
       filesystems=!xdg-pictures;!xdg-music;
+      | END
+  }
+  -> file { "/var/lib/flatpak/overrides/org.chromium.Chromium":
+    content => @(END)
+      [Context]
+      filesystems=!home;xdg-download;
       | END
   }
   -> file { "/var/lib/flatpak/overrides/global":

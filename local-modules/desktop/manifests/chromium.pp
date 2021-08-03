@@ -1,6 +1,6 @@
 class desktop::chromium {
   # Chromium
-  package { ["chromium", "chromium-l10n"]: ensure => installed }
+  package { ["chromium", "chromium-l10n"]: ensure => purged }
 
   # Google Chrome
   apt::source { 'google-chrome':
