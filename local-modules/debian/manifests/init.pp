@@ -69,7 +69,7 @@ class debian {
     priority => 101
   }
   apt::pin { 'prefer-experimental':
-    priority => 600,
+    priority => 990,
     packages => [
       "tmux",                   # https://github.com/tmux/tmux/commit/b33a302235affc19d8a1d8f7473fe589d1bcd17e
       "firefox*",               # unstable not up-to-date
