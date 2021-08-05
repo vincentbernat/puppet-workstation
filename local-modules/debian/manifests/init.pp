@@ -72,10 +72,11 @@ class debian {
     priority => 600,
     packages => [
       "tmux",                   # https://github.com/tmux/tmux/commit/b33a302235affc19d8a1d8f7473fe589d1bcd17e
-      "firefox*",               # unstable not up-to-date currently
-      "pipewire*",              # unstable not up-to-date currently
+      "firefox*",               # unstable not up-to-date
+      "pipewire*",              # unstable not up-to-date
       "libpipewire-*",
-      "libspa-0.2-*"
+      "libspa-0.2-*",
+      "gnome-boxes"             # unstable not up-to-date
     ],
     release => "experimental"
   }

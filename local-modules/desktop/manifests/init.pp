@@ -25,6 +25,7 @@ class desktop {
   package { 'geeqie':                    ensure => installed }
   package { 'gitg':                      ensure => installed }
   package { 'gimp':                      ensure => installed }
+  package { 'gnome-boxes':               ensure => installed }
   package { 'inkscape':                  ensure => installed }
   package { 'krita':                     ensure => installed }
   package { 'pinentry-curses':           ensure => installed }
