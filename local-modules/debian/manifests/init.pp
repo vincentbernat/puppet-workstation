@@ -75,8 +75,7 @@ class debian {
       "firefox*",               # unstable not up-to-date
       "pipewire*",              # unstable not up-to-date
       "libpipewire-*",
-      "libspa-0.2-*",
-      "gnome-boxes"             # unstable not up-to-date
+      "libspa-0.2-*"
     ],
     release => "experimental"
   }
