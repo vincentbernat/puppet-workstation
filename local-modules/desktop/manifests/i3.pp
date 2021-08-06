@@ -22,6 +22,7 @@ class desktop::i3 {
              'policykit-1-gnome',
              'polybar',
              'python3-dbussy',
+             'python3-gi-cairo',
              'python3-i3ipc',
              'python3-pil',
              'python3-systemd',
