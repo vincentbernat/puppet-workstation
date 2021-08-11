@@ -17,6 +17,7 @@ class desktop::i3 {
              'libnotify-bin',
              'libvte-2.91-0',
              'maim',
+             'papirus-icon-theme',
              'picom',
              'playerctl',
              'policykit-1-gnome',
