@@ -26,8 +26,6 @@ class system::sudo {
     content => @(SUDO/L)
       %sudo ALL=(ALL) NOPASSWD:\
        /usr/bin/apt update,\
-       /usr/bin/apt full-upgrade,\
-       /usr/bin/apt upgrade,\
        /usr/bin/apt autoremove,\
        /usr/bin/apt autoclean,\
        /usr/bin/aptitude purge ~o,\
