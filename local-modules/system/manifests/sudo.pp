@@ -9,6 +9,19 @@ class system::sudo {
     config_file_replace => false,
   }
 
+  file { '/etc/environment':
+    content => @(ENV/L)
+      # Managed by Puppet
+      LESSSECURE=1
+      | ENV
+  }
+  file_line { 'make sudo read /etc/environment':
+    require => Package[sudo],
+    line    => 'session required pam_env.so',
+    path    => '/etc/pam.d/sudo',
+    after   => "#%PAM-1.0"
+  }
+
   sudo::conf { 'apt':
     content => @(SUDO/L)
       %sudo ALL=(ALL) NOPASSWD:\
