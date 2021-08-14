@@ -10,7 +10,11 @@ node default {
     membership => minimum
   }
 
-  include debian
+  stage { 'early': } -> Stage['main']
+  class { debian:
+    stage => early
+  }
+
   include system
   include tools
   include desktop
