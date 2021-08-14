@@ -1,11 +1,13 @@
 class desktop::audio {
-  # Configure pulseaudio with bluetooth support
+  # Configure pipewire with bluetooth support
   package { ["bluez",
              "bluez-tools",
              "pavucontrol",
-             "pulseaudio",
-             "pulseaudio-module-bluetooth"]:
+             "pipewire",
+             "pipewire-pulse",
+             "pipewire-audio-client-libraries",
+             "libspa-0.2-bluetooth"]:
                ensure => installed
   }
-  package { "pipewire": ensure => purged }
+  package { "pulseaudio-module-bluetooth": ensure => purged }
 }
