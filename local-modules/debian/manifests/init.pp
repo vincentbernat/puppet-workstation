@@ -63,15 +63,6 @@ class debian {
     repos    => 'main',
     include  => { 'src' => false }
   }
-  apt::source { 'google-chrome':
-    location     => 'http://dl.google.com/linux/chrome/deb/',
-    release      => 'stable',
-    repos        => 'main',
-    key          => 'EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796',
-    include      => { 'src' => false },
-    pin          => 400,
-    architecture => 'amd64',
-  }
 
   # Do not use pin from apt::source which does use origin instead of release
   apt::pin { ['experimental', 'experimental-debug']:

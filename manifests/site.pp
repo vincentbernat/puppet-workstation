@@ -10,14 +10,8 @@ node default {
     membership => minimum
   }
 
-  stage { 'early': } -> Stage['main']
-  class { debian:
-    stage => early
+  include debian
+  class { [system, tools, desktop, dev]:
+    require => Class[debian]
   }
-
-  include system
-  include tools
-  include desktop
-  include dev
-
 }
