@@ -6,7 +6,7 @@ defaults:
 hierarchy:
   - name: "YAML hierarchy"
     paths:
-      - "%{facts.fqdn}.yaml"
       - "%{facts.fqdn}.private.yaml"
-      - "common.yaml"
+      - "%{facts.fqdn}.yaml"
       - "private.yaml"
+      - "common.yaml"
