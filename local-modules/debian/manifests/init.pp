@@ -81,9 +81,6 @@ class debian {
     priority => 990,
     packages => [
       "firefox*",               # unstable not up-to-date
-      "pipewire*",              # unstable not up-to-date
-      "libpipewire-*",
-      "libspa-0.2-*"
     ],
     release => "experimental"
   }
