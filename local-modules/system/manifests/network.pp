@@ -1,10 +1,14 @@
 class system::network {
 
   # For networking, we rely on network manager.
-  package { "network-manager": ensure => installed }
-  package { "network-manager-gnome": ensure => installed }
-  package { "network-manager-openvpn": ensure => installed }
-  package { "network-manager-openvpn-gnome": ensure => installed }
+  package { ["network-manager",
+             "network-manager-gnome",
+             "network-manager-openvpn",
+             "network-manager-openvpn-gnome"]:
+               ensure => installed
+  }
+  ->
+  package { "modemmanager": ensure => purged }
   package { "wireguard": ensure => installed }
 
   # DNS
