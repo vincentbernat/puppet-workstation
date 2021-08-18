@@ -20,6 +20,7 @@ class tools::applications {
              'lsof',
              'mercurial',
              'moreutils',
+             'ncal',
              'neofetch',
              'pass',
              'pass-extension-otp',
