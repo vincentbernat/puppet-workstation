@@ -92,6 +92,7 @@ class desktop {
     'com.valvesoftware.Steam',
     'org.chromium.Chromium',
     'org.signal.Signal',
+    'com.jgraph.drawio.desktop',
     'com.snes9x.Snes9x',
     'us.zoom.Zoom',
              ]:
@@ -101,6 +102,12 @@ class desktop {
   # For permissions, check with "flatpak info -M us.zoom.Zoom"
   -> file { "/var/lib/flatpak/overrides":
     ensure => directory
+  }
+  -> file { "/var/lib/flatpak/overrides/com.jgraph.drawio.desktop":
+    content => @(END)
+      [Context]
+      filesystems=!home;xdg-documents
+      | END
   }
   -> file { "/var/lib/flatpak/overrides/org.signal.Signal":
     content => @(END)
