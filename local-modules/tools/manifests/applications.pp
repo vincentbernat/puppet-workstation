@@ -19,6 +19,7 @@ class tools::applications {
              'lshw',
              'lsof',
              'mercurial',
+             'mmv',
              'moreutils',
              'ncal',
              'neofetch',
