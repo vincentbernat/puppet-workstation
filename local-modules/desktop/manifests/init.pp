@@ -90,7 +90,7 @@ class desktop {
     'com.discordapp.Discord',
     'com.spotify.Client',
     'com.valvesoftware.Steam',
-    'org.chromium.Chromium',
+    'com.github.Eloston.UngoogledChromium',
     'org.signal.Signal',
     'com.jgraph.drawio.desktop',
     'com.snes9x.Snes9x',
@@ -139,7 +139,7 @@ class desktop {
       filesystems=!xdg-pictures;!xdg-music;
       | END
   }
-  -> file { "/var/lib/flatpak/overrides/org.chromium.Chromium":
+  -> file { "/var/lib/flatpak/overrides/com.github.Eloston.UngoogledChromium":
     content => @(END)
       [Context]
       filesystems=!home;xdg-download;
@@ -151,6 +151,8 @@ class desktop {
       XCURSOR_THEME=Adwaita;
       | END
   }
+  -> flatpak { "org.chromium.Chromium": ensure => absent }
+
 
   # Xsession shouldn't start much stuff
   file_line { 'no Xsession dbus':
