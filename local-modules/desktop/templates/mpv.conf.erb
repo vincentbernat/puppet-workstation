@@ -27,4 +27,4 @@ ytdl-format=bestvideo[width<=3840]+bestaudio/best[width<=3840]
 <% end -%>
 
 # Switch to yt-dlp (available through Nix)
-script-opts=ytdl_hook-ytdl_path=~/.nix-profile/bin/yt-dlp
+script-opts=ytdl_hook-ytdl_path=<%= @home %>/.nix-profile/bin/yt-dlp
