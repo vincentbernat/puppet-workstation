@@ -15,6 +15,7 @@ class tools::network {
   package { 'oping':                ensure => installed }
   package { 'snmp':                 ensure => installed } ->
   package { 'snmp-mibs-downloader': ensure => installed }
+  package { 'socat':                ensure => installed }
   package { 'tcpdump':              ensure => installed }
   package { 'traceroute':           ensure => installed }
   package { 'tshark':               ensure => installed }
