@@ -18,6 +18,7 @@ class tools::applications {
              'linux-perf',
              'lshw',
              'lsof',
+             'magic-wormhole',
              'mercurial',
              'mmv',
              'moreutils',
