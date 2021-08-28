@@ -88,12 +88,13 @@ class desktop {
   ->
   flatpak { [
     'com.discordapp.Discord',
-    'com.spotify.Client',
-    'com.valvesoftware.Steam',
     'com.github.Eloston.UngoogledChromium',
-    'org.signal.Signal',
     'com.jgraph.drawio.desktop',
     'com.snes9x.Snes9x',
+    'com.spotify.Client',
+    'com.valvesoftware.Steam',
+    'org.jitsi.jitsi-meet',
+    'org.signal.Signal',
     'us.zoom.Zoom',
              ]:
     ensure => installed,
@@ -143,6 +144,12 @@ class desktop {
     content => @(END)
       [Context]
       filesystems=!home;xdg-download;
+      | END
+  }
+  -> file { "/var/lib/flatpak/overrides/org.jitsi.jitsi-meet":
+    content => @(END)
+      [Context]
+      filesystems=!home
       | END
   }
   -> file { "/var/lib/flatpak/overrides/global":
