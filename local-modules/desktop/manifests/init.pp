@@ -11,7 +11,6 @@ class desktop {
 
   # Some applications
   include desktop::emacs
-  include desktop::chromium
   include desktop::latex
   include desktop::camera
 
