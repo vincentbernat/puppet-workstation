@@ -42,6 +42,7 @@ class desktop {
   package { 'vlc':                       ensure => installed }
   package { 'cups':                      ensure => installed }
   package { 'cups-browsed':              ensure => purged }
+  package { 'system-config-printer':     ensure => installed }
   package { 'wireshark':                 ensure => installed }
   package { 'libreoffice':               ensure => installed }
   package { 'libreoffice-gtk3':          ensure => installed }
