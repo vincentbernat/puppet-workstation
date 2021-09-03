@@ -160,8 +160,6 @@ class desktop {
       XCURSOR_THEME=Adwaita;
       | END
   }
-  -> flatpak { "org.chromium.Chromium": ensure => absent }
-
 
   # Xsession shouldn't start much stuff
   file_line { 'no Xsession dbus':
