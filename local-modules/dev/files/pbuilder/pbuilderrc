@@ -13,12 +13,3 @@ case "$*" in
         PBUILDERSATISFYDEPENDSCMD=/usr/lib/pbuilder/pbuilder-satisfydepends-apt
         ;;
 esac
-
-export PBUILDERPID=$$
-if [ "x$PBCURRENTCOMMANDLINEOPERATION" = xlogin ]; then
-  [ -z $SUDO_UID ] || {
-    home=$(getent passwd $SUDO_UID | awk -F: '{print $6}')
-    BINDMOUNTS="$BINDMOUNTS $home"
-    export ZDOTDIR=$home
-  }
-fi
