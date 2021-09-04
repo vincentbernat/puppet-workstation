@@ -53,8 +53,10 @@ class system {
 
   # Laptop tools
   if $facts['laptop'] {
-    package { "tlp":             ensure => installed }
-    package { "powertop":        ensure => installed }
+    package { "tlp":      ensure => installed }
+    package { "powertop": ensure => installed }
+    ->
+    service { "powertop": enable => false }
   }
 
   # Locales
