@@ -1,6 +1,7 @@
 class system::docker {
   package { ["docker.io",
-             "docker-compose"]: ensure => installed }
+             "docker-compose",
+             "podman"]: ensure => installed }
   ->
   User <| title == "${::user}" |> {
     groups +> "docker"
