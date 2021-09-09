@@ -1,6 +1,7 @@
 class desktop::fonts {
 
   # fonts
+  package { 'fonts-cantarell':           ensure => installed }
   package { 'fonts-dejavu':              ensure => installed }
   package { 'fonts-dejavu-extra':        ensure => installed }
   package { 'fonts-droid-fallback':      ensure => installed }
@@ -13,7 +14,7 @@ class desktop::fonts {
   package { 'fonts-noto':                ensure => installed }
   package { 'fonts-noto-color-emoji':    ensure => installed }
   package { 'fonts-terminus-otb':        ensure => installed }
-  package { 'ttf-mscorefonts-installer': ensure => installed }
+  package { 'ttf-mscorefonts-installer': ensure => purged }
   package { 'fonts-powerline':           ensure => purged }
 
   # fontconfig
