@@ -10,6 +10,7 @@ class tools::applications {
              'gnupg',
              'htop',
              'httpie',
+             'hwinfo',
              'imagemagick',
              'ioping',
              'iotop',
