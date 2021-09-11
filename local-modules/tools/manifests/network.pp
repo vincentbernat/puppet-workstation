@@ -6,6 +6,7 @@ class tools::network {
   package { 'fping':                ensure => installed }
   package { 'gnutls-bin':           ensure => installed }
   package { 'httping':              ensure => installed }
+  package { 'ipcalc':               ensure => installed }
   package { 'ldnsutils':            ensure => installed }
   package { 'lftp':                 ensure => installed }
   package { 'lldpd':                ensure => installed }
@@ -13,6 +14,7 @@ class tools::network {
   package { 'netcat':               ensure => installed }
   package { 'openssh-client':       ensure => installed }
   package { 'oping':                ensure => installed }
+  package { 'sipcalc':              ensure => installed }
   package { 'snmp':                 ensure => installed } ->
   package { 'snmp-mibs-downloader': ensure => installed }
   package { 'socat':                ensure => installed }
