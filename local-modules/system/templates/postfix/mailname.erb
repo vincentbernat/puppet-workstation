@@ -1,1 +1,5 @@
-<%= @origin %>
+<%- if @relays.empty? -%>
+<%= @domain %>
+<%- else -%>
+<%= @fqdn %>
+<%- end -%>

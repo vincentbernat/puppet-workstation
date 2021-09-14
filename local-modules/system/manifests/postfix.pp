@@ -1,4 +1,4 @@
-class system::postfix($relays, $origin = "${::domain}") {
+class system::postfix($relays) {
 
   package { postfix: ensure => installed }
 
