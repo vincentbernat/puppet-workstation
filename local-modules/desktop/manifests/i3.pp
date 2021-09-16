@@ -40,6 +40,7 @@ class desktop::i3 {
              'xdotool',
              'xiccd',
              'xinput',
+             'xprintidle',
              'xsel',
              'xsettingsd',
              'xss-lock']:
