@@ -2,9 +2,7 @@ class system::network {
 
   # For networking, we rely on network manager.
   package { ["network-manager",
-             "network-manager-gnome",
-             "network-manager-openvpn",
-             "network-manager-openvpn-gnome"]:
+             "network-manager-gnome"]:
                ensure => installed
   }
   ->
