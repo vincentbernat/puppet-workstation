@@ -96,7 +96,6 @@ class desktop {
     'com.spotify.Client',
     'com.valvesoftware.Steam',
     'org.gnome.Maps',
-    'org.gnome.font-viewer',
     'org.jitsi.jitsi-meet',
     'org.signal.Signal',
     'us.zoom.Zoom',
