@@ -10,7 +10,7 @@ class desktop::i3 {
              'gnome-themes-standard',
              'gnupg-agent',
              'hsetroot',
-             'i3',
+             'i3-wm',
              'i3lock',
              'inputplug',
              'libgtk3-nocsd0',
