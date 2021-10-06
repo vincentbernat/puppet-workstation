@@ -68,13 +68,6 @@ class debian {
   apt::pin { ['experimental', 'experimental-debug']:
     priority => 101
   }
-  apt::pin { 'prefer-experimental':
-    priority => 990,
-    packages => [
-      "firefox*",               # unstable not up-to-date
-    ],
-    release => "experimental"
-  }
 
   package { 'flatpak': ensure => installed }
   package { 'needrestart': ensure => installed }
