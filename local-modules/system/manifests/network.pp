@@ -10,9 +10,10 @@ class system::network {
   package { "wireguard": ensure => installed }
 
   # DNS
-  package { "resolvconf": ensure => purged }
-  package { "dnsmasq": ensure => purged }
-  package { "dnsmasq-base": ensure => installed }
+  package { "libnss-resolve": ensure => installed }
+  package { "resolvconf":     ensure => purged }
+  package { "dnsmasq":        ensure => purged }
+  package { "dnsmasq-base":   ensure => installed }
   file_line { "enable DNSSEC":
     ensure => present,
     match  => "^[# ]*DNSSEC=",
