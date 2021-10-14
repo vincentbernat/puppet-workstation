@@ -14,13 +14,6 @@ class system::network {
   package { "resolvconf":     ensure => purged }
   package { "dnsmasq":        ensure => purged }
   package { "dnsmasq-base":   ensure => installed }
-  file_line { "Disable DNSSEC":
-    ensure => present,
-    match  => "^[# ]*DNSSEC=",
-    line   => "DNSSEC=no",
-    path   => "/etc/systemd/resolved.conf"
-  }
-  ~>
   service { "systemd-resolved":
     ensure => running,
     enable => true
