@@ -7,6 +7,7 @@ Type=idle
 User=<%= @user %>
 WorkingDirectory=~
 PAMName=login
+StandardInput=tty
 TTYPath=/dev/tty8
 UtmpIdentifier=tty8
 ExecStartPre=/usr/bin/chvt 8
