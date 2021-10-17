@@ -12,7 +12,7 @@ StandardOutput=journal+console
 TTYPath=/dev/tty8
 UtmpIdentifier=tty8
 ExecStartPre=/usr/bin/chvt 8
-ExecStart=/usr/bin/startx
+ExecStart=/usr/bin/startx -- -verbose 3 -logfile /dev/null
 UnsetEnvironment=TERM
 Environment=XDG_SESSION_TYPE=x11
 
