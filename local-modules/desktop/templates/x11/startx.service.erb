@@ -13,6 +13,7 @@ UtmpIdentifier=tty8
 ExecStartPre=/usr/bin/chvt 8
 ExecStart=/usr/bin/startx
 UnsetEnvironment=TERM
+Environment=XDG_SESSION_TYPE=x11
 
 [Install]
 WantedBy=graphical.target
