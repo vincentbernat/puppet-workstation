@@ -8,6 +8,7 @@ User=<%= @user %>
 WorkingDirectory=~
 PAMName=login
 StandardInput=tty
+StandardOutput=journal+console
 TTYPath=/dev/tty8
 UtmpIdentifier=tty8
 ExecStartPre=/usr/bin/chvt 8
