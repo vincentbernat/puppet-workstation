@@ -8,17 +8,14 @@ class desktop::x11 {
              'xserver-xorg-legacy',
              'libvdpau-va-gl1']: ensure => absent }
 
-  package { 'lightdm': ensure => installed }
+  package { ['lightdm', 'lightdm-gtk-greeter']: ensure => purged }
+  package { 'xinit': ensure => installed }
   ->
-  package { 'lightdm-gtk-greeter': ensure => installed }
+  file { '/etc/systemd/system/startx.service':
+    content => template('desktop/x11/startx.service.erb')
+  }
   ->
-  file { '/etc/lightdm/lightdm.conf':
-    content => template('desktop/x11/lightdm.conf.erb')
+  service { 'startx':
+    enable => true
   }
-  ~>
-  service { 'lightdm':
-    ensure => running,
-    restart => 'service lightdm reload'
-  }
-
 }

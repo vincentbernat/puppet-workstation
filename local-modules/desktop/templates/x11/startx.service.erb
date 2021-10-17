@@ -1,0 +1,16 @@
+[Unit]
+Description=X11 session for <%= @user %>
+After=graphical.target systemd-user-sessions.service
+
+[Service]
+Type=idle
+User=<%= @user %>
+WorkingDirectory=~
+PAMName=login
+TTYPath=/dev/tty8
+UtmpIdentifier=tty8
+ExecStartPre=/usr/bin/chvt 8
+ExecStart=/usr/bin/startx
+
+[Install]
+WantedBy=graphical.target
