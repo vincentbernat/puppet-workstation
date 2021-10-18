@@ -9,14 +9,30 @@ WorkingDirectory=~
 PAMName=login
 TTYPath=/dev/tty8
 UtmpIdentifier=tty8
-# Switching to the TTY seems to be needed to start the X server.
+
+# Switching to the TTY is needed to get the appropriate rights from
+# logind for rootless X. X does not seem to succeed doing it itself
+# (xf86OpenConsole: VT_ACTIVATE failed: Operation not permitted) but
+# it also tries too late.
+#
+# For more information about how logind provides access to devices,
+# see https://dvdhrm.wordpress.com/2013/08/25/sane-session-switching/.
+# It does not match exactly the current implementation (method names
+# have changed), but it seems accurate on the concepts.
+#
+# chvt needs the tty to be attached to standard input to work. systemd
+# sets the TERM variable environment in this case and it gets
+# inherited by the X session. We do not want that.
 StandardInput=tty
 UnsetEnvironment=TERM
 ExecStartPre=/usr/bin/chvt 8
+
 # Log output to journal, not TTY
 StandardOutput=journal
-ExecStart=/usr/bin/startx -- -verbose 3 -logfile /dev/null
-# Ensure the session type is not tty (until X can use SetType itself)
+ExecStart=/usr/bin/startx -- vt8 -keeptty -verbose 3 -logfile /dev/null
+
+# Ensure the session type is set to x11 to allow xss-lock to set idle hint
+# See: https://gitlab.freedesktop.org/xorg/xserver/-/issues/1194
 Environment=XDG_SESSION_TYPE=x11
 
 [Install]
