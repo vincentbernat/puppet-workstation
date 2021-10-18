@@ -7,13 +7,16 @@ Type=simple
 User=<%= @user %>
 WorkingDirectory=~
 PAMName=login
-StandardInput=tty
-StandardOutput=journal
 TTYPath=/dev/tty8
 UtmpIdentifier=tty8
-ExecStartPre=/usr/bin/chvt 8
-ExecStart=/usr/bin/startx -- -verbose 3 -logfile /dev/null
+# Switching to the TTY seems to be needed to start the X server.
+StandardInput=tty
 UnsetEnvironment=TERM
+ExecStartPre=/usr/bin/chvt 8
+# Log output to journal, not TTY
+StandardOutput=journal
+ExecStart=/usr/bin/startx -- -verbose 3 -logfile /dev/null
+# Ensure the session type is not tty (until X can use SetType itself)
 Environment=XDG_SESSION_TYPE=x11
 
 [Install]
