@@ -6,6 +6,9 @@ After=graphical.target systemd-user-sessions.service
 Type=simple
 User=<%= @user %>
 WorkingDirectory=~
+
+# Create a logind's session through pam_systemd. A TTY is needed to
+# get it attached to a seat.
 PAMName=login
 TTYPath=/dev/tty8
 UtmpIdentifier=tty8
@@ -27,7 +30,7 @@ StandardInput=tty
 UnsetEnvironment=TERM
 ExecStartPre=/usr/bin/chvt 8
 
-# Log output to journal, not TTY
+# Log output to journal, not TTY. Starts X on vt8.
 StandardOutput=journal
 ExecStart=/usr/bin/startx -- vt8 -keeptty -verbose 3 -logfile /dev/null
 
