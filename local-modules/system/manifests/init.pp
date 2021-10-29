@@ -83,9 +83,6 @@ class system {
   }
 
   # Prepare for KSM, but disable it
-  file { "/etc/sysfs.d/ksm.conf":
-    ensure => absent
-  }
   package { "ksmtuned":
     ensure => present
   }
