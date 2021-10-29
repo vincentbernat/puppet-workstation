@@ -82,12 +82,19 @@ class system {
     require => Package["sysfsutils"]
   }
 
-  # Enable KSM
+  # Prepare for KSM, but disable it
   file { "/etc/sysfs.d/ksm.conf":
-    content => "kernel/mm/ksm/run = 1\n",
-    notify => Service["sysfsutils"],
-    require => Package["sysfsutils"]
+    ensure => absent
   }
+  package { "ksmtuned":
+    ensure => present
+  }
+  ->
+  service { ["ksm", "ksmtuned"]:
+    ensure => stopped,
+    enable => false
+  }
+  # When needed: systemctl start ksm
 
   file { '/etc/udev/rules.d/70-more-uaccess.rules':
     source => 'puppet:///modules/system/uaccess.rules'
