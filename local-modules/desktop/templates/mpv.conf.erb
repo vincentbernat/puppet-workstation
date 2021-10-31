@@ -21,7 +21,7 @@ ytdl-raw-options=write-sub=,write-auto-sub=
 ytdl-raw-options-append=sub-lang=en,fr
 # Limit video quality
 <% if @facts['laptop'] -%>
-ytdl-format=bestvideo[width<=2880]+bestaudio/best[width<=2880]
+ytdl-format=bestvideo[width<=1920]+bestaudio/best[width<=1920]
 <% else -%>
 ytdl-format=bestvideo[width<=3840]+bestaudio/best[width<=3840]
 <% end -%>
