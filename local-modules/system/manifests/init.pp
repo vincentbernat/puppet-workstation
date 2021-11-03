@@ -83,6 +83,14 @@ class system {
   }
 
   # Prepare for KSM, but disable it
+  file { "/etc/sysfs.d/ksm.conf":
+    notify => Service["sysfsutils"],
+    require => Package["sysfsutils"],
+    content => @(END)
+      kernel/mm/ksm/pages_to_scan=1000
+      | END
+  }
+
   package { "ksmtuned":
     ensure => present
   }
