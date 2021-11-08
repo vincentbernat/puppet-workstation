@@ -97,6 +97,7 @@ class desktop {
     'com.valvesoftware.Steam',
     'org.gnome.Maps',
     'org.jitsi.jitsi-meet',
+    'org.libretro.RetroArch',
     'org.signal.Signal',
     'us.zoom.Zoom',
              ]:
@@ -153,6 +154,12 @@ class desktop {
     content => @(END)
       [Context]
       filesystems=!home
+      | END
+  }
+  -> file { "/var/lib/flatpak/overrides/org.libretro.RetroArch":
+    content => @(END)
+      [Context]
+      filesystems=!home;!host;~/games/ROMs
       | END
   }
   -> file { "/var/lib/flatpak/overrides/global":
