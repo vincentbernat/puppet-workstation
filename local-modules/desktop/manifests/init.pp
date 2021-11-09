@@ -92,7 +92,6 @@ class desktop {
     'com.discordapp.Discord',
     'com.github.Eloston.UngoogledChromium',
     'com.jgraph.drawio.desktop',
-    'com.snes9x.Snes9x',
     'com.spotify.Client',
     'com.valvesoftware.Steam',
     'org.gnome.Maps',
