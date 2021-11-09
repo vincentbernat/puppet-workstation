@@ -1,24 +1,16 @@
 class system::ssh {
 
   package { "openssh-server": ensure => installed }
-
-  sshd_config { "PermitRootLogin":
+  ->
+  sshd_config { ["PermitRootLogin",
+                 "PasswordAuthentication",
+                 "KbdInteractiveAuthentication"]:
     ensure => present,
-    value => "no",
-    require => Package["openssh-server"],
-    notify => Service[ssh]
+    value  => "no",
   }
-
-  sshd_config { "PasswordAuthentication":
-    ensure => present,
-    value => "no",
-    require => Package["openssh-server"],
-    notify => Service[ssh]
-  }
-
+  ~>
   service { "ssh":
     ensure => running,
-    require => Package["openssh-server"]
   }
 
 }
