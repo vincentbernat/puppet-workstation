@@ -86,86 +86,58 @@ class desktop {
   flatpak_remote { 'flathub':
     ensure   => present,
     location => 'https://flathub.org/repo/flathub.flatpakrepo'
-  }
-  ->
-  flatpak { [
-    'com.discordapp.Discord',
-    'com.github.Eloston.UngoogledChromium',
-    'com.jgraph.drawio.desktop',
-    'com.spotify.Client',
-    'com.valvesoftware.Steam',
-    'org.gnome.Maps',
-    'org.jitsi.jitsi-meet',
-    'org.libretro.RetroArch',
-    'org.signal.Signal',
-    'us.zoom.Zoom',
-             ]:
-    ensure => installed,
-    remote => 'flathub'
-  }
-  # For permissions, check with "flatpak info -M us.zoom.Zoom"
-  -> file { "/var/lib/flatpak/overrides":
+  } -> file { "/var/lib/flatpak/overrides":
     ensure => directory
-  }
-  -> file { "/var/lib/flatpak/overrides/com.jgraph.drawio.desktop":
-    content => @(END)
-      [Context]
-      filesystems=!home;xdg-documents
-      | END
-  }
-  -> file { "/var/lib/flatpak/overrides/org.signal.Signal":
-    content => @(END)
-      [Context]
-      filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents
-      | END
-  }
-  -> file { "/var/lib/flatpak/overrides/us.zoom.Zoom":
-    content => @(END)
-      [Context]
-      filesystems=!home;~/.zoom;
-      | END
-  }
-  -> file { "/var/lib/flatpak/overrides/com.spotify.Client":
-    content => @(END)
-      [Context]
-      filesystems=!xdg-pictures;
-      | END
-  }
-  -> file { "/var/lib/flatpak/overrides/com.discordapp.Discord":
-    content => @(END)
-      [Context]
-      filesystems=!xdg-pictures;!xdg-videos;
-      | END
-  }
-  -> file { "/var/lib/flatpak/overrides/com.valvesoftware.Steam":
-    content => @(END)
-      [Context]
-      filesystems=!xdg-pictures;!xdg-music;
-      | END
-  }
-  -> file { "/var/lib/flatpak/overrides/com.github.Eloston.UngoogledChromium":
-    content => @(END)
-      [Context]
-      filesystems=!home;xdg-download;
-      | END
-  }
-  -> file { "/var/lib/flatpak/overrides/org.jitsi.jitsi-meet":
-    content => @(END)
-      [Context]
-      filesystems=!home
-      | END
-  }
-  -> file { "/var/lib/flatpak/overrides/org.libretro.RetroArch":
-    content => @(END)
-      [Context]
-      filesystems=!home;!host;~/games/ROMs
-      | END
-  }
-  -> file { "/var/lib/flatpak/overrides/global":
+  } -> file { "/var/lib/flatpak/overrides/global":
     content => @(END)
       [Environment]
       XCURSOR_THEME=Adwaita;
       | END
+  }
+  define flatpak($permissions = undef) {
+    flatpak { $title:
+      ensure  => installed,
+      remote  => 'flathub',
+      require => Flatpak_Remote['flathub']
+    }
+    # For permissions, check with "flatpak info -M us.zoom.Zoom"
+    ->
+    file { "/var/lib/flatpak/overrides/${title}":
+      ensure  => $permissions ? { undef => absent, default => present },
+      content => @("END")
+        [Context]
+        ${permissions}
+        | END
+    }
+  }
+
+  desktop::flatpak { 'org.gnome.Maps': }
+  desktop::flatpak { "com.jgraph.drawio.desktop":
+    permissions => "filesystems=!home;xdg-documents"
+  }
+  desktop::flatpak {"org.signal.Signal":
+    permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
+  }
+  desktop::flatpak { "us.zoom.Zoom":
+    permissions => "filesystems=!home;~/.zoom;"
+  }
+  desktop::flatpak { "com.spotify.Client":
+    permissions => "filesystems=!xdg-pictures;"
+  }
+  desktop::flatpak { "com.discordapp.Discord":
+    permissions => "filesystems=!xdg-pictures;!xdg-videos;"
+  }
+  desktop::flatpak { "com.valvesoftware.Steam":
+    permissions => "filesystems=!xdg-pictures;!xdg-music;"
+  }
+  desktop::flatpak { "com.github.Eloston.UngoogledChromium":
+    permissions => "filesystems=!home;xdg-download;"
+  }
+  desktop::flatpak { "org.jitsi.jitsi-meet":
+    permissions => "filesystems=!home"
+  }
+  desktop::flatpak { "org.libretro.RetroArch":
+    permissions => "filesystems=!home;!host;~/games/ROMs"
   }
 
   # Xsession shouldn't start much stuff
