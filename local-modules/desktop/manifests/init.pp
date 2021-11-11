@@ -62,10 +62,10 @@ class desktop {
   # OpenCL
   package{ 'clinfo': ensure => installed }
   package{
-    $facts['vga']['vendor'] ? {
-      'Intel Corporation' => 'intel-opencl-icd',
-      'Advanced Micro Devices, Inc. [AMD/ATI]' => 'mesa-opencl-icd',
-      default => 'pocl-opencl-icd'
+    $facts['drm']['card0']['driver'] ? {
+      'i915'   => 'intel-opencl-icd',
+      'amdgpu' => 'mesa-opencl-icd',
+      default  => 'pocl-opencl-icd'
     }: ensure => installed
   }
 
