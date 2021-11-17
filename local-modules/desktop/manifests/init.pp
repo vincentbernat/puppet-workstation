@@ -113,25 +113,25 @@ class desktop {
 
   desktop::flatpak { 'org.gnome.Maps': }
   desktop::flatpak { "com.jgraph.drawio.desktop":
-    permissions => "filesystems=!home;xdg-documents"
+    permissions => "filesystems=!home;xdg-documents;xdg-download"
   }
   desktop::flatpak {"org.signal.Signal":
     permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
   }
   desktop::flatpak { "us.zoom.Zoom":
-    permissions => "filesystems=!home;~/.zoom;"
+    permissions => "filesystems=!home;~/.zoom"
   }
   desktop::flatpak { "com.spotify.Client":
-    permissions => "filesystems=!xdg-pictures;"
+    permissions => "filesystems=!xdg-pictures"
   }
   desktop::flatpak { "com.discordapp.Discord":
-    permissions => "filesystems=!xdg-pictures;!xdg-videos;"
+    permissions => "filesystems=!xdg-pictures;!xdg-videos"
   }
   desktop::flatpak { "com.valvesoftware.Steam":
-    permissions => "filesystems=!xdg-pictures;!xdg-music;"
+    permissions => "filesystems=!xdg-pictures;!xdg-music"
   }
   desktop::flatpak { "com.github.Eloston.UngoogledChromium":
-    permissions => "filesystems=!home;xdg-download;"
+    permissions => "filesystems=!home;xdg-download"
   }
   desktop::flatpak { "org.jitsi.jitsi-meet":
     permissions => "filesystems=!home"
