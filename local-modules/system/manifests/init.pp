@@ -57,6 +57,8 @@ class system {
     package { "powertop": ensure => installed }
     ->
     service { "powertop": enable => false }
+  } else {
+    package { "tlp":      ensure => purged }
   }
 
   # Locales
