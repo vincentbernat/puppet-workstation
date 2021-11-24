@@ -139,6 +139,9 @@ class desktop {
   desktop::flatpak { "org.libretro.RetroArch":
     permissions => "filesystems=!home;!host;~/games/ROMs"
   }
+  desktop::flatpak { "com.anydesk.Anydesk":
+    permissions => "filesystems=!home"
+  }
 
   # Xsession shouldn't start much stuff
   file_line { 'no Xsession dbus':
