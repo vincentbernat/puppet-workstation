@@ -118,9 +118,7 @@ class desktop {
   desktop::flatpak {"org.signal.Signal":
     permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
   }
-  desktop::flatpak { "us.zoom.Zoom":
-    permissions => "filesystems=!home;~/.zoom"
-  }
+  desktop::flatpak { "us.zoom.Zoom": }
   desktop::flatpak { "com.spotify.Client":
     permissions => "filesystems=!xdg-pictures"
   }
