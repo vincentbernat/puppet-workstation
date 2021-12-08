@@ -11,7 +11,6 @@ class desktop::i3 {
              'gnupg-agent',
              'hsetroot',
              'i3-wm',
-             'i3lock',
              'inputplug',
              'libgtk3-nocsd0',
              'libnotify-bin',
@@ -40,6 +39,7 @@ class desktop::i3 {
              'xiccd',
              'xinput',
              'xprintidle',
+             'xsecurelock',
              'xsel',
              'xsettingsd',
              'xss-lock']:
