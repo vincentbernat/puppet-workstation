@@ -32,6 +32,9 @@ class debian {
   file { "/etc/apt/apt.conf.d/99translations":
     source => "puppet:///modules/debian/apt/99translations"
   }
+  file { "/etc/apt/trusted.gpg":
+    ensure => absent
+  }
 
   apt::source { 'unstable':
     location          => 'http://httpredir.debian.org/debian/',
