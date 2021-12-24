@@ -71,6 +71,13 @@ class debian {
   apt::pin { ['experimental', 'experimental-debug']:
     priority => 101
   }
+  apt::pin { 'prefer-experimental':
+    priority => 990,
+    packages => [
+      "src:libreoffice",        # annoying read-only dialog
+    ],
+    release => "experimental"
+  }
 
   package { 'flatpak': ensure => installed }
   package { 'needrestart': ensure => installed }
