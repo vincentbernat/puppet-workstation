@@ -147,8 +147,8 @@ class system {
     enable => false
   }
 
-  class { "timezone":
-    timezone => "Europe/Paris"
+  file { "/etc/timezone":
+    content => "Europe/Paris\n"
   }
   service { "systemd-timesyncd":
     ensure => running,
