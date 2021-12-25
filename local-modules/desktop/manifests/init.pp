@@ -59,15 +59,6 @@ class desktop {
     ensure => purged
   }
 
-  # OpenCL
-  package{ 'clinfo': ensure => installed }
-  package{
-    $facts['drm']['card0']['driver'] ? {
-      'amdgpu' => 'mesa-opencl-icd',
-      default  => 'pocl-opencl-icd'
-    }: ensure => installed
-  }
-
   package { 'mpv': ensure => installed }
   -> file { '/etc/mpv/mpv.conf':
     content => template('desktop/mpv.conf.erb')
