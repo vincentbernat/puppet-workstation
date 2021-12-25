@@ -63,7 +63,6 @@ class desktop {
   package{ 'clinfo': ensure => installed }
   package{
     $facts['drm']['card0']['driver'] ? {
-      'i915'   => 'intel-opencl-icd',
       'amdgpu' => 'mesa-opencl-icd',
       default  => 'pocl-opencl-icd'
     }: ensure => installed
