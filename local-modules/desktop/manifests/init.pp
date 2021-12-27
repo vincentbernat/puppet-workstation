@@ -130,7 +130,6 @@ class desktop {
   desktop::flatpak { "com.anydesk.Anydesk":
     permissions => "filesystems=!home"
   }
-  desktop::flatpak { "com.github.wwmm.easyeffects": }
 
   # Xsession shouldn't start much stuff
   file_line { 'no Xsession dbus':
