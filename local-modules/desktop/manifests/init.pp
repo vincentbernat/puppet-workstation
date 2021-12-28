@@ -23,7 +23,7 @@ class desktop {
   package { 'file-roller':               ensure => installed }
   package { 'geeqie':                    ensure => installed }
   package { 'gitg':                      ensure => installed }
-  package { 'gimp':                      ensure => installed }
+  package { 'gimp':                      ensure => absent }
   package { 'gnome-boxes':               ensure => installed }
   package { 'inkscape':                  ensure => installed }
   package { 'krita':                     ensure => installed }
@@ -76,7 +76,12 @@ class desktop {
   flatpak_remote { 'flathub':
     ensure   => present,
     location => 'https://flathub.org/repo/flathub.flatpakrepo'
-  } -> file { "/var/lib/flatpak/overrides":
+  }
+  flatpak_remote { 'flathub-beta':
+    ensure   => present,
+    location => 'https://flathub.org/beta-repo/flathub-beta.flatpakrepo'
+  }
+  file { "/var/lib/flatpak/overrides":
     ensure => directory
   } -> file { "/var/lib/flatpak/overrides/global":
     content => @(END)
@@ -84,11 +89,11 @@ class desktop {
       XCURSOR_THEME=Adwaita;
       | END
   }
-  define flatpak($permissions = undef) {
+  define flatpak($permissions = undef, $remote = 'flathub') {
     flatpak { $title:
       ensure  => installed,
-      remote  => 'flathub',
-      require => Flatpak_Remote['flathub']
+      remote  => $remote,
+      require => Flatpak_Remote[$remote]
     }
     # For permissions, check with "flatpak info -M us.zoom.Zoom"
     ->
@@ -107,6 +112,9 @@ class desktop {
   }
   desktop::flatpak {"org.signal.Signal":
     permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
+  }
+  desktop::flatpak { "org.gimp.GIMP":
+    remote => "flathub-beta"
   }
   desktop::flatpak { "us.zoom.Zoom": }
   desktop::flatpak { "com.spotify.Client":
