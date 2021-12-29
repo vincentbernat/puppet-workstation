@@ -154,4 +154,16 @@ class system {
     ensure => running,
     enable => true
   }
+
+  # NSCD for Nix
+  package { "nscd": ensure => installed }
+  ->
+  file { "/etc/nscd.conf":
+    source => 'puppet:///modules/system/nscd.conf'
+  }
+  ~>
+  service { "nscd":
+    ensure => running,
+    enable => true
+  }
 }
