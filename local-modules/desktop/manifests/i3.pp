@@ -10,7 +10,6 @@ class desktop::i3 {
              'gnome-themes-standard',
              'gnupg-agent',
              'hsetroot',
-             'i3-wm',
              'inputplug',
              'libgtk3-nocsd0',
              'libnotify-bin',
