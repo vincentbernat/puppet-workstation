@@ -74,7 +74,6 @@ class debian {
   apt::pin { 'prefer-experimental':
     priority => 990,
     packages => [
-      "src:libreoffice",        # annoying read-only dialog
       "tmux",                   # buggy in unstable, https://github.com/tmux/tmux/issues/2749
     ],
     release => "experimental"
