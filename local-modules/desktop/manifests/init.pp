@@ -106,7 +106,6 @@ class desktop {
     }
   }
 
-  desktop::flatpak { 'org.gnome.Maps': }
   desktop::flatpak { "com.jgraph.drawio.desktop":
     permissions => "filesystems=!home;xdg-documents;xdg-download"
   }
