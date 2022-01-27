@@ -40,4 +40,9 @@ class system::boot {
       update-grub
       | END
   }
+
+  # Console setup
+  file { "/etc/default/console-setup":
+    source => 'puppet:///modules/system/console-setup'
+  }
 }
