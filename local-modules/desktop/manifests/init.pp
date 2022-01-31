@@ -116,9 +116,7 @@ class desktop {
     remote => "flathub-beta"
   }
   desktop::flatpak { "us.zoom.Zoom": }
-  desktop::flatpak { "com.spotify.Client":
-    permissions => "filesystems=!xdg-pictures"
-  }
+  desktop::flatpak { "com.gitlab.ColinDuquesnoy.MellowPlayer": }
   desktop::flatpak { "com.discordapp.Discord":
     permissions => "filesystems=!xdg-pictures;!xdg-videos"
   }
