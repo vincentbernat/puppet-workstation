@@ -40,6 +40,7 @@ class dev {
   # Others
   package { 'ruby-wirble': ensure => installed }
   package { 'golang':      ensure => installed }
+  package { 'gopls':       ensure => installed }
   package { ['nodejs',
              'uglifyjs']:  ensure => installed }
 }
