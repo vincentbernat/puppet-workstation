@@ -37,10 +37,13 @@ class dev {
   package { 'pyflakes3':          ensure => installed }
   package { 'mypy':               ensure => installed }
 
+  # Go-related
+  package { 'golang':                ensure => installed }
+  package { 'gopls':                 ensure => installed }
+  package { 'golang-golang-x-tools': ensure => installed }
+
   # Others
   package { 'ruby-wirble': ensure => installed }
-  package { 'golang':      ensure => installed }
-  package { 'gopls':       ensure => installed }
   package { ['nodejs',
              'uglifyjs']:  ensure => installed }
 }
