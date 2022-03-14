@@ -11,7 +11,7 @@ class tools::network {
   package { 'lftp':                 ensure => installed }
   package { 'lldpd':                ensure => installed }
   package { 'mtr-tiny':             ensure => installed }
-  package { 'netcat':               ensure => installed }
+  package { 'netcat-openbsd':       ensure => installed }
   package { 'openssh-client':       ensure => installed }
   package { 'oping':                ensure => installed }
   package { 'sipcalc':              ensure => installed }
