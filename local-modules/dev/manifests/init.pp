@@ -43,7 +43,6 @@ class dev {
   package { 'golang-golang-x-tools': ensure => installed }
 
   # Others
-  package { 'ruby-wirble': ensure => installed }
   package { ['nodejs',
              'uglifyjs']:  ensure => installed }
 }
