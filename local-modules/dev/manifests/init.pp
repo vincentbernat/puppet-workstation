@@ -39,7 +39,7 @@ class dev {
 
   # Go-related
   package { 'golang':                ensure => installed }
-  package { 'gopls':                 ensure => installed }
+  package { 'gopls':                 ensure => purged }
   package { 'golang-golang-x-tools': ensure => installed }
 
   # Others
