@@ -37,7 +37,7 @@ class debian {
   }
 
   apt::source { 'unstable':
-    location          => 'http://ftp.fr.debian.org/debian/',
+    location          => 'http://ftp.de.debian.org/debian/',
     release           => 'unstable',
     repos             => 'main contrib non-free',
     include           => { 'src' => true }
@@ -49,13 +49,13 @@ class debian {
     include  => { 'src' => false }
   }
   apt::source { 'testing':
-    location          => 'http://ftp.fr.debian.org/debian/',
+    location          => 'http://ftp.de.debian.org/debian/',
     release           => 'testing',
     repos             => 'main',
   }
 
   apt::source { 'experimental':
-    location => 'http://ftp.fr.debian.org/debian/',
+    location => 'http://ftp.de.debian.org/debian/',
     release  => 'experimental',
     repos    => 'main contrib non-free',
     include  => { 'src' => true }
