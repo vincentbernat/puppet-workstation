@@ -41,6 +41,7 @@ class dev {
   package { 'golang':                ensure => installed }
   package { 'gopls':                 ensure => installed }
   package { 'golang-golang-x-tools': ensure => installed }
+  package { 'delve':                 ensure => installed }
 
   # Others
   package { ['nodejs',
