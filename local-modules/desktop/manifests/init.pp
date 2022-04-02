@@ -107,7 +107,7 @@ class desktop {
   }
 
   desktop::flatpak { "com.jgraph.drawio.desktop":
-    permissions => "filesystems=!home;xdg-documents;xdg-download"
+    permissions => "filesystems=!home;xdg-documents;xdg-download;~/code"
   }
   desktop::flatpak {"org.signal.Signal":
     permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
