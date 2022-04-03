@@ -38,6 +38,7 @@ class tools::applications {
              ]:
                ensure => installed
   }
+  package { "mailcap": ensure => purged }
   package { "linux-headers-${::os['architecture']}":
     ensure => installed }
 
