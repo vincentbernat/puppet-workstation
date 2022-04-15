@@ -10,6 +10,7 @@ SOURCE_ONLY_CHANGES=yes
 case "$*" in
     *"--distribution experimental"*) ;;
     *)
+        # See: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=816097
         PBUILDERSATISFYDEPENDSCMD=/usr/lib/pbuilder/pbuilder-satisfydepends-apt
         ;;
 esac
