@@ -1,6 +1,6 @@
 # -*- sh -*-
 
-MIRRORSITE=http://httpredir.debian.org/debian
+MIRRORSITE=http://deb.debian.org/debian
 BINDMOUNTS="/etc/pbuilder/deps"
 EXTRAPACKAGES="apt-utils"
 HOOKDIR=/etc/pbuilder/hooks
