@@ -6,11 +6,3 @@ EXTRAPACKAGES="apt-utils"
 HOOKDIR=/etc/pbuilder/hooks
 SOURCE_ONLY_CHANGES=yes
 #USENETWORK=yes
-
-case "$*" in
-    *"--distribution experimental"*) ;;
-    *)
-        # See: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=816097
-        PBUILDERSATISFYDEPENDSCMD=/usr/lib/pbuilder/pbuilder-satisfydepends-apt
-        ;;
-esac
