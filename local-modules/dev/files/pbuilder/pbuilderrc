@@ -8,7 +8,7 @@ SOURCE_ONLY_CHANGES=yes
 #USENETWORK=yes
 
 case "$*" in
-    "--distribution experimental") ;;
+    *"--distribution experimental"*) ;;
     *)
         PBUILDERSATISFYDEPENDSCMD=/usr/lib/pbuilder/pbuilder-satisfydepends-apt
         ;;
