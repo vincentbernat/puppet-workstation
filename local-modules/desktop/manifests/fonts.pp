@@ -15,6 +15,7 @@ class desktop::fonts {
   package { 'fonts-noto-color-emoji':    ensure => installed }
   package { 'fonts-terminus-otb':        ensure => installed }
   package { 'ttf-mscorefonts-installer': ensure => purged }
+  package { 'ttf-bitstream-vera':        ensure => purged }
   package { 'fonts-powerline':           ensure => purged }
 
   # fontconfig
