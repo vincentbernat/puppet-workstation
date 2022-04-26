@@ -1,7 +1,6 @@
 class tools::applications {
 
   package { [
-             'bat',
              'bpftrace',
              'bpytop',
              'colordiff',
