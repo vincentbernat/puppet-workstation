@@ -1,12 +1,11 @@
 class desktop::audio {
-  # Configure pulseaudio with bluetooth support
+  # Pipewire is pulled from Nix
   package { ["bluez",
              "bluez-tools",
-             "pavucontrol",
-             "gstreamer1.0-fdkaac",
-             "pulseaudio",
-             "pulseaudio-module-bluetooth"]:
+             "pavucontrol"]:
                ensure => installed
   }
-  package { "pipewire": ensure => purged }
+  package { ["gstreamer1.0-fdkaac",
+             "pulseaudio",
+             "pulseaudio-module-bluetooth"]: ensure => purged }
 }
