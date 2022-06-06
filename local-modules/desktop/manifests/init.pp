@@ -48,6 +48,7 @@ class desktop {
   package { 'wireshark':                 ensure => installed }
   package { 'libreoffice':               ensure => installed }
   package { 'libreoffice-gtk3':          ensure => installed }
+  package { 'libreoffice-style-breeze':  ensure => installed }
   package { 'libreoffice-sdbc-firebird': ensure => purged }
   package { 'libreoffice-java-common':   ensure => purged }
   package { ['gvfs-daemons',
