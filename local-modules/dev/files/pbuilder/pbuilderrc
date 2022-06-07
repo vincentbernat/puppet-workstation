@@ -5,4 +5,5 @@ BINDMOUNTS="/etc/pbuilder/deps"
 EXTRAPACKAGES="apt-utils"
 HOOKDIR=/etc/pbuilder/hooks
 SOURCE_ONLY_CHANGES=yes
+DEBBUILDOPTS="-j$(nproc)"
 #USENETWORK=yes
