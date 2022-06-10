@@ -2,6 +2,7 @@ class desktop::audio {
   # Pipewire is pulled from Nix
   package { ["bluez",
              "bluez-tools",
+             "rtkit",
              "pavucontrol"]:
                ensure => installed
   }
