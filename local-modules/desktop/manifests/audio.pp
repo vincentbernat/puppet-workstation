@@ -5,6 +5,9 @@ class desktop::audio {
              "rtkit",
              "pavucontrol"]:
                ensure => installed
+  } -> service { "rtkit-daemon":
+    ensure => running,
+    enable => true
   }
   package { ["gstreamer1.0-fdkaac",
              "pulseaudio",
