@@ -6,7 +6,6 @@ class system {
   include system::network
   include system::disk
   include system::postfix
-  include system::imap
   include system::ssh
   include system::docker
   include system::logging
