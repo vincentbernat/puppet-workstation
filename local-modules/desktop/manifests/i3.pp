@@ -41,6 +41,7 @@ class desktop::i3 {
              'xsecurelock',
              'xsel',
              'xsettingsd',
+             'xssproxy',
              'xss-lock']:
                ensure => installed
   }
