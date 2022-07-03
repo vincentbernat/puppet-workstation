@@ -71,13 +71,12 @@ class debian {
   apt::pin { ['experimental', 'experimental-debug']:
     priority => 101
   }
-  apt::pin { 'prefer-experimental':
-    priority => 990,
-    packages => [
-      "tmux",                   # buggy in unstable, https://github.com/tmux/tmux/issues/2749
-    ],
-    release => "experimental"
-  }
+  # apt::pin { 'prefer-experimental':
+  #   priority => 990,
+  #   packages => [
+  #   ],
+  #   release => "experimental"
+  # }
 
   package { 'flatpak': ensure => installed }
   package { 'needrestart': ensure => installed }
