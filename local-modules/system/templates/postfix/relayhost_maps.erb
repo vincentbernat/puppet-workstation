@@ -4,6 +4,6 @@
 <%- next if not conf['domains'] -%>
 # <%= name %>
 <%- conf['domains'].each do |domain| -%>
-@<%= domain %> [<%= conf['relay'] %>]:<%= conf['port'] || 465 %>
+@<%= domain %> [<%= conf['relay'] %>]:465
 <%- end -%>
 <%- end -%>

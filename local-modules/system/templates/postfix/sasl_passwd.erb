@@ -2,5 +2,5 @@
 
 <%- @relays.each do |name, conf| -%>
 # <%= name %>
-[<%= conf['relay'] %>]:<%= conf['port'] || 465 %> <%= conf['auth'] %>
+[<%= conf['relay'] %>]:465 <%= conf['auth'] %>
 <%- end -%>
