@@ -20,6 +20,10 @@ class system::postfix($relays) {
     content => template("system/postfix/relayhost_maps.erb"),
     notify  => Exec["postmap"]
   }
+  file { "/etc/postfix/tls_policy":
+    content => template("system/postfix/tls_policy.erb"),
+    notify  => Exec["postmap"]
+  }
   file { "/etc/aliases":
     content => template("system/postfix/aliases.erb"),
     notify  => Exec["postalias"]
@@ -41,7 +45,7 @@ class system::postfix($relays) {
     refreshonly => true
   }
   exec { "postmap":
-    command     => "/usr/sbin/postmap /etc/postfix/sasl_passwd /etc/postfix/relayhost_maps",
+    command     => "/usr/sbin/postmap /etc/postfix/sasl_passwd /etc/postfix/relayhost_maps /etc/postfix/tls_policy",
     refreshonly => true
   }
 

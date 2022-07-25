@@ -3,6 +3,6 @@
 <%- @relays.each do |name, conf| -%>
 <%- if conf['tls_policy'] %>
 # <%= name %>
-[<%= conf['relay'] %>]:<%= conf['port'] || 465 %> <%= conf['tls_policy'] %>
+[<%= conf['relay'] %>]:587 <%= conf['tls_policy'] %>
 <%- end -%>
 <%- end -%>
