@@ -1,0 +1,8 @@
+# Managed by Puppet
+
+<%- @relays.each do |name, conf| -%>
+<%- if conf['tls_policy'] %>
+# <%= name %>
+[<%= conf['relay'] %>]:<%= conf['port'] || 465 %> <%= conf['tls_policy'] %>
+<%- end -%>
+<%- end -%>

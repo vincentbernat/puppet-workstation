@@ -19,6 +19,7 @@ smtp_use_tls = yes
 smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 smtp_tls_CApath = /etc/ssl/certs
 smtp_tls_security_level = secure
+smtp_tls_policy_maps = hash:/etc/postfix/tls_policy
 smtp_tls_wrappermode = yes
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 smtp_sasl_auth_enable = yes
