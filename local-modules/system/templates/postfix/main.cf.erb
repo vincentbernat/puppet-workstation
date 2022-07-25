@@ -33,7 +33,7 @@ mydestination = $myhostname, localhost, localhost.$mydomain
 <%- else -%>
 <%- @relays.each do |name, conf| -%>
 <%- if not conf['domains'] -%>
-relayhost = [<%= conf['relay'] %>]:465
+relayhost = [<%= conf['relay'] %>]:<%= conf['port'] || 465 %>
 <%- end -%>
 <%- end -%>
 sender_dependent_relayhost_maps = hash:/etc/postfix/relayhost_maps
