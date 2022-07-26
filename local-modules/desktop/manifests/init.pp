@@ -117,6 +117,7 @@ class desktop {
   desktop::flatpak { "org.gimp.GIMP":
     remote => "flathub-beta"
   }
+  desktop::flatpak { "org.gtk.Gtk3theme.Adwaita-dark": }
   desktop::flatpak { "us.zoom.Zoom": }
   desktop::flatpak { "com.spotify.Client":
     permissions => "filesystems=!xdg-pictures"
