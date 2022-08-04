@@ -21,6 +21,7 @@ class desktop::i3 {
              'polybar',
              'python3-dbussy',
              'python3-gi-cairo',
+             'python3-gst-1.0',
              'python3-i3ipc',
              'python3-pil',
              'python3-systemd',
