@@ -14,6 +14,8 @@ class system::network {
   package { "resolvconf":     ensure => purged }
   package { "dnsmasq":        ensure => purged }
   package { "dnsmasq-base":   ensure => installed }
+  package { "systemd-resolved": ensure => installed }
+  ->
   service { "systemd-resolved":
     ensure => running,
     enable => true
