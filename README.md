@@ -16,7 +16,7 @@ is not the state-of-the-art Puppet configuration.
 This requires:
 
  - Debian unstable
- - `puppet` package
+ - `puppet` package (>= 7)
  - `librarian-puppet` package
 
 Debian is installed using the Stretch installer, asking to use the
