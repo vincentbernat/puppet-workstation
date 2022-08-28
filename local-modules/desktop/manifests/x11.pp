@@ -15,6 +15,6 @@ class desktop::x11 {
   systemd::unit_file { 'startx.service':
     content => template('desktop/x11/startx.service.erb'),
     enable => true,
-    restart => false,
+    restart => "/bin/true",
   }
 }
