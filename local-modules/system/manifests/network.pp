@@ -23,7 +23,7 @@ class system::network {
   ->
   file { "/etc/resolv.conf":
     ensure => link,
-    target => "/run/systemd/resolve/stub-resolv.conf"
+    target => "../run/systemd/resolve/stub-resolv.conf"
   }
 
   file { "/etc/network/interfaces":
