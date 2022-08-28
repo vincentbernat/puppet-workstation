@@ -20,7 +20,8 @@ class system::network::ddns($key=undef, $secret=undef, $domain=undef, $ttl=60) {
       enable => true,
       timer_content => @(END)
         [Timer]
-        OnActiveSec=15m
+        OnUnitActiveSec=15m
+        OnBootSec=30s
         RandomizedDelaySec=60s
         | END
       ,
