@@ -12,11 +12,9 @@ class desktop::x11 {
   package { ['lightdm', 'lightdm-gtk-greeter']: ensure => purged }
   package { 'xinit': ensure => installed }
   ->
-  file { '/etc/systemd/system/startx.service':
-    content => template('desktop/x11/startx.service.erb')
-  }
-  ->
-  service { 'startx':
-    enable => true
+  systemd::unit_file { 'startx.service':
+    content => template('desktop/x11/startx.service.erb'),
+    enable => true,
+    restart => false,
   }
 }

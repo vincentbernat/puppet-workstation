@@ -10,12 +10,26 @@ class system::network::ddns($key=undef, $secret=undef, $domain=undef, $ttl=60) {
       mode => "0700"
     }
 
-    $mstart = fqdn_rand(15)
-    $sleep = fqdn_rand(40)
     cron { "ddns-updater":
-      command => "/bin/sleep ${sleep} ; [ x`/usr/bin/nmcli networking connectivity` != xfull ] || /usr/local/bin/ddns-updater --ipv6=public",
-      minute => "${mstart}-59/15",
-      require => File['/usr/local/bin/ddns-updater']
+      ensure => absent
+    }
+    systemd::timer{ 'ddns-updater.timer':
+      service_unit => 'ddns-updater.service',
+      require => File['/usr/local/bin/ddns-updater'],
+      active => true,
+      enable => true,
+      timer_content => @(END)
+        [Timer]
+        OnActiveSec=15m
+        RandomizedDelaySec=60s
+        | END
+      ,
+      service_content => @(END)
+        [Service]
+        Type=oneshot
+        ExecCondition=sh -c '/usr/bin/nmcli networking connectivity | /usr/bin/grep -qFx full'
+        ExecStart=/usr/local/bin/ddns-updater --ipv6=public
+        | END
     }
 
     file { '/etc/dhcp/dhclient-exit-hooks.d/ddns-updater':
