@@ -18,7 +18,6 @@ class desktop::i3 {
              'picom',
              'playerctl',
              'policykit-1-gnome',
-             'polybar',
              'python3-dbussy',
              'python3-gi-cairo',
              'python3-gst-1.0',
@@ -41,7 +40,6 @@ class desktop::i3 {
              'xsecurelock',
              'xsel',
              'xsettingsd',
-             'xssproxy',
              'xss-lock']:
                ensure => installed
   }
