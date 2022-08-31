@@ -102,6 +102,14 @@ class system {
   }
   # When needed: systemctl start ksm
 
+  # Cleanup /var/tmp
+  systemd::tmpfile { 'vartmp.conf':
+    content => @(END)
+      # Managed by Puppet
+      q /var/tmp 1777 root root 30d
+      |END
+  }
+
   file { '/etc/udev/rules.d/70-more-uaccess.rules':
     source => 'puppet:///modules/system/uaccess.rules'
   }
