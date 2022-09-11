@@ -23,6 +23,9 @@ class system::network::ddns($key=undef, $secret=undef, $domain=undef, $ttl=60) {
         OnUnitActiveSec=15m
         OnBootSec=30s
         RandomizedDelaySec=60s
+
+        [Install]
+        WantedBy=timers.target
         | END
       ,
       service_content => @(END)
