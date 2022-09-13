@@ -3,10 +3,6 @@
 # ttyUSBx
 SUBSYSTEM=="tty", ENV{DEVNAME}=="/dev/ttyUSB*", TAG+="uaccess"
 
-# Flexoptix Flexbox
-SUBSYSTEM=="usb", ATTR{idVendor}=="16[dD]0", ATTR{idProduct}=="0[bB]1[aA]", TAG+="uaccess"
-KERNEL=="hidraw*", ATTRS{idVendor}=="16[dD]0", ATTRS{idProduct}=="0[bB]1[aA]", TAG+="uaccess"
-
 # KVM
 KERNEL=="kvm", TAG+="uaccess"
 
