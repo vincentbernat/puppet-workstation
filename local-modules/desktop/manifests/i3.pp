@@ -7,7 +7,7 @@ class desktop::i3 {
              'dconf-cli',
              'gconf2',
              'gnome-icon-theme',
-             'gnome-themes-standard',
+             'gnome-themes-extra',
              'gnupg-agent',
              'hsetroot',
              'inputplug',
