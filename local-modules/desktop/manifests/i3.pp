@@ -58,6 +58,9 @@ class desktop::i3 {
     ensure          => installed,
     install_options => ['--no-install-recommends']
   }
+  package { 'brightness-udev':
+    ensure => purged
+  }
 
   # Prevent autorandr to run on monitor plug or on sleep.
   service { 'autorandr':
