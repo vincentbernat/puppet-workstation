@@ -53,6 +53,11 @@ class system {
   # Laptop tools
   if $facts['laptop'] {
     package { "tlp":      ensure => installed }
+    ->
+    service { "tlp":
+      ensure => running,
+      enable => true
+    }
     package { "powertop": ensure => installed }
     ->
     service { "powertop": enable => false }
