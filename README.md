@@ -16,7 +16,7 @@ is not the state-of-the-art Puppet configuration.
 This requires:
 
  - Debian unstable
- - `puppet` package (>= 7)
+ - `puppet` package (>= 7, currently in Experimental)
  - `librarian-puppet` package
 
 Debian is installed using the Stretch installer, asking to use the
@@ -29,6 +29,7 @@ separate partitions for everything. Then:
  - delete swap
  - create `/home` with about 50GB
  - create `/` with about 10GB
+ - create `/var/lib/systems` with about 10GB
  - don't create `/usr`, a separate `/usr` is likely to be difficult to
    handle in the future.
  - create swap, with a max of 8GB. Even suspend to disk doesn't
@@ -43,7 +44,9 @@ Only install the following roles:
 If you want to speedup package installation on first run, use:
 
 ```
-./run --noop 2>&1 \
-  | sed -n 's,Notice:.*/Package\[\(.*\)\]/ensure:.*should be .present.*,\1,p' \
-  | xargs sudo apt install
+sudo apt install $(
+ ./run --color=false --noop 2>&1 \
+   | sed -n 's,Notice:.*/Package\[\(.*\)\]/ensure:.*should be .present.*,\1,p' \
+   | xargs -t sudo apt install
+)
 ```
