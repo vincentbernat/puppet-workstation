@@ -121,7 +121,7 @@ class system {
   ~>
   exec { 'update udev':
     refreshonly => true,
-    command     => "/sbin/udevadm trigger --action=change"
+    command     => "/usr/bin/udevadm trigger --action=change"
   }
   file { '/etc/modprobe.d/iwlwifi-btcoex.conf':
     source => 'puppet:///modules/system/iwlwifi-btcoex.conf',
