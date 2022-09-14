@@ -3,6 +3,7 @@ class desktop::audio {
   package { ["bluez",
              "bluez-tools",
              "rtkit",
+             "pulseaudio-utils",
              "pavucontrol"]:
                ensure => installed
   } -> service { "rtkit-daemon":
