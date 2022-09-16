@@ -39,6 +39,11 @@ class tools::applications {
              ]:
                ensure => installed
   }
+  ->
+  service { "glances":
+    ensure => stopped,
+    enable => false
+  }
   package { "mailcap": ensure => purged }
   package { "linux-headers-${::os['architecture']}":
     ensure => installed }
