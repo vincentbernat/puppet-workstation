@@ -123,11 +123,12 @@ class system {
     refreshonly => true,
     command     => "/usr/bin/udevadm trigger --action=change"
   }
-  file { '/etc/modprobe.d/iwlwifi-btcoex.conf':
-    source => 'puppet:///modules/system/iwlwifi-btcoex.conf',
-    notify => Exec['update initramfs']
-  }
   if $facts['dmi']['manufacturer'] == 'LENOVO' and $facts['dmi']['product']['name'] == '20A7005UMZ' {
+    # Disable wifi/BT coexistence
+    file { '/etc/modprobe.d/iwlwifi-btcoex.conf':
+      source => 'puppet:///modules/system/iwlwifi-btcoex.conf',
+      notify => Exec['update initramfs']
+    }
     # Don't use SMB to access trackpoint on Lenovo (buggy)
     file { '/etc/modprobe.d/rmi-smbus-blacklist.conf':
       source => 'puppet:///modules/system/rmi-smbus-blacklist.conf',
