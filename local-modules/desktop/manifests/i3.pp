@@ -1,6 +1,7 @@
 class desktop::i3 {
   package { ['adwaita-icon-theme',
              'adwaita-qt',
+             'adwaita-qt6',
              'alsa-utils',
              'autorandr',
              'bc',
