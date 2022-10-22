@@ -13,7 +13,7 @@ class dev {
 
   # C-related
   package { 'make':            ensure => installed }
-  package { 'pkg-config':      ensure => installed }
+  package { 'pkgconf':         ensure => installed }
   package { 'autoconf':        ensure => installed }
   package { 'automake':        ensure => installed }
   package { 'libtool':         ensure => installed }
