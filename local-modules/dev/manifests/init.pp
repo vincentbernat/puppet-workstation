@@ -20,8 +20,8 @@ class dev {
   package { 'gdb':             ensure => installed }
   package { 'valgrind':        ensure => installed }
   package { 'ccache':          ensure => installed }
-  package { 'global':          ensure => installed }
   package { 'bear':            ensure => installed }
+  package { 'clang-format':    ensure => installed }
 
   # Python-related
   package { 'ipython3':           ensure => installed }
