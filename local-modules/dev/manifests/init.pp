@@ -21,6 +21,7 @@ class dev {
   package { 'valgrind':        ensure => installed }
   package { 'ccache':          ensure => installed }
   package { 'bear':            ensure => installed }
+  package { 'clang':           ensure => installed }
   package { 'clang-format':    ensure => installed }
   package { 'ccls':            ensure => installed }
 
