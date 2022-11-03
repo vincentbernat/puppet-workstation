@@ -22,6 +22,7 @@ class dev {
   package { 'ccache':          ensure => installed }
   package { 'bear':            ensure => installed }
   package { 'clang-format':    ensure => installed }
+  package { 'ccls':            ensure => installed }
 
   # Python-related
   package { 'ipython3':           ensure => installed }
