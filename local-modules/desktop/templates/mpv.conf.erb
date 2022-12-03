@@ -20,7 +20,7 @@ cache-pause-wait=5
 ytdl-raw-options=write-sub=,write-auto-sub=
 ytdl-raw-options-append=sub-lang=en,fr
 # Limit video quality
-ytdl-format=bestvideo[width<=<%= @facts['drm']['card0']['maxwidth'] %>]+bestaudio/best[width<=<%= @facts['drm']['card0']['maxwidth'] %>]
+ytdl-format=bestvideo[width<=<%= @facts['drm']['card0']['maxwidth'] %>]+bestaudio/best[width<=<%= @facts['drm']['card0']['maxwidth'] %>]/best
 
 # Switch to yt-dlp (available through Nix)
 script-opts=ytdl_hook-ytdl_path=<%= @home %>/.nix-profile/bin/yt-dlp
