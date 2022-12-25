@@ -21,7 +21,6 @@ class desktop {
              'zathura-ps',
              'zathura-cb']:              ensure => installed }
   package { 'file-roller':               ensure => installed }
-  package { 'geeqie':                    ensure => installed }
   package { 'gitg':                      ensure => installed }
   package { 'gimp':                      ensure => absent }
   package { 'virt-manager':              ensure => installed }
