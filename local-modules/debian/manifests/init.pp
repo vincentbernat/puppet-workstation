@@ -39,7 +39,7 @@ class debian {
   apt::source { 'unstable':
     location          => 'http://ftp.fr.debian.org/debian/',
     release           => 'unstable',
-    repos             => 'main contrib non-free',
+    repos             => 'main contrib non-free non-free-firmware',
     include           => { 'src' => true }
   }
   apt::source { 'unstable-debug':
@@ -57,7 +57,7 @@ class debian {
   apt::source { 'experimental':
     location => 'http://ftp.fr.debian.org/debian/',
     release  => 'experimental',
-    repos    => 'main contrib non-free',
+    repos    => 'main',
     include  => { 'src' => true }
   }
   apt::source { 'experimental-debug':
