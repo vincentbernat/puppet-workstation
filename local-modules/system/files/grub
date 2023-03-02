@@ -1,4 +1,4 @@
-GRUB_CMDLINE_LINUX="splash quiet amdgpu.runpm=0"
+GRUB_CMDLINE_LINUX="splash quiet"
 GRUB_TIMEOUT=5
 GRUB_GFXMODE=1920x1080
 GRUB_THEME=/boot/grub/themes/fallout/theme.txt
