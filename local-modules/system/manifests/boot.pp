@@ -25,7 +25,8 @@ class system::boot {
     ensure => directory
   } ->
   file { '/etc/default/grub':
-    source => 'puppet:///modules/system/grub'
+    source => 'puppet:///modules/system/grub',
+    notify => Exec['update-grub']
   } ->
   file { ['/boot/grub/.background_cache.png', '/etc/grub.d/05_debian_theme']:
     ensure => absent
@@ -37,8 +38,11 @@ class system::boot {
     command => @(END)
       curl -Ls https://github.com/shvchk/fallout-grub-theme/archive/master.tar.gz \
         | tar -C /boot/grub/themes/fallout --strip-components=1 -zxvf -
-      update-grub
       | END
+  } ~>
+  exec { "update-grub":
+    command     => "/usr/sbin/update-grub",
+    refreshonly => true
   }
 
   # Console setup
