@@ -26,7 +26,8 @@ class system {
     "inxi",
     "linux-cpupower",
     "ncdu",
-    "sysfsutils"
+    "sysfsutils",
+    "usbguard"
   ]:
     ensure => installed
   }
