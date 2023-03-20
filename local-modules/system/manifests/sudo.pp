@@ -44,4 +44,11 @@ class system::sudo {
        /usr/bin/systemctl status *
       |- SUDO
   }
+  sudo::conf { 'misc':
+    content => @(SUDO/L)
+      %sudo ALL=(ALL) NOPASSWD:\
+       /usr/bin/usbguard list-devices,\
+       /usr/bin/usbguard allow-device *
+      |- SUDO
+  }
 }
