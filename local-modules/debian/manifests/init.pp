@@ -24,13 +24,25 @@ class debian {
 
   package { "aptitude": ensure => installed } ->
   file { "/etc/apt/apt.conf.d/25aptitude":
-    source => "puppet:///modules/debian/apt/25aptitude"
+    content => @(END)
+      Aptitude::Always-Use-Safe-Resolver "true";
+      Aptitude::ProblemResolver {
+        SolutionCost "priority, removals, canceled-actions";
+      }
+      | END
   }
   file { "/etc/apt/apt.conf.d/02periodic":
-    source => "puppet:///modules/debian/apt/02periodic"
+    content => @(END)
+      // Autoclean
+      APT::Periodic::MinAge "1";
+      APT::Periodic::AutocleanInterval "1";
+      | END
   }
   file { "/etc/apt/apt.conf.d/99translations":
-    source => "puppet:///modules/debian/apt/99translations"
+    content => @(END)
+      // Disable translations
+      Acquire::Languages "en";
+      | END
   }
   file { "/etc/apt/trusted.gpg":
     ensure => absent

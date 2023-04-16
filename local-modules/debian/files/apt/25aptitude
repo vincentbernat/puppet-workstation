@@ -1,4 +1,0 @@
-Aptitude::Always-Use-Safe-Resolver "true";
-Aptitude::ProblemResolver {
-  SolutionCost "priority, removals, canceled-actions";
-}
