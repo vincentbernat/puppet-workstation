@@ -38,6 +38,12 @@ class debian {
       APT::Periodic::AutocleanInterval "1";
       | END
   }
+  file { "/etc/apt/apt.conf.d/02nopdiff":
+    content => @(END)
+      // Disable pdiffs
+      Acquire::PDiffs "false";
+      | END
+  }
   file { "/etc/apt/apt.conf.d/99translations":
     content => @(END)
       // Disable translations
