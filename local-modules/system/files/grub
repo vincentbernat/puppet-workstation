@@ -1,4 +1,5 @@
 GRUB_CMDLINE_LINUX="splash quiet amd_pstate=passive"
+GRUB_CMDLINE_LINUX_DEFAULT=""
 GRUB_TIMEOUT=5
 GRUB_GFXMODE=1920x1080
 GRUB_THEME=/boot/grub/themes/fallout/theme.txt
