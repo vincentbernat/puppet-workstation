@@ -59,7 +59,7 @@ class desktop {
     ensure => purged
   }
 
-  package { 'mpv': ensure => installed }
+  package { ['mpv', 'mpv-mpris']: ensure => installed }
   -> file { '/etc/mpv/mpv.conf':
     content => template('desktop/mpv.conf.erb')
   }
