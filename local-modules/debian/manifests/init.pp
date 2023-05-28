@@ -47,7 +47,7 @@ class debian {
   file { "/etc/apt/apt.conf.d/99translations":
     content => @(END)
       // Disable translations
-      Acquire::Languages "en";
+      Acquire::Languages "none";
       | END
   }
   file { "/etc/apt/trusted.gpg":
