@@ -67,13 +67,13 @@ class debian {
     include  => { 'src' => false }
   }
   apt::source { 'testing':
-    location          => 'http://ftp.de.debian.org/debian/',
+    location          => 'http://ftp.fr.debian.org/debian/',
     release           => 'testing',
     repos             => 'main',
   }
 
   apt::source { 'experimental':
-    location => 'http://ftp.de.debian.org/debian/',
+    location => 'http://ftp.fr.debian.org/debian/',
     release  => 'experimental',
     repos    => 'main',
     include  => { 'src' => true }
