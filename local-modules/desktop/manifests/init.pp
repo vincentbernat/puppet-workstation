@@ -108,7 +108,7 @@ class desktop {
   }
 
   desktop::flatpak { "com.jgraph.drawio.desktop":
-    permissions => "filesystems=!home;xdg-documents;xdg-download;~/code"
+    permissions => "filesystems=!home"
   }
   desktop::flatpak {"org.signal.Signal":
     permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
@@ -121,7 +121,10 @@ class desktop {
       | END
   }
   desktop::flatpak { "org.gimp.GIMP":
-    remote => "flathub-beta"
+    remote => "flathub-beta",
+    permissions => @("END")
+      filesystems=!host
+      | END
   }
   desktop::flatpak { "org.gtk.Gtk3theme.Adwaita-dark": }
   desktop::flatpak { "us.zoom.Zoom": }
