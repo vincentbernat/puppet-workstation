@@ -113,13 +113,7 @@ class desktop {
   desktop::flatpak {"org.signal.Signal":
     permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
   }
-  desktop::flatpak {"org.onlyoffice.desktopeditors":
-    ensure      => absent,
-    permissions => @("END")
-      filesystems=!host;!/tmp
-      devices=!all;dri
-      | END
-  }
+  desktop::flatpak {"org.onlyoffice.desktopeditors": ensure => absent }
   desktop::flatpak { "org.gimp.GIMP":
     remote => "flathub-beta",
     permissions => @("END")
