@@ -90,9 +90,9 @@ class desktop {
       XCURSOR_THEME=Adwaita;
       | END
   }
-  define flatpak($permissions = undef, $remote = 'flathub') {
+  define flatpak($ensure = 'installed', $permissions = undef, $remote = 'flathub') {
     flatpak { $title:
-      ensure  => installed,
+      ensure  => $ensure,
       remote  => $remote,
       require => Flatpak_Remote[$remote]
     }
@@ -114,6 +114,7 @@ class desktop {
     permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
   }
   desktop::flatpak {"org.onlyoffice.desktopeditors":
+    ensure      => absent,
     permissions => @("END")
       filesystems=!host;!/tmp
       devices=!all;dri
