@@ -55,7 +55,7 @@ class debian {
   }
 
   apt::source { 'unstable':
-    location          => 'http://ftp.de.debian.org/debian/',
+    location          => 'http://ftp.fr.debian.org/debian/',
     release           => 'unstable',
     repos             => 'main contrib non-free non-free-firmware',
     include           => { 'src' => true }
