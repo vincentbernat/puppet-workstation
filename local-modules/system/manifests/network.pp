@@ -6,7 +6,10 @@ class system::network {
                ensure => installed
   }
   ->
-  package { "modemmanager": ensure => purged }
+  package { ["modemmanager",
+             "ifupdown"]:
+               ensure => purged
+  }
   package { "wireguard": ensure => installed }
 
   # DNS
