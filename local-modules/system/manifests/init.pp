@@ -69,7 +69,8 @@ class system {
   # Locales
   class { 'locales':
     default_locale => 'en_US.UTF-8',
-    locales        => ['en_US.UTF-8 UTF-8', 'fr_FR.UTF-8 UTF-8']
+    locales        => ['en_US.UTF-8 UTF-8', 'fr_FR.UTF-8 UTF-8'],
+    default_file   => "/etc/locale.conf"
   }
 
   # Do not start anything as a user by default
