@@ -162,8 +162,9 @@ class system {
     enable => false
   }
 
-  file { "/etc/timezone":
-    content => "Europe/Paris\n"
+  file { "/etc/localtime":
+    ensure => link,
+    target => "/usr/share/zoneinfo/Europe/Paris"
   }
   service { "systemd-timesyncd":
     ensure => running,
