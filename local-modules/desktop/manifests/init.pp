@@ -114,12 +114,7 @@ class desktop {
     permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
   }
   desktop::flatpak {"org.onlyoffice.desktopeditors": ensure => absent }
-  desktop::flatpak { "org.gimp.GIMP":
-    remote => "flathub-beta",
-    permissions => @("END")
-      filesystems=!host
-      | END
-  }
+  desktop::flatpak { "org.gimp.GIMP": remote => "flathub-beta"}
   desktop::flatpak { "org.gtk.Gtk3theme.Adwaita-dark": }
   desktop::flatpak { "us.zoom.Zoom": }
   desktop::flatpak { "com.spotify.Client":
