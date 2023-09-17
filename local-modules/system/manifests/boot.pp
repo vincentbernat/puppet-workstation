@@ -20,7 +20,6 @@ class system::boot {
   }
 
   # Grub theme
-  package { 'grub-efi-amd64-signed': ensure => absent }
   file { ['/boot/grub/themes', '/boot/grub/themes/fallout']:
     ensure => directory
   } ->
