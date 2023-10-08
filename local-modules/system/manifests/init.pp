@@ -15,12 +15,6 @@ class system {
     "acpi",
     "busybox-static",
     "ca-certificates",
-    "firmware-amd-graphics",
-    "firmware-intel-sound",
-    "firmware-iwlwifi",
-    "firmware-linux-free",
-    "firmware-linux-nonfree",
-    "firmware-misc-nonfree",
     "firmware-realtek",
     "fwupd",
     "inxi",
@@ -49,6 +43,12 @@ class system {
     "sysv-rc"
   ]:
     ensure => purged
+  }
+  if $facts['drm']['card0']['driver'] == 'amdgpu' {
+    package { "firmware-amd-graphics": ensure => installed }
+  }
+  if $facts['drm']['card0']['driver'] == 'i915' {
+    package { "firmware-misc-nonfree": ensure => installed }
   }
 
   # Laptop tools
@@ -126,6 +126,7 @@ class system {
     command     => "/usr/bin/udevadm trigger --action=change"
   }
   if $facts['dmi']['manufacturer'] == 'LENOVO' and $facts['dmi']['product']['name'] == '20A7005UMZ' {
+    package { "firmware-iwlwifi": ensure => installed }
     # Disable wifi/BT coexistence
     file { '/etc/modprobe.d/iwlwifi-btcoex.conf':
       source => 'puppet:///modules/system/iwlwifi-btcoex.conf',
