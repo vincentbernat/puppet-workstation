@@ -24,7 +24,7 @@ class system::boot {
     ensure => directory
   } ->
   file { '/etc/default/grub':
-    source => 'puppet:///modules/system/grub',
+    content => template('system/grub.erb'),
     notify => Exec['update-grub']
   } ->
   file { ['/boot/grub/.background_cache.png', '/etc/grub.d/05_debian_theme']:
