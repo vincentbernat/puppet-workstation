@@ -64,8 +64,9 @@ class desktop::i3 {
   }
 
   # Prevent autorandr to run on monitor plug or on sleep.
-  service { 'autorandr':
-    enable => mask
+  service { ['autorandr', 'autorandr-lid-listener']:
+    enable => mask,
+    ensure => stopped
   }
   file { '/etc/pm/sleep.d/40autorandr':
     ensure => absent
