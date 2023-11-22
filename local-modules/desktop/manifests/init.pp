@@ -68,7 +68,7 @@ class desktop {
   # Firefox
   package { 'firefox':            ensure => installed } ->
   package { 'firefox-l10n-fr':    ensure => installed } ->
-  package { 'webext-browserpass': ensure => installed }
+  package { 'webext-browserpass': ensure => purged } # Use nix, outdated in Debian
   package { 'gstreamer1.0-vaapi': ensure => installed }
 
   # Blacklisting some annoying packages
