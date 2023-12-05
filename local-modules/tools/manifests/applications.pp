@@ -1,6 +1,7 @@
 class tools::applications {
 
   package { [
+             'ansifilter',
              'bpftrace',
              'bpytop',
              'colordiff',
