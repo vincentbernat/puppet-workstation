@@ -30,6 +30,7 @@ class tools::applications {
              'pass-extension-otp',
              'pass-extension-tail',
              'pv',
+             'recollcmd',
              'ripgrep',
              'silversearcher-ag',
              'strace',
