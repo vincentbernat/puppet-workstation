@@ -12,6 +12,7 @@ class tools::applications {
              'htop',
              'httpie',
              'hwinfo',
+             'hyperfine',
              'imagemagick',
              'ioping',
              'iotop',
