@@ -19,6 +19,6 @@ class desktop::fonts {
   package { 'fonts-powerline':           ensure => purged }
 
   # fontconfig
-  package { 'fontconfig': ensure => installed }
-
+  package { 'fontconfig': ensure => installed } ->
+  file { "/etc/fonts/conf.d/70-no-bitmaps.conf": ensure => absent }
 }
