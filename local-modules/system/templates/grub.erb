@@ -1,4 +1,4 @@
-GRUB_CMDLINE_LINUX="splash quiet<% if @processors['models'][0] == 'AMD Ryzen 7 PRO 6850U with Radeon Graphics' %> amd_pstate=active amd_iommu=off<% end %>"
+GRUB_CMDLINE_LINUX="splash quiet<% if @processors['models'][0] == 'AMD Ryzen 7 PRO 6850U with Radeon Graphics' %> amd_pstate=active<% end %>"
 GRUB_CMDLINE_LINUX_DEFAULT=""
 GRUB_TIMEOUT=5
 GRUB_GFXMODE=1920x1080
