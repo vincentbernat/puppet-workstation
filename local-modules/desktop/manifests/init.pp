@@ -118,9 +118,7 @@ class desktop {
   desktop::flatpak { "org.gimp.GIMP": remote => "flathub-beta"}
   desktop::flatpak { "org.gtk.Gtk3theme.Adwaita-dark": }
   desktop::flatpak { "us.zoom.Zoom": }
-  desktop::flatpak { "com.spotify.Client":
-    permissions => "filesystems=!xdg-pictures"
-  }
+  desktop::flatpak { "dev.aunetx.deezer": }
   desktop::flatpak { "com.discordapp.Discord":
     permissions => "filesystems=!xdg-pictures;!xdg-videos"
   }
@@ -136,7 +134,7 @@ class desktop {
   desktop::flatpak { "org.libretro.RetroArch":
     permissions => "filesystems=!home;!host;~/games/ROMs"
   }
-  desktop::flatpak { "com.anydesk.Anydesk": ensure => absent }
+  desktop::flatpak { "com.spotify.Client": ensure => absent }
 
   # Xsession shouldn't start much stuff
   file_line { 'no Xsession dbus':
