@@ -89,9 +89,12 @@ class desktop {
     content => @(END)
       [Environment]
       XCURSOR_THEME=Adwaita;
+
+      [Session Bus Policy]
+      org.freedesktop.ScreenSaver=talk
       | END
   }
-  define flatpak($ensure = 'installed', $permissions = undef, $remote = 'flathub') {
+  define flatpak($ensure = 'installed', $permissions = undef, $dbus = undef, $remote = 'flathub') {
     flatpak { $title:
       ensure  => $ensure,
       remote  => $remote,
