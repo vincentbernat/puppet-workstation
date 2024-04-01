@@ -6,7 +6,6 @@ class desktop::i3 {
              'autorandr',
              'bc',
              'dconf-cli',
-             'gconf2',
              'gnome-icon-theme',
              'gnome-themes-extra',
              'gnupg-agent',
