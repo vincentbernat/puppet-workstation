@@ -128,7 +128,7 @@ class desktop {
   desktop::flatpak { "com.valvesoftware.Steam":
     permissions => "filesystems=!xdg-pictures;!xdg-music"
   }
-  desktop::flatpak { "com.github.Eloston.UngoogledChromium":
+  desktop::flatpak { "io.github.ungoogled_software.ungoogled_chromium":
     permissions => "filesystems=!home;xdg-download"
   }
   desktop::flatpak { "org.jitsi.jitsi-meet":
