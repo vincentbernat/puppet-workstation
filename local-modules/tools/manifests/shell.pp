@@ -23,5 +23,7 @@ class tools::shell {
              "qalc"]:
                ensure => installed
   }
-
+  package { "python3-argcomplete":
+    ensure => purged
+  }
 }
