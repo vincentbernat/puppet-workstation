@@ -42,7 +42,7 @@ class system::network::ddns($key=undef, $secret=undef, $domain=undef, $ttl=60) {
 
     ensure_resource(
       package,
-      'python3-boto',
+      'python3-boto3',
       { ensure => present })
   }
 }

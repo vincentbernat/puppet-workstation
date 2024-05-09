@@ -90,7 +90,7 @@ import logging.handlers
 import argparse
 import platform
 import errno
-from boto import route53
+import boto3
 
 
 # Not everything is available in Python
@@ -294,22 +294,50 @@ if __name__ == "__main__":
         ip["AAAA"] = options.ipv6 != 'off' and ipv6(options.ipv6) or None
 
         logger.debug("Connect to Route53")
-        conn = route53.connection.Route53Connection(
-            aws_access_key_id=options.aws_access_key_id,
-            aws_secret_access_key=options.aws_secret_access_key)
+        client = boto3.client('route53',
+                              aws_access_key_id=options.aws_access_key_id,
+                              aws_secret_access_key=options.aws_secret_access_key)
         logger.debug("Retrieving zone for domain {domain}".format(
             domain=options.domain))
-        zone = conn.get_zone("{domain}.".format(domain=options.domain))
+        paginator = client.get_paginator('list_hosted_zones')
+        zone_id = None
+        for page in paginator.paginate():
+            for zone in page['HostedZones']:
+                if zone['Name'] == "{domain}.".format(domain=options.domain):
+                    zone_id = zone['Id']
+                    break
+            if zone_id is not None:
+                break
+        if zone_id is None:
+            raise RuntimeError("{domain} not found".format(domain=options.domain))
         name = "{hostname}.{domain}".format(hostname=options.hostname,
                                             domain=options.domain)
         for rr in ip:
-            record = zone.find_records(name, rr)
+            response = client.list_resource_record_sets(
+                HostedZoneId=zone_id,
+                StartRecordName=name,
+                StartRecordType=rr,
+                MaxItems="1"
+            )
+            record_sets = response['ResourceRecordSets']
+            record = next((r
+                           for r in record_sets
+                           if r['Name'] == name and r['Type'] == rr),
+                          None)
             if not ip[rr]:
                 if record:
                     logger.debug(
                         "Deleting existing {0} record (was {1})".format(
                             rr, record.resource_records[0]))
-                    zone.delete_record(record)
+                    client.change_resource_record_sets(
+                        HostedZoneId=zone_id,
+                        ChangeBatch={
+                            'Changes': [{
+                                'Action': 'DELETE',
+                                'ResourceRecordSet': record
+                            }]
+                        }
+                    )
                 else:
                     logger.debug("No {0} record".format(rr))
             else:
@@ -317,10 +345,22 @@ if __name__ == "__main__":
                     logger.debug(
                         "Update existing {0} record (was {1})".format(
                             rr, record.resource_records[0]))
-                    zone.update_record(record, ip[rr], options.ttl)
                 else:
                     logger.debug("Add new {0} record".format(rr))
-                    zone.add_record(rr, name, ip[rr], options.ttl)
+                client.change_resource_record_sets(
+                    HostedZoneId=zone_id,
+                    ChangeBatch={
+                        'Changes': [{
+                            'Action': 'UPSERT',
+                            'ResourceRecordSet': {
+                                'Name': name,
+                                'Type': rr,
+                                'TTL': options.ttl,
+                                'ResourceRecords': [{'Value': ip[rr]}]
+                            }
+                        }]
+                    }
+                )
     except Exception as e:
         logging.exception(e)
         sys.exit(1)
