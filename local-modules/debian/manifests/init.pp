@@ -95,8 +95,7 @@ class debian {
       # See https://gitlab.freedesktop.org/mesa/mesa/-/commit/bceb2328c48a3eb8a9039911393fb2a7c23d5ad1
       # And https://gitlab.freedesktop.org/drm/amd/-/issues/3437
       # And https://gitlab.freedesktop.org/drm/amd/-/issues/3497
-      "mesa-*",
-      "*-mesa*"
+      "src:mesa",
     ],
     release => "experimental"
   }
