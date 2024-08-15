@@ -89,16 +89,12 @@ class debian {
   apt::pin { ['experimental', 'experimental-debug']:
     priority => 101
   }
-  apt::pin { 'prefer-experimental':
-    priority => 990,
-    packages => [
-      # See https://gitlab.freedesktop.org/mesa/mesa/-/commit/bceb2328c48a3eb8a9039911393fb2a7c23d5ad1
-      # And https://gitlab.freedesktop.org/drm/amd/-/issues/3437
-      # And https://gitlab.freedesktop.org/drm/amd/-/issues/3497
-      "src:mesa",
-    ],
-    release => "experimental"
-  }
+  # apt::pin { 'prefer-experimental':
+  #   priority => 990,
+  #   packages => [
+  #   ],
+  #   release => "experimental"
+  # }
 
   package { 'flatpak': ensure => installed }
   package { 'needrestart': ensure => installed }
