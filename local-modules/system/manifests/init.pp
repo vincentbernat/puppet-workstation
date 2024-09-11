@@ -25,10 +25,11 @@ class system {
   ]:
     ensure => installed
   }
-  package { "systemd-sysv":      ensure => installed } ->
-  package { 'systemd-coredump':  ensure => installed } ->
-  package { 'systemd-container': ensure => installed } ->
-  package { 'systemd-cron':      ensure => installed } ->
+  package { "systemd-sysv":       ensure => installed } ->
+  package { 'systemd-coredump':   ensure => installed } ->
+  package { 'systemd-container':  ensure => installed } ->
+  package { 'systemd-cryptsetup': ensure => installed } ->
+  package { 'systemd-cron':       ensure => installed } ->
   package { [
     "anacron",
     "at",
