@@ -6,7 +6,6 @@ class tools::applications {
              'colordiff',
              'fzf',
              'gcal',
-             'glances',
              'fd-find',
              'gnupg',
              'htop',
@@ -40,11 +39,6 @@ class tools::applications {
              'urlscan',
              ]:
                ensure => installed
-  }
-  ->
-  service { "glances":
-    ensure => stopped,
-    enable => false
   }
   package { "mailcap": ensure => purged }
   package { "linux-headers-${::os['architecture']}":
