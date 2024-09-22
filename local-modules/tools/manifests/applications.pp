@@ -20,7 +20,7 @@ class tools::applications {
              'linux-perf',
              'lshw',
              'lsof',
-             'magic-wormhole',
+             # 'magic-wormhole',
              'mercurial',
              'mmv',
              'moreutils',
