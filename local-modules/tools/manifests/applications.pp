@@ -2,11 +2,9 @@ class tools::applications {
 
   package { [
              'bpftrace',
-             'bpytop',
              'colordiff',
              'fzf',
              'gcal',
-             'fd-find',
              'gnupg',
              'htop',
              'httpie',
@@ -21,7 +19,6 @@ class tools::applications {
              'lshw',
              'lsof',
              # 'magic-wormhole',
-             'mercurial',
              'mmv',
              'moreutils',
              'neofetch',
@@ -32,11 +29,9 @@ class tools::applications {
              'ripgrep',
              'silversearcher-ag',
              'strace',
-             'subversion',
              'tmux',
              'tzdiff',
              'ugrep',
-             'urlscan',
              ]:
                ensure => installed
   }
