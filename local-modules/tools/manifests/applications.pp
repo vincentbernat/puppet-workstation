@@ -18,7 +18,7 @@ class tools::applications {
              'linux-perf',
              'lshw',
              'lsof',
-             # 'magic-wormhole',
+             'magic-wormhole',
              'mmv',
              'moreutils',
              'neofetch',
