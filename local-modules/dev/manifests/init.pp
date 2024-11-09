@@ -48,6 +48,5 @@ class dev {
 
   # Others
   package { ['nodejs',
-             'uglifyjs',
-             'zeal']:  ensure => installed }
+             'uglifyjs']:  ensure => installed }
 }
