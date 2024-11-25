@@ -10,5 +10,7 @@ class system::docker {
       | END
   }
   ~>
-  service { "docker": }
+  service { "docker":
+    enable => false
+  }
 }
