@@ -8,7 +8,7 @@ class dev {
   package { 'dput-ng':          ensure => installed }
   package { 'lintian':          ensure => installed }
   package { 'lintian-brush':    ensure => installed }
-  include dev::cowbuilder
+  package { 'sbuild':           ensure => installed }
 
   # C-related
   package { 'make':            ensure => installed }
