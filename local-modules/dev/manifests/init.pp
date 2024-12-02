@@ -9,6 +9,7 @@ class dev {
   package { 'lintian':          ensure => installed }
   package { 'lintian-brush':    ensure => installed }
   package { 'sbuild':           ensure => installed }
+  include dev::cowbuilder
 
   # C-related
   package { 'make':            ensure => installed }
