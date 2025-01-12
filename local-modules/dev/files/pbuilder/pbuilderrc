@@ -6,4 +6,5 @@ EXTRAPACKAGES="apt-utils"
 HOOKDIR=/etc/pbuilder/hooks
 SOURCE_ONLY_CHANGES=yes
 DEBBUILDOPTS="-j$(nproc)"
+PBUILDERSATISFYDEPENDSCMD="/usr/lib/pbuilder/pbuilder-satisfydepends-apt"
 #USENETWORK=yes
