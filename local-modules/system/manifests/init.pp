@@ -81,6 +81,13 @@ class system {
       ensure => running,
       enable => true
     }
+    sudo::conf { 'tlp':
+      content => @(SUDO/L)
+        %sudo ALL=(ALL) NOPASSWD:\
+         /usr/bin/tlp fullcharge,\
+         /usr/bin/tlp-stat -b
+        |- SUDO
+    }
     package { "powertop": ensure => installed }
     ->
     service { "powertop": enable => false }
