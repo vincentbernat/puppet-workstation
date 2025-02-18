@@ -56,25 +56,9 @@ class system {
   if $facts['laptop'] {
     package { "tlp":      ensure => installed }
     ->
-    file_line { 'start charge threshold in TLP':
+    file { '/etc/tlp.d/01-custom.conf':
       ensure => present,
-      line   => 'START_CHARGE_THRESH_BAT0=85',
-      match  => '^#?START_CHARGE_THRESH_BAT0=.*',
-      path   => '/etc/tlp.conf',
-    }
-    ~>
-    file_line { 'stop charge threshold in TLP':
-      ensure => present,
-      line   => 'STOP_CHARGE_THRESH_BAT0=90',
-      match  => '^#?STOP_CHARGE_THRESH_BAT0=.*',
-      path   => '/etc/tlp.conf',
-    }
-    ~>
-    file_line { 'restore charge threshold in TLP':
-      ensure => present,
-      line   => 'RESTORE_THRESHOLDS_ON_BAT=1',
-      match  => '^#?RESTORE_THRESHOLDS_ON_BAT=.*',
-      path   => '/etc/tlp.conf',
+      source => "puppet:///modules/system/tlp.conf"
     }
     ~>
     service { "tlp":
