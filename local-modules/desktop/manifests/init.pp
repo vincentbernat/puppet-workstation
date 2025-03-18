@@ -119,7 +119,6 @@ class desktop {
   desktop::flatpak { "org.signal.Signal":
     permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
   }
-  desktop::flatpak { "org.onlyoffice.desktopeditors": ensure => absent }
   desktop::flatpak { "org.gimp.GIMP": ensure => absent }
   desktop::flatpak { "org.gtk.Gtk3theme.Adwaita-dark": }
   desktop::flatpak { "us.zoom.Zoom": }
@@ -141,7 +140,6 @@ class desktop {
   desktop::flatpak { "org.libretro.RetroArch":
     permissions => "filesystems=!home;!host;~/games/ROMs"
   }
-  desktop::flatpak { "dev.aunetx.deezer": ensure => absent }
 
   # Xsession shouldn't start much stuff
   file_line { 'no Xsession dbus':
