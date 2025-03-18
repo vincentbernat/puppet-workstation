@@ -22,7 +22,7 @@ class desktop {
              'zathura-cb']:              ensure => installed }
   package { 'file-roller':               ensure => installed }
   package { 'gitg':                      ensure => installed }
-  package { 'gimp':                      ensure => absent }
+  package { 'gimp':                      ensure => installed }
   package { 'virt-manager':              ensure => installed }
   package { 'inkscape':                  ensure => installed }
   package { 'krita':                     ensure => installed }
@@ -116,11 +116,11 @@ class desktop {
   desktop::flatpak { "com.jgraph.drawio.desktop":
     permissions => "filesystems=!home;xdg-download"
   }
-  desktop::flatpak {"org.signal.Signal":
+  desktop::flatpak { "org.signal.Signal":
     permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
   }
-  desktop::flatpak {"org.onlyoffice.desktopeditors": ensure => absent }
-  desktop::flatpak { "org.gimp.GIMP": remote => "flathub-beta"}
+  desktop::flatpak { "org.onlyoffice.desktopeditors": ensure => absent }
+  desktop::flatpak { "org.gimp.GIMP": ensure => absent }
   desktop::flatpak { "org.gtk.Gtk3theme.Adwaita-dark": }
   desktop::flatpak { "us.zoom.Zoom": }
   desktop::flatpak { "com.spotify.Client":
