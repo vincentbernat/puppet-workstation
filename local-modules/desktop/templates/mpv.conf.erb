@@ -19,6 +19,7 @@ cache-pause-wait=5
 # Download some subtitles automatically
 ytdl-raw-options=write-sub=,write-auto-sub=
 ytdl-raw-options-append=sub-lang=en,fr
+ytdl-raw-options-append=cookies-from-browser=firefox
 # Limit video quality
 ytdl-format=bestvideo[width<=<%= @facts['drm']['card0']['maxwidth'] %>]+bestaudio/best[width<=<%= @facts['drm']['card0']['maxwidth'] %>]/best
 
