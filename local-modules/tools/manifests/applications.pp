@@ -4,6 +4,7 @@ class tools::applications {
              'ansifilter',
              'bpftrace',
              'colordiff',
+             'eza',
              'fzf',
              'gcal',
              'gnupg',
