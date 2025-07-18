@@ -75,7 +75,7 @@ class debian {
   apt::source { 'experimental':
     location => 'http://deb.debian.org/debian/',
     release  => 'experimental',
-    repos    => 'main',
+    repos    => 'main non-free-firmware',
     include  => { 'src' => true }
   }
   apt::source { 'experimental-debug':
