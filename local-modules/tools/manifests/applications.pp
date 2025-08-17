@@ -23,7 +23,6 @@ class tools::applications {
              # 'magic-wormhole',
              'mmv',
              'moreutils',
-             'neofetch',
              'pass',
              'pass-extension-otp',
              'pass-extension-tail',
