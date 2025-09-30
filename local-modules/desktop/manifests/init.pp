@@ -114,12 +114,11 @@ class desktop {
   }
 
   desktop::flatpak { "com.jgraph.drawio.desktop":
-    permissions => "filesystems=!home;xdg-download"
+    permissions => "filesystems=!home"
   }
   desktop::flatpak { "org.signal.Signal":
     permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
   }
-  desktop::flatpak { "org.gimp.GIMP": ensure => absent }
   desktop::flatpak { "org.gtk.Gtk3theme.Adwaita-dark": }
   desktop::flatpak { "us.zoom.Zoom": }
   desktop::flatpak { "com.spotify.Client":
