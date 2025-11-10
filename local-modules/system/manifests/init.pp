@@ -157,13 +157,6 @@ class system {
       notify => Exec['update initramfs']
     }
   }
-  if $facts['dmi']['manufacturer'] == 'LENOVO' and $facts['dmi']['product']['name'] == '21D2CTO1WW' {
-    # Workaround for non-working trackpoint in 6.10+
-    file { '/etc/modprobe.d/trackpoint.conf':
-      source => 'puppet:///modules/system/trackpoint.conf',
-      notify => Exec['update initramfs']
-    }
-  }
   file { '/etc/initramfs-tools/conf.d/modules':
     content => "MODULES=dep\n"
   }
