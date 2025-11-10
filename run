@@ -15,7 +15,7 @@ else
     SUDO=sudo
 fi
 
-librarian-puppet install
+# librarian-puppet install
 $SUDO env \
     FACTERLIB=$PWD/facts \
     FACTER_user=$USER \
