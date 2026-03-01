@@ -3,6 +3,7 @@ class desktop::audio {
   package { ["bluez",
              "bluez-tools",
              "rtkit",
+             "speech-dispatcher",
              "pulseaudio-utils",
              "pavucontrol"]:
                ensure => installed
