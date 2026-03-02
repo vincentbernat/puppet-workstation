@@ -1,5 +1,4 @@
 class desktop::audio {
-  # Pipewire is pulled from Nix
   package { ["bluez",
              "bluez-tools",
              "rtkit",
@@ -25,4 +24,8 @@ class desktop::audio {
   package { ["gstreamer1.0-fdkaac",
              "pulseaudio",
              "pulseaudio-module-bluetooth"]: ensure => purged }
+  # pipewire is pulled from Nix (to get the appropriate Bluetooth codecs)
+  package { ["pipewire",
+             "pipewire-pulse",
+             "wireplumber"]: ensure => purged }
 }
