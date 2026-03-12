@@ -102,7 +102,7 @@ class desktop {
       remote  => $remote,
       require => Flatpak_Remote[$remote]
     }
-    # For permissions, check with "flatpak info -M us.zoom.Zoom"
+    # For permissions, check with "flatpak info -M org.signal.Signal
     ->
     file { "/var/lib/flatpak/overrides/${title}":
       ensure  => $permissions ? { undef => absent, default => present },
@@ -120,7 +120,6 @@ class desktop {
     permissions => "filesystems=!home;!xdg-pictures;!xdg-music;!xdg-videos;!xdg-documents"
   }
   desktop::flatpak { "org.gtk.Gtk3theme.Adwaita-dark": }
-  desktop::flatpak { "us.zoom.Zoom": ensure => absent }
   desktop::flatpak { "com.spotify.Client":
     permissions => "filesystems=!xdg-pictures"
   }
