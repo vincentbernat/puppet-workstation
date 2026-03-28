@@ -127,7 +127,7 @@ class desktop {
     permissions => "filesystems=!xdg-pictures;!xdg-videos"
   }
   desktop::flatpak { "com.valvesoftware.Steam":
-    permissions => "filesystems=!xdg-pictures;!xdg-music"
+    permissions => "filesystems=!xdg-music;!xdg-pictures;!xdg-run/app/com.discordapp.Discord;!/run/udev;!xdg-run/speech-dispatcher;!/run/media;!/mnt;!/media"
   }
   desktop::flatpak { "io.github.ungoogled_software.ungoogled_chromium":
     permissions => "filesystems=!home;xdg-download"
