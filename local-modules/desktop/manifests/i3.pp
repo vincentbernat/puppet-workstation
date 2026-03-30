@@ -12,7 +12,6 @@ class desktop::i3 {
              'gnupg-agent',
              'hsetroot',
              'inputplug',
-             'libgtk3-nocsd0',
              'libnotify-bin',
              'libvte-2.91-0',
              'maim',
