@@ -1,4 +1,5 @@
 class desktop::i3 {
+  package { "libgtk-nocsd0": ensure => purged }
   package { ['adwaita-icon-theme',
              'adwaita-qt',
              'adwaita-qt6',
