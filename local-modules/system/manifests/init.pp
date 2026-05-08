@@ -164,6 +164,10 @@ class system {
       notify => Exec['update initramfs']
     }
   }
+  file { '/etc/modprobe.d/security.conf':
+    source => 'puppet:///modules/system/security.conf',
+    notify => Exec['update initramfs']
+  }
   file { '/etc/initramfs-tools/conf.d/modules':
     content => "MODULES=dep\n"
   }
