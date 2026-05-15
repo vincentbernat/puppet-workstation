@@ -164,10 +164,6 @@ class system {
       notify => Exec['update initramfs']
     }
   }
-  file { '/etc/modprobe.d/security.conf':
-    source => 'puppet:///modules/system/security.conf',
-    notify => Exec['update initramfs']
-  }
   file { '/etc/initramfs-tools/conf.d/modules':
     content => "MODULES=dep\n"
   }
@@ -175,6 +171,17 @@ class system {
   exec { 'update initramfs':
     command     => '/usr/sbin/update-initramfs -k all -u',
     refreshonly => true
+  }
+
+  file { '/etc/modprobe.d/security.conf':
+    notify => Exec['update initramfs'],
+    content => @(END)
+      # Workaround for Copy Fail, Copy Fail 2 and Dirty Frag
+      install algif_aead /bin/false
+      install esp4 /bin/false
+      install esp6 /bin/false
+      install rxrpc /bin/false
+      | END
   }
 
   service { "sysfsutils": }
