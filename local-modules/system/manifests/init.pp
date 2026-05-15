@@ -183,6 +183,8 @@ class system {
       install rxrpc /bin/false
       | END
   }
+  # Workaround for ssh-keysign-pwm
+  sysctl { "kernel.yama.ptrace_scope": value => "2" }
 
   service { "sysfsutils": }
   service { "puppet":
