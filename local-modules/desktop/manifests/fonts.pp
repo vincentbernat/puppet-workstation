@@ -2,6 +2,8 @@ class desktop::fonts {
 
   # fonts
   package { 'fonts-cantarell':           ensure => installed }
+  package { 'fonts-adwaita':             ensure => installed }
+  package { 'fonts-adobe-sourcesans3':   ensure => installed }
   package { 'fonts-dejavu':              ensure => installed }
   package { 'fonts-dejavu-extra':        ensure => installed }
   package { 'fonts-droid-fallback':      ensure => installed }
