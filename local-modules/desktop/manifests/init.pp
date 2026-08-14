@@ -27,9 +27,9 @@ class desktop {
   package { 'inkscape':                  ensure => installed }
   package { 'krita':                     ensure => installed }
   package { 'pinentry-curses':           ensure => installed }
-  package { 'pinentry-gtk2':             ensure => installed }
-  package { 'pinentry-gtk3':             ensure => absent }
-  package { 'pinentry-gnome3':           ensure => absent }
+  package { 'pinentry-gtk2':             ensure => absent } # not available anymore
+  package { 'pinentry-gtk3':             ensure => absent } # not existing
+  package { 'pinentry-gnome3':           ensure => absent } # require gnome keyring
   package { 'nsxiv':                     ensure => installed }
   package { 'sxiv':                      ensure => absent }
   package { 'ssh-askpass-gnome':         ensure => present }
