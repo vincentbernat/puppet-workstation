@@ -2,7 +2,7 @@ class system::network {
 
   # For networking, we rely on network manager.
   package { ["network-manager",
-             "network-manager-gnome"]:
+             "nm-connection-editor"]:
                ensure => installed
   }
   ->
