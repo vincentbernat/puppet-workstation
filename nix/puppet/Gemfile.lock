@@ -1,0 +1,131 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    base64 (0.3.0)
+    benchmark (0.5.0)
+    concurrent-ruby (1.3.8)
+    deep_merge (1.2.2)
+    facter (4.10.0)
+      hocon (~> 1.3)
+      thor (>= 1.0.1, < 1.3)
+    faraday (2.15.0)
+      faraday-net_http (>= 2.0, < 3.6)
+      json
+      logger
+    faraday-follow_redirects (0.5.0)
+      faraday (>= 1, < 3)
+    faraday-net_http (3.5.0)
+      net-http (~> 0.5)
+    fast_gettext (3.1.0)
+      prime
+    fiddle (1.1.8)
+    forwardable (1.4.0)
+    getoptlong (0.2.1)
+    hocon (1.4.0)
+    json (3.1.0)
+    librarian-puppet (6.0.0)
+      librarianp (~> 1.1)
+      puppet_forge (>= 2, < 7)
+      rsync (~> 1.0)
+    librarianp (1.2.0)
+      thor (~> 1.0)
+    locale (2.1.5)
+      fiddle
+    logger (1.7.0)
+    minitar (1.1.0)
+    multi_json (1.21.2)
+    net-http (0.10.0)
+      net-protocol (>= 0.3.0)
+      uri (>= 0.11.1)
+    net-protocol (0.4.0)
+      timeout
+    ostruct (0.6.3)
+    prime (0.1.4)
+      forwardable
+      singleton
+    puppet (8.10.0)
+      concurrent-ruby (~> 1.0)
+      deep_merge (~> 1.0)
+      facter (>= 4.3.0, < 5)
+      fast_gettext (>= 2.1, < 4)
+      getoptlong (~> 0.2.0)
+      locale (~> 2.1)
+      multi_json (~> 1.13)
+      puppet-resource_api (~> 1.5)
+      scanf (~> 1.0)
+      semantic_puppet (~> 1.0)
+    puppet-resource_api (1.9.2)
+      hocon (>= 1.0)
+    puppet_forge (6.2.0)
+      base64 (>= 0.2.0, < 0.4.0)
+      faraday (~> 2.0)
+      faraday-follow_redirects (>= 0.3, < 0.6)
+      minitar (~> 1.0, >= 1.0.2)
+      semantic_puppet (~> 1.0)
+    racc (1.8.1)
+    rsync (1.0.9)
+    ruby-augeas (0.6.0)
+    scanf (1.0.0)
+    semantic_puppet (1.1.1)
+    singleton (0.3.0)
+    syslog (0.4.0)
+      logger
+    thor (1.2.2)
+    timeout (0.6.1)
+    uri (1.1.2)
+
+PLATFORMS
+  ruby
+  x86_64-linux-gnu
+
+DEPENDENCIES
+  base64
+  benchmark
+  librarian-puppet (= 6.0.0)
+  ostruct
+  puppet (= 8.10.0)
+  racc
+  ruby-augeas
+  syslog
+
+CHECKSUMS
+  base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
+  benchmark (0.5.0) sha256=465df122341aedcb81a2a24b4d3bd19b6c67c1530713fd533f3ff034e419236c
+  concurrent-ruby (1.3.8) sha256=b2f1be836e968ccc78ccfce277ea79c72a88633f22306782c16ff23fb415d1e1
+  deep_merge (1.2.2) sha256=83ced3a3d7f95f67de958d2ce41b1874e83c8d94fe2ddbff50c8b4b82323563a
+  facter (4.10.0) sha256=b78a213b9160cded7ab93e7c47c003c618ebd49c6eca549d09a068e27a30a59d
+  faraday (2.15.0) sha256=3be0eff0187ed913a1b4f679e9fcfe845b542cdd4f75b76cd6181a4ae1335fff
+  faraday-follow_redirects (0.5.0) sha256=5cde93c894b30943a5d2b93c2fe9284216a6b756f7af406a1e55f211d97d10ad
+  faraday-net_http (3.5.0) sha256=2e7094c34e38754ee048cc3df47376f8657005d9375f8473bce1c3b526a22e36
+  fast_gettext (3.1.0) sha256=9c4c84c33a875cc9edc062179229f9d373179a624d3c961eed747cddbab72ac5
+  fiddle (1.1.8) sha256=7fa8ee3627271497f3add5503acdbc3f40b32f610fc1cf49634f083ef3f32eee
+  forwardable (1.4.0) sha256=f1cd40cc9812937980e1c76f1aa053660990a7c9b6a98fc37d945468afcce838
+  getoptlong (0.2.1) sha256=fd23f07397b994bf9310d4531cfdb4332629a9b8e8c9c457c32b7edf5bf21ba5
+  hocon (1.4.0) sha256=e71023ed7c56ae780ec34c0ce7789a233bcead08c045d50bc7b3af40f5afcd80
+  json (3.1.0) sha256=3ce7ccf8fde58960177a3a756c31f292a4c1e1dedee884547096a5b0604e3bd8
+  librarian-puppet (6.0.0) sha256=e55cb770ec66d0e97076a1fc061cdc6d7d83f642de9dd63f6a4a1678af1f9a6e
+  librarianp (1.2.0) sha256=660b8a9d82317715d5ef4275bd55a013abbe97cb8f4656542dd5807b56f35649
+  locale (2.1.5) sha256=1c6803e8aa6bdb2c29e91945d095050601bf6d58474993575adf6f3b89b32ef4
+  logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
+  minitar (1.1.0) sha256=38db0cfb6f3801017946cdcd8dc53f2cf3fd41ff752892312bf9a1639c9ea23e
+  multi_json (1.21.2) sha256=245531eaf54bdba57aba515ff08b4503505c5e09911daa89c5a561e2f85bea8e
+  net-http (0.10.0) sha256=1a2ff6e37a05724973c43f2bf7bf105f59c36a4cd0a7e9b1c021a0a566987c27
+  net-protocol (0.4.0) sha256=f9f90c8c6f64794a45160bf422177a336db12809de3beeeaa26b88fcd2e8c853
+  ostruct (0.6.3) sha256=95a2ed4a4bd1d190784e666b47b2d3f078e4a9efda2fccf18f84ddc6538ed912
+  prime (0.1.4) sha256=4d755ebf7c2994a6f3a3fee0d072063be3fff2d4042ebff6cd5eebd4747a225e
+  puppet (8.10.0) sha256=f2f5de8f5a794ec49ac30f42806c9ffb5cd42c9908ab3014f9d8ea68a21c2a3a
+  puppet-resource_api (1.9.2) sha256=d4b5afe600e54c0e2bf31d31cf5fb9de143d8a9efeb8bd85e51f27944f6dcfc8
+  puppet_forge (6.2.0) sha256=9cde4841a7a6950afeb0c4fec02449931179863918c0a6e6909cb2a6c6998a0c
+  racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
+  rsync (1.0.9) sha256=bbdb69727a7cf17a26be5dce197d15957dfaf8ed4814811da6b1ef17f0110b5d
+  ruby-augeas (0.6.0) sha256=002bd237d8dce4b918384cc3043254bf5264efe81f663d1c9ac7b41cbe4df8d2
+  scanf (1.0.0) sha256=533db7f7e5acafea1a145d6c5329cef667a58fbcb7d64379a808ff1199ee1b00
+  semantic_puppet (1.1.1) sha256=15ff5b48d7f856549eb66b927a8894d3668b211970c9d7dc07dd4db57f5c7a96
+  singleton (0.3.0) sha256=83ea1bca5f4aa34d00305ab842a7862ea5a8a11c73d362cb52379d94e9615778
+  syslog (0.4.0) sha256=c4c38ae982fe72903ec41094b5e5f2dcbbc66f510d0225c9702e5e980d827472
+  thor (1.2.2) sha256=2f93c652828cba9fcf4f65f5dc8c306f1a7317e05aad5835a13740122c17f24c
+  timeout (0.6.1) sha256=78f57368a7e7bbadec56971f78a3f5ecbcfb59b7fcbb0a3ed6ddc08a5094accb
+  uri (1.1.2) sha256=89292e98eabbef6248b0a0ed5e7e398e152f83f17560023a6d94a7f492b169fb
+
+BUNDLED WITH
+  4.0.22

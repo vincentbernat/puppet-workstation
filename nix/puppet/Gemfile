@@ -1,0 +1,12 @@
+source "https://rubygems.org"
+
+gem "puppet", "8.10.0"
+gem "librarian-puppet", "6.0.0"
+gem "ruby-augeas"
+
+# No longer in Ruby stdlib
+gem "base64"
+gem "syslog"
+gem "ostruct"
+gem "benchmark"
+gem "racc"

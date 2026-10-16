@@ -21,7 +21,7 @@ $SUDO env \
     FACTER_user=$USER \
     FACTER_home=$HOME \
     FACTER_group=$(id -gn $USER) \
-  puppet apply \
+  $(which puppet) apply \
     --confdir=$PWD \
     --modulepath=$PWD/local-modules:$PWD/modules:/usr/share/puppet/modules \
     "${@:---test}" \

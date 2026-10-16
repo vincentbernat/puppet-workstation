@@ -16,8 +16,17 @@ is not the state-of-the-art Puppet configuration.
 This requires:
 
  - Debian unstable
- - `puppet` package (>= 7, currently in Experimental)
- - `librarian-puppet` package
+ - Nix with flakes
+
+Puppet, librarian-puppet and ruby-augeas come from the Nix dev shell
+(`nix develop` or direnv). Gems are pinned in `nix/puppet/Gemfile`.
+After changing it, update the lock file and `gemset.nix` with:
+
+```
+cd nix/puppet
+rm Gemfile.lock
+nix run --inputs-from ../.. nixpkgs#bundix -- --lock
+```
 
 Debian is installed using the Stretch installer, asking to use the
 whole disk in a guided partitioning scheme with encryption and
